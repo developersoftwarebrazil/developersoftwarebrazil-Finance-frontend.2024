@@ -71,9 +71,15 @@
 .login-form-fields-context input {
   width: 90%;
   padding: 1rem;
-  margin: 0 0 0.62rem 2rem;
+  margin: 0 0 2rem 2rem;
   border: none;
   border-radius: 0.25rem;
+}
+.login-form-fields-context .input-error {
+  visibility: visible;
+  margin-top: -1.6rem;
+  font-size: 1rem;
+  color: var(--text-color-error);
 }
 
 .login-form-button {

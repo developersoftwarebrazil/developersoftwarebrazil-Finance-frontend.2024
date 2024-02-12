@@ -20,19 +20,20 @@
         </div>
       </div>
       <div class="login-content-form">
-        <form action="">
+        <form class="login-form-container-fields" [formGroup]="loginForm" (submit)="userLogin()">
           <div class="login-form-fields-context">
             <label for="email" name="email" id="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Ex: exeplo@email.com">
-            <label for="error"></label>
+            <input type="email" name="email" id="email" placeholder="Ex: exeplo@email.com" formControlName="email" required="" (focus)="onFocus()" (blur)="onBlur()" [class.no-outline]="inputFocused">
+            <label *ngIf="loginForm.get('email')?.errors?.['required']&& loginForm.get('email')?.touched" class="input-error">Campo obrigatório!</label>
           </div>
           <div class="login-form-fields-context">
             <label for="password" name="password" id="passord">Senha</label>
-            <input type="password">
-            <label for="error"></label>
+            <input type="password" name="password" id="password" formControlName="password" required="" (focus)="onFocus()" (blur)="onBlur()" [class.no-outline]="inputFocused">
+
+            <label *ngIf="loginForm.get('password')?.errors?.['required']&& loginForm.get('password')?.touched" class="input-error">Campo obrigatório!</label>
           </div>
           <div class="login-form-button">
-            <button class="btn">Logar</button>
+            <button class="btn" [ngClass]="{'disabled':!loginForm.valid}" [disabled]="!loginForm.valid">Logar</button>
           </div>
         </form>
       </div>
