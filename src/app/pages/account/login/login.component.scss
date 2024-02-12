@@ -1,0 +1,135 @@
+// Configurações gerais da página
+.container-login-main {
+  display: grid;
+  height: 100vh;
+}
+
+.container-login-content {
+  grid-template-columns: 1fr 2fr;
+  margin: 2rem 4rem 4rem 2rem;
+  min-height: 26rem;
+  border-radius: 0.5rem;
+
+  background: var(--bg-color-secundary);
+}
+.container-login-content .title {
+  text-align: center;
+  color: var(--text-color-title);
+  margin: 1rem 0 0 0;
+
+  font-size: 3rem;
+  font-weight: 700;
+}
+// Configurações do container do formulário
+.login-container-form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: 1rem 2rem;
+  gap: 1rem;
+}
+.login-content-info {
+  width: 100%;
+  margin: 0 auto;
+}
+.login-content-info .subtitle {
+  color: var(--text-color-subtitle);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 -2rem 0 2.5rem;
+}
+.login-content-info .subtitle::after {
+  display: block;
+  content: "";
+  width: 90%;
+  height: 0.031rem;
+  background-color: var(--text-color-subtitle);
+  margin: 0 0 0.62rem 0;
+}
+//Configurações do conteúdo de informações laterap
+.login-info.text {
+  width: 200px;
+  padding: 0 0 0 0.5rem;
+}
+.login-info.text p {
+  color: var(--text-color-text);
+  margin: 1rem -2rem 0 2.2rem;
+  line-height: 1.5;
+}
+//Configurações do coteúdo para o formulário
+.login-content-form {
+  width: 80%;
+  margin: 1rem 0 0 2rem;
+  border-left: 0.2px solid var(--text-color-subtitle);
+}
+
+.login-form-fields-context label {
+  font-size: 1.5rem;
+  display: block;
+  padding: 0 0 0.31rem 2rem;
+  color: var(--text-color-subtitle);
+}
+.login-form-fields-context input {
+  width: 90%;
+  padding: 1rem;
+  margin: 0 0 0.62rem 2rem;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.login-form-button {
+  margin: 1rem 0 0 2rem;
+}
+.btn {
+  background: green;
+  color: var(--bg-color-principal);
+}
+
+// Configurnado o modo responsivo
+@media (max-width: 1150px) {
+  .container-login-content .title {
+    font-size: 2.5rem;
+  }
+  .container-content-info .subtitle {
+    font-size: 1.8rem;
+  }
+  .login-form-fields-context label {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .container-login-content .title {
+    font-size: 2rem;
+  }
+  .container-content-info .subtitle {
+    font-size: 1.5rem;
+  }
+  .login-form-fields-context label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .login-container-form {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+  }
+  .container-login-content {
+    height: 28rem;
+  }
+  .container-content-info .subtitle {
+    margin: 0 auto;
+  }
+  .login-info.text {
+    display: none;
+    margin: 0 auto;
+  }
+  .login-content-form {
+    border: none;
+  }
+
+  .login-form-button {
+    display: flex;
+    justify-content: center;
+  }
+}
