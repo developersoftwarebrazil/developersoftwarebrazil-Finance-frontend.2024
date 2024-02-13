@@ -47,7 +47,8 @@ export class LoginComponent {
   userLogin() {
     this.loginService.login(this.formData["email"].value, this.formData['password'].value)
       .subscribe(token => {
-        alert(token)
+        alert(token);
+        this.router.navigate(['/dashboard']);
       },
         err => {
           alert('Houve um erro ao tentar fazer o login!');
