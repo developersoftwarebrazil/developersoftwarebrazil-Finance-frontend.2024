@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
+    private loginService: LoginService,
     public formBuilder: FormBuilder,
   ) { }
 
@@ -28,8 +30,8 @@ export class LoginComponent {
       })
   }
 
-   // Método para remover a borda do input quando ocorre o evento focus
-   onFocus() {
+  // Método para remover a borda do input quando ocorre o evento focus
+  onFocus() {
     this.inputFocused = true;
   }
   onBlur() {
@@ -43,6 +45,13 @@ export class LoginComponent {
 
   // metodo executado apos o dados serem preenchido no formulário
   userLogin() {
-    alert('ok')
+    this.loginService.login(this.formData["email"].value, this.formData['password'].value)
+      .subscribe(token => {
+        alert(token)
+      },
+        err => {
+          alert('Houve um erro ao tentar fazer o login!');
+        }
+      )
   }
 }
