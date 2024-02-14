@@ -1,11 +1,11 @@
 <div class="container-login-main">
   <div class="container-login-content">
+    <h1 class="login-content title">Controle de gastos financeiro </h1>
 
     <div class="login-container-form">
       <div class="login-content-info">
 
         <div class="container-header">
-          <img src="../../../../assets/icons/icon-pc.svg" alt="" srcset="">
           <div class="container-info">
             <h1 class="subtitle">Entre em nosso sistema</h1>
           </div>
@@ -21,9 +21,6 @@
       </div>
       <div class="login-content-form">
         <form class="login-form-container-fields" [formGroup]="loginForm" (submit)="userLogin()">
-
-          <h1 class="login-content title">Controle de gastos financeiro </h1>
-
           <div class="login-form-fields-context">
             <label for="email" name="email" id="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Ex: exeplo@email.com" formControlName="email" required="" (focus)="onFocus()" (blur)="onBlur()" [class.no-outline]="inputFocused">
@@ -36,10 +33,7 @@
             <label *ngIf="loginForm.get('password')?.errors?.['required']&& loginForm.get('password')?.touched" class="input-error">Campo obrigatório!</label>
           </div>
           <div class="login-form-button">
-            <button class="btn login" [ngClass]="{'disabled':!loginForm.valid}" [disabled]="!loginForm.valid">Logar</button>
-          </div>
-          <div class="login-form-button">
-            <button class="btn sigining" >Cadatre-se</button>
+            <button class="btn" [ngClass]="{'disabled':!loginForm.valid}" [disabled]="!loginForm.valid">Logar</button>
           </div>
         </form>
       </div>

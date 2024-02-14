@@ -30,14 +30,16 @@ body {
 //DEFINIÇÃO DAS CORES PARA O PORTAL
 // ligthMode
 :root {
-  --bg-color-principal: #f2f4f5;
-  --bg-color-secundary: #2f475a;
+  --bg-color-principal: #fff;
+  --bg-color-secundary: #ecedf0;
 
-  --text-color-principal: #000;
+  --text-color-principal: #1a1d1f;
   --text-color-title: #cbcbcc;
   --text-color-subtitle: #cbccba;
-  --text-color-text: #6bd1ff;
+  --text-color-text: #343d41;
   --text-color-error: #f00;
+
+  --border-color:#f3f3f4;
 }
 // // darkMode
 // :root .darkMode {
