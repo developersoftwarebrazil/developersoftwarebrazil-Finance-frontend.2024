@@ -8,54 +8,49 @@
   border: 3px solid var(--border-color);
   grid-template-columns: 1fr 1fr;
   margin: 2rem 4rem 2rem 4rem;
-  min-height: 26rem;
-  border-radius: 0.5rem;
-  height: 90vh;
-  background: var(--bg-color-principal);
-}
-  .container-login-content .title {
-    text-align: center;
-    color: var(--text-color-title);
-    margin: 1rem 0 0 0;
 
-    font-size: 1.8rem;
-    font-weight: 700;
-  }
+  border-radius: 0.5rem;
+}
+.container-login-content .title {
+  text-align: center;
+  color: var(--text-color-title);
+  margin: 1rem 0 1rem 1.5rem;
+
+  font-size: 1.8rem;
+  font-weight: 700;
+}
 
 // Configurações do container do formulário
 .login-container-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  // margin: 1rem 2rem;
+  grid-template-columns: 1fr 2fr;
   gap: 1rem;
   background: var(--bg-color-secundary);
+}
+.theme-toggle {
+  display: flex;
+  justify-content: flex-end;
 }
 .login-content-info {
   width: 100%;
   margin: 0 auto;
   background-color: var(--bg-color-principal);
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 .login-content-info .subtitle {
   color: var(--text-color-principal);
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
-.login-content-info img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem auto;
-  width: 20rem;
-  height: 20rem;
-}
+
 .login-content-info .subtitle::after {
   display: block;
   content: "";
   width: 90%;
   height: 0.031rem;
   background-color: var(--text-color-subtitle);
-  margin: 0 0 0.62rem 0;
+  margin: 0 0 0.62rem 1rem;
 }
 //Configurações do conteúdo de informações laterap
 .login-info.text {
@@ -66,12 +61,13 @@
 }
 .login-info.text p {
   color: var(--text-color-text);
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 //Configurações do coteúdo para o formulário
 .login-content-form {
   width: 90%;
+
   margin: 3rem 0 0 -1rem;
   border-left: 0.2px solid var(--text-color-subtitle);
 }
@@ -88,6 +84,8 @@
   margin: 0 0 2rem 2rem;
   border: none;
   border-radius: 0.25rem;
+  border-bottom: 2px solid var(--border-butto-color);
+  background: var(--bg-color-principal);
 }
 .login-form-fields-context .input-error {
   visibility: visible;
@@ -97,17 +95,20 @@
 }
 
 .login-form-button {
-  display: inline;
-  margin: 1rem 0 0 2rem;
+  display: inline-flexbox;
+  float: inline-end;
 }
 
 .btn.sigining {
   background: #ad68c7;
   color: var(--bg-color-principal);
+  margin: 3rem 0 1rem 1rem;
 }
+
 .btn.login {
-  background: green;
+  background: #5d8783;
   color: var(--bg-color-principal);
+  margin: 3rem 0 0.5rem 0;
 }
 
 // Configurnado o modo responsivo
@@ -124,6 +125,9 @@
 }
 
 @media (max-width: 800px) {
+  .container-login-content {
+    margin: 1rem;
+  }
   .container-login-content .title {
     font-size: 2rem;
   }

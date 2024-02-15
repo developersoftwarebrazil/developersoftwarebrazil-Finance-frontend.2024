@@ -1,17 +1,20 @@
-<div class="container-login-main">
+<div class="container-login-main ">
   <div class="container-login-content">
 
     <div class="login-container-form">
+
       <div class="login-content-info">
 
         <div class="container-header">
-          <img src="../../../../assets/icons/icon-pc.svg" alt="" srcset="">
+          <div class="svg-ico-pc"></div>
           <div class="container-info">
             <h1 class="subtitle">Entre em nosso sistema</h1>
           </div>
           <div class="login-info text">
             <p>
               Digite seu email e senha para logar!
+            </p>
+            <p>
               Administre a sua situação financeira e
               tenha tempoa para as coisas
               cordene sua independeciafinaceira!
@@ -20,7 +23,11 @@
         </div>
       </div>
       <div class="login-content-form">
+        <div class="theme-toggle">
+            <button class="svg-theme"(click)="toggleTheme()"style="background-color: transparent;"></button>
+          </div>
         <form class="login-form-container-fields" [formGroup]="loginForm" (submit)="userLogin()">
+
 
           <h1 class="login-content title">Controle de gastos financeiro </h1>
 
@@ -35,11 +42,12 @@
 
             <label *ngIf="loginForm.get('password')?.errors?.['required']&& loginForm.get('password')?.touched" class="input-error">Campo obrigatório!</label>
           </div>
+
           <div class="login-form-button">
-            <button class="btn login" [ngClass]="{'disabled':!loginForm.valid}" [disabled]="!loginForm.valid">Logar</button>
+            <button class="btn sigining">Cadatre-se</button>
           </div>
           <div class="login-form-button">
-            <button class="btn sigining" >Cadatre-se</button>
+            <button class="btn login" [ngClass]="{'disabled':!loginForm.valid}" [disabled]="!loginForm.valid">Logar</button>
           </div>
         </form>
       </div>
