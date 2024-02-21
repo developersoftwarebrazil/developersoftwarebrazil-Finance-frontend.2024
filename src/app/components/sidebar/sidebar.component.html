@@ -1,90 +1,83 @@
 <nav id="sidebar" [ngClass]="{'open-sidebar': isSidebarOpen}">
   <div id="sidebar_content">
-      <div id="user">
-          <img src="../../../assets/photos/profile.jpg" id="user_avatar" alt="Avatar">
+    <!-- Aqui fica os dados do usuário -->
+    <div id="user">
+      <img src="../../../assets/photos/profile.jpg" id="user_avatar" alt="Avatar">
 
-          <p id="user_infos">
-              <span class="item-description">
-                  Paulo Galdino
-              </span>
-              <span class="item-description">
-                  Developer Manager
-              </span>
-          </p>
+      <p id="user_info">
+        <span class="item-description">
+          <h4>Paulo Galdino</h4>
+        </span>
+        <span class="item-description">
+          <h6> Developer Manager</h6>
+        </span>
+      </p>
+    </div>
+
+    <ul id="side_items">
+      <div class="menu-descriptions">
+        <h3 class="item-description">Sistemas</h3>
       </div>
+      <li class="side-item">
+        <a href="#">
+          <img src="../../../assets/icons/laptop.svg">
+          <span class="item-description"> Sistemas </span>
+        </a>
 
-      <ul id="side_items">
-          <li class="side-item active">
-              <a href="#">
-                  <img src="../../../assets/icons/user-manager.svg">
-                  <span class="item-description">
-                      Dashboard
-                  </span>
-              </a>
-          </li>
+      </li>
+      <li class="side-item">
+        <a href="#">
+          <img src="../../../assets/icons/category.svg">
+          <span class="item-description">Categoria</span>
+        </a>
+      </li>
 
-          <li class="side-item">
-              <a href="#">
-                <img src="../../../assets/icons/user-manager.svg">
-                  <span class="item-description">
-                      Usuários
-                  </span>
-              </a>
-          </li>
+      <div class="menu-descriptions">
+        <h3 class="item-description">Entradas & Saídas</h3>
+      </div>
+      <li class="side-item">
+        <a href="#">
+          <img src="../../../assets/icons/dashboard.svg">
+          <span class="item-description">Dashboard</span>
+        </a>
+      </li>
+      <li class="side-item">
+        <a href="#">
+          <img src="../../../assets/icons/investimento.svg">
+          <span class="item-description">Invetimentos</span>
+        </a>
+      </li>
+      <li class="side-item">
+        <a href="#">
+          <img src="../../../assets/icons/despesa.svg">
+          <span class="item-description">Despesas</span>
+        </a>
+      </li>
 
-          <li class="side-item">
-              <a href="#">
-                <img src="../../../assets/icons/user-manager.svg">
+      <div class="menu-descriptions">
+        <h3 class="item-description">definições do usuário</h3>
+      </div>
+      <li class="side-item">
+        <a href="#">
+          <img src="../../../assets/icons/user-manager.svg">
+          <span class="item-description">Usuários</span>
+        </a>
+      </li>
 
-                  <span class="item-description">
-                      Notificações
-                  </span>
-              </a>
-          </li>
+    </ul>
 
-          <li class="side-item">
-              <a href="#">
-                <img src="../../../assets/icons/user-manager.svg">
+    <button id="open_btn" (click)="toggleSidebarOpen()">
+      <img src="../../../assets/icons/arrow-left.svg">
 
-                  <span class="item-description">
-                      Produtos
-                  </span>
-              </a>
-          </li>
-
-          <li class="side-item">
-              <a href="#">
-                <img src="../../../assets/icons/user-manager.svg">
-
-                  <span class="item-description">
-                      Imagens
-                  </span>
-              </a>
-          </li>
-
-          <li class="side-item">
-              <a href="#">
-                <img src="../../../assets/icons/user-manager.svg">
-
-                  <span class="item-description">
-                      Configurações
-                  </span>
-              </a>
-          </li>
-      </ul>
-
-      <button id="open_btn" (click)="toggleSidebarOpen()">
-        <img src="../../../assets/icons/arrow-left.svg">
-
-      </button>
+    </button>
   </div>
 
   <div id="logout">
-      <button id="logout_btn">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <span class="item-description">
-              Logout
-          </span>
-      </button>
+    <button id="logout_btn">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span class="item-description">
+        Logout
+      </span>
+    </button>
   </div>
 </nav>

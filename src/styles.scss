@@ -31,24 +31,32 @@ span {
 }
 
 body {
-  background-color: var(--bg-color-principal);
+  background-color: var(--body-color);
   height: 100vh;
 }
 
 //DEFINIÇÃO DAS CORES PARA O PORTAL
 // ligthMode
 :root {
-  --bg-color-principal: #fff;
-  --bg-color-secundary: #ecedf0;
+  //=== cores para backgroud
+  --body-color: #fff;
+  --sidebar-color: #ecedf0;
+  --primary-color: #fff;
+  --secundary-color-: #ecedf0;
 
+  //cores para textos
   --text-color-principal: #1a1d1f;
   --text-color-title: #1b1e20;
+  --text-color-especial:#6b6b6b;
   --text-color-subtitle: #cbccba;
   --text-color-text: #343d41;
   --text-color-error: #f00;
 
+  //cores para componentes
   --border-color: #f3f3f4;
   --border-buttom-color: #3da58a;
+
+  //====Transitions
 
   .svg-ico-pc {
     display: flex;
@@ -226,8 +234,6 @@ input:-ms-input-placeholder {
     }
     app-sidebar {
       transform: translateX(0);
-
     }
-   
   }
 }
