@@ -16,4 +16,6 @@ import { SidebarModule } from "../../components/sidebar/sidebar.module";
 
   ]
 })
-export class DashboardModule{}
+export class DashboardModule{
+  sidebarActive = false;
+}

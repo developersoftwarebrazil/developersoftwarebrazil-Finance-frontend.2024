@@ -1,0 +1,125 @@
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--bg-color-secundary);
+  height: 100vh;
+  width: 0;
+  padding: 1rem;
+  min-width: 5rem; //80px
+  border-radius: 0 0 1.125rem 0;
+  position: relative;
+  transition: all 0.5s;
+  margin-left: 11.5rem;
+  z-index: 100;
+  position: relative;
+
+  #sidebar-content {
+    padding: 0.75rem; //12px
+  }
+  #users-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 2.5rem 0;
+
+    #users-avatar {
+      width: 3.125rem; //50px
+      height: 3.125rem;
+      margin: 0;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 0.13rem solid; //2px
+    }
+
+    #user-info {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+    }
+    .item-description {
+      margin: 0.5rem 0 0 0;
+      background: green;
+    }
+    #user-info span:last-child {
+      color: #6b6b6b;
+    }
+  }
+
+  #menu-content {
+    #side-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      list-style: none;
+
+      .side-item {
+        border-radius: 0.5rem;
+        padding: 14px;
+        cursor: pointer;
+      }
+      .side-item.active {
+        background-color: #4f46e5;
+      }
+      .side-item:hover:not(.active) {
+        background: #e3e9f7;
+      }
+      .side-item a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: last baseline;
+        color: #0a0a0a;
+      }
+      .side-item.active .description {
+        color: #e3e9f7;
+      }
+    }
+
+    .icon {
+      display: flex;
+      padding-right: 0.3rem;
+      align-items: center;
+      justify-content: center;
+      width: 1.3rem;
+      height: 1.3rem;
+      cursor: pointer;
+    }
+  }
+  .item-description {
+    width: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    transition: width 0.6s;
+    height: 0px;
+  }
+  #btn-open {
+    padding: 0.5rem;
+    top: 1.875rem;
+    right: -0.9rem;
+    background: #4f46e5;
+    border-radius: 50%;
+    cursor: pointer;
+
+    position: absolute;
+  }
+}
+#sidebar.open-sidebar {
+  min-width: 15%;
+}
+#sidebar.open-sidebar
+,.item-description {
+  width: 18.75rem;
+  height: 100vh;
+
+}
+#sidebar.open-sidebar {
+  justify-self: flex-start;
+}
+
+img {
+  width: 1rem;
+  height: 1rem;
+}

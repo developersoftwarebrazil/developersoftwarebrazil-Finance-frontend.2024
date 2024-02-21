@@ -1,31 +1,90 @@
-<div class="container-sidebar">
-  <!-- Aqui ficam o itens do de logo e icones -->
-  <div class="container-menu-items">
-    <div class="menu-claims">
-      <h1>Administrador</h1>
-    </div>
-    <div class="container-menu-icon">
-      <img src="../../../assets/icons/hamburger-menu.svg">
-    </div>
+<nav id="sidebar" [ngClass]="{'open-sidebar': isSidebarOpen}">
+  <div id="sidebar_content">
+      <div id="user">
+          <img src="../../../assets/photos/profile.jpg" id="user_avatar" alt="Avatar">
+
+          <p id="user_infos">
+              <span class="item-description">
+                  Paulo Galdino
+              </span>
+              <span class="item-description">
+                  Developer Manager
+              </span>
+          </p>
+      </div>
+
+      <ul id="side_items">
+          <li class="side-item active">
+              <a href="#">
+                  <img src="../../../assets/icons/user-manager.svg">
+                  <span class="item-description">
+                      Dashboard
+                  </span>
+              </a>
+          </li>
+
+          <li class="side-item">
+              <a href="#">
+                <img src="../../../assets/icons/user-manager.svg">
+                  <span class="item-description">
+                      Usuários
+                  </span>
+              </a>
+          </li>
+
+          <li class="side-item">
+              <a href="#">
+                <img src="../../../assets/icons/user-manager.svg">
+
+                  <span class="item-description">
+                      Notificações
+                  </span>
+              </a>
+          </li>
+
+          <li class="side-item">
+              <a href="#">
+                <img src="../../../assets/icons/user-manager.svg">
+
+                  <span class="item-description">
+                      Produtos
+                  </span>
+              </a>
+          </li>
+
+          <li class="side-item">
+              <a href="#">
+                <img src="../../../assets/icons/user-manager.svg">
+
+                  <span class="item-description">
+                      Imagens
+                  </span>
+              </a>
+          </li>
+
+          <li class="side-item">
+              <a href="#">
+                <img src="../../../assets/icons/user-manager.svg">
+
+                  <span class="item-description">
+                      Configurações
+                  </span>
+              </a>
+          </li>
+      </ul>
+
+      <button id="open_btn" (click)="toggleSidebarOpen()">
+        <img src="../../../assets/icons/arrow-left.svg">
+
+      </button>
   </div>
 
-  <!-- Aqui ficam o itens do perfil do usuário -->
-  <div class="container-menu-profile">
-    <div class="menu-photo-profile">
-      <img src="../../../assets/photos/profile.png" alt="foto de perfil" >
-    </div>
-    <div class="menu-profile-description">
-      <div class="profileName">
-        <h2>Paulo Galdino</h2>
-      </div>
-      <div class="profession">
-        <h5>Developer Manager</h5>
-
-      </div>
-    </div>
+  <div id="logout">
+      <button id="logout_btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span class="item-description">
+              Logout
+          </span>
+      </button>
   </div>
-
-  <!-- Aqui ficam de gerenciamento para as paginas do Site -->
-  <div class="container-menu-sections"></div>
-</div>
-
+</nav>

@@ -1,7 +1,7 @@
-import { Component, Renderer2 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService } from '../../../services/login.service';
+import { Component, Renderer2 } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { LoginService } from "../../../services/login.service";
 
 @Component({
   selector: 'app-login',
@@ -20,6 +20,7 @@ export class LoginComponent {
     private renderer: Renderer2,
     private loginService: LoginService,
     public formBuilder: FormBuilder,
+
   ) { }
 
   // metodos
@@ -66,4 +67,7 @@ export class LoginComponent {
       this.renderer.removeClass(document.body, 'darkMode');
     }
   }
+
 }
+
+

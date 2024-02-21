@@ -1,0 +1,45 @@
+<nav id="sidebar" [ngClass]="{'open-sidebar': isSidebarOpen}">
+  <div id="sidebar-content">
+    <!-- AQUI FICA O TIPO DE USUARIO PARA O SISTEMA  -->
+    <div id="users-content">
+      <!-- avatar -->
+      <img class="ico" src="../../../assets/photos/profile.jpg" id="users-avatar" alt="foto de perfil">
+      <!-- informações -->
+      <p id="user-info">
+        <span class="item-description name">
+          <h4>Paulo Galdino</h4>
+        </span>
+        <span class="item-description">
+          <h5>Developer Manager</h5>
+        </span>
+      </p>
+    </div>
+
+    <div id="menu-content">
+      <ul id="side-items">
+        <li class="side-item">
+          <a href="">
+            <img class="icon" src="../../../assets/icons/dashborad-ico.svg">
+            <span class="item-description">Dashboard</span>
+          </a>
+        </li>
+        <li class="side-item">
+          <a href="">
+            <img class="icon" src="../../../assets/icons/dashborad-ico.svg">
+            <span class="item-description">Dashboard</span>
+          </a>
+        </li>
+        <li class="side-item active">
+          <a href="">
+            <img class="icon" src="../../../assets/icons/dashborad-ico.svg">
+            <span class="item-description">Dashboard</span>
+          </a>
+        </li>
+
+      </ul>
+      <button id="btn-open" (click)="toggleSidebarOpen()">
+        <img src="../../../assets/icons/arrow-left.svg" alt="ico-arrow">
+      </button>
+    </div>
+  </div>
+</nav>
