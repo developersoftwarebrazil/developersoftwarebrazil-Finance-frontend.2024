@@ -18,6 +18,22 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
+  {
+    path: 'system',
+    loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule),
+  },
+  {
+    path: 'category',
+    loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule),
+  },
+  {
+    path: 'expense',
+    loadChildren: () => import('./pages/expense/expense.module').then(m => m.ExpenseModule),
+  },
+  {
+    path: 'income',
+    loadChildren: () => import('./pages/income/income.module').then(m => m.IncomeModule),
   }
 ];
 

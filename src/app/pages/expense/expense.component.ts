@@ -2,16 +2,16 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menuservice';
 
 @Component({
-  selector: 'app-system',
-  templateUrl: './system.component.html',
-  styleUrl: './system.component.scss'
+  selector: 'app-expense',
+  templateUrl: './expense.component.html',
+  styleUrl: './expense.component.scss'
 })
-export class SystemComponent implements OnInit {
+export class ExpenseComponent implements OnInit {
   @Input() sidebarActive = false;
   @Input() isSidebarActive = false;
 
   constructor(public menuService: MenuService) { }
   ngOnInit(): void {
-    this.menuService.menuSelected = 2;
+    this.menuService.menuSelected = 4;
   }
 }

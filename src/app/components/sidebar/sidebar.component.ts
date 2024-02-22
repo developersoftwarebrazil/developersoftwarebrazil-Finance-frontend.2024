@@ -1,4 +1,3 @@
-import { SystemComponent } from './../../pages/system/system.component';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuService } from '../../services/menuservice';
@@ -42,8 +41,10 @@ export class SidebarComponent implements OnInit {
       case 4:
         this.router.navigate(['/expense']);
         break;
-
       case 5:
+        this.router.navigate(['/income']);
+        break;
+      case 6:
         this.router.navigate(['/user']);
         break;
 
@@ -51,7 +52,6 @@ export class SidebarComponent implements OnInit {
         localStorage.clear();
         this.router.navigate(['/login']);
         break;
-
 
       default:
         break;

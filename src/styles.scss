@@ -22,17 +22,23 @@ span {
   margin: 0;
 
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+
   font-size: 0.875rem;
   font-weight: 400;
+  font-style: normal;
 
   line-height: 1.3;
-
   color: var(--text-color-principal);
 }
-
-body {
-  background-color: var(--body-color);
-  height: 100vh;
+html,
+body,
+#root,
+.app,
+.content {
+  display: flex;
+  height: 200vh;
+  width: 100%;
+  margin: 0;
 }
 
 //DEFINIÇÃO DAS CORES PARA O PORTAL
@@ -43,7 +49,7 @@ body {
   --sidebar-color: #ecedf0;
   --primary-color: #fff;
   --secundary-color-: #ecedf0;
-  --active-color:#4f46e5;
+  --active-color: #4f46e5;
 
   //cores para textos
   --text-color-principal: #1a1d1f;
@@ -205,36 +211,45 @@ input:-ms-input-placeholder {
 }
 
 //configurações gerais par o container e sidebar
-#container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  background-color: #040509;
+// .container,
+// #container {
+//   display: flex;
+//   flex-grow: 1;
+//   height: 100vh;
+//   background-color: red;
+//   z-index: 1;
+// }
 
-  // configurações para o sidebar
-  app-sidebar {
-    display: block;
-    width: -11.5rem; //240px
-    height: 100vh;
+// #container {
+//   display: flex;
+//   width: 100%;
+//   height: 100vh;
+//   background-color: #040509;
 
-    transform: translateX(0);
-    transition: transform 0.3s ease-in-out;
-  }
+//   // configurações para o sidebar
+//   app-sidebar {
+//     display: block;
+//     width: -11.5rem; //240px
+//     height: 100vh;
 
-  #content {
-    flex-grow: 1;
-    background: red;
-    transition: margin-left 0.3s ease-in-out;
-    z-index: 1;
-    position: relative;
-  }
+//     transform: translateX(0);
+//     transition: transform 0.3s ease-in-out;
+//   }
 
-  &.sidebarActive {
-    #container {
-      margin-left: -0rem;
-    }
-    app-sidebar {
-      transform: translateX(0);
-    }
-  }
-}
+//   #content {
+//     flex-grow: 1;
+//     background: red;
+//     transition: margin-left 0.3s ease-in-out;
+//     z-index: 1;
+//     position: relative;
+//   }
+
+//   &.sidebarActive {
+//     #container {
+//       margin-left: -0rem;
+//     }
+//     app-sidebar {
+//       transform: translateX(0);
+//     }
+//   }
+// }

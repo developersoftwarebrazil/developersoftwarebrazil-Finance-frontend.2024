@@ -1,37 +1,35 @@
-#navbar {
+.container-navbar {
   display: flex;
-  // width: calc(100% - 4rem);
-  padding: 1.25rem 1.875rem; //20px e 30px
-  box-sizing: border-box;
-  justify-content: space-between;
-  z-index: 3;
+  margin-top: 1.5rem;
+  margin-left: 20rem;
 
-  #logo {
-    display: flex;
-    font-size: 1.5rem; //24px
-    font-weight: bold;
-    color: #333;
+  width: 100%;
 
-    align-items: center;
-    gap: 1.25rem; //20px
+  padding: .06rem;
+  background: inherit;
+  justify-content: space-around;
+}
+.navbar-search {
+  display: flex;
+  align-items: center;
+  background: var(--primary400);
+  margin-left: 1.875rem;
+  border-radius: .3rem;
+}
+.navbar-search button {
+  background: var(--primary400);
+  color: var(--greenAccent100);
+  padding-right: 10px;
+}
+.navbar-settins button {
+  background: transparent;
+  color: var(--greenAccent100);
+  padding: 0 15px;
+}
 
-    .svg-menu {
-      cursor: pointer;
-      z-index: 9999;
-      background: red;
-    }
-  }
-
-  #menu {
-    display: flex;
-    gap: 1.25rem; //20px
-    a {
-      text-decoration: none;
-      color: #333;
-      font-size: 1.38rem;
-      &:hover {
-        color: dodgerblue;
-      }
-    }
-  }
+.navbar-search > input {
+  flex: 1;
+  margin-left: 2px;
+  background: var(--primary400);
+  border: none;
 }

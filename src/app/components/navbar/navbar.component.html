@@ -1,21 +1,32 @@
-<div id="navbar">
-  <div id="logo">
-    <div class="svg-menu">
-      <img
+<div class="container-navbar">
 
-      [src]="
-      sidebarActive
-      ? '../../../assets/icons/cloxe.svg'
-      : '../../../assets/icons/hamburger-menu.svg'
-      "
-      (click)="toggleSidebar.emit()"
-      />
-    </div>
+  <div class="navbar-search">
+    <input type="text" name="seach" id="seach" placeholder="search">
+    <button><i class="material-icons">search</i></button>
   </div>
-  <div id="menu">
-    <a href="#">home</a>
-    <a href="#">about</a>
-    <a href="#">services</a>
-    <a href="#">logout</a>
+
+    <div class="navbar-settins">
+      <button>
+      <!-- (click)="toggle()" -->
+
+        <i class="material-symbols-outlined">light_mode</i>
+      </button>
+      <button>
+        <i class="material-symbols-outlined">notifications</i>
+      </button>
+      <button>
+        <i class="material-symbols-outlined">settings</i>
+      </button>
+      <button >
+      <!-- (click)="user()" -->
+
+        <i class="material-icons">person</i>
+      </button>
+      <button><i class="fa-regular fa-bell"></i></button>
+    <button
+
+    > <!-- (click)="selectMenuNav(1)" --><i class="material-symbols-outlined">logout </i></button>
   </div>
 </div>
+
+
