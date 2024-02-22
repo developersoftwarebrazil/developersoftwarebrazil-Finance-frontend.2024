@@ -74,13 +74,13 @@
   cursor: pointer;
 }
 
-.side-item.active {
-  background-color: #4f46e5;
+.side-item.menu-active {
+  background-color: var(--active-color);
 }
 
-.side-item:hover:not(.active),
+.side-item:hover:not(.menu-active),
 #logout_btn:hover {
-  background-color: #e3e9f7;
+  background-color: var(--active-color);
 }
 
 .side-item a {
