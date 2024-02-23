@@ -1,3 +1,4 @@
+// Configurações de reset
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +8,7 @@
   text-decoration: none;
 }
 
+// Cofigurações default para todaa as teles
 html,
 body,
 #root,
@@ -21,7 +23,7 @@ span {
   padding: 0;
   margin: 0;
 
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 
   font-size: 0.875rem;
   font-weight: 400;
@@ -35,9 +37,8 @@ body,
 #root,
 .app,
 .content {
-  display: flex;
   height: 200vh;
-  width: 100%;
+  width: 100vw;
   margin: 0;
 }
 
@@ -45,23 +46,26 @@ body,
 // ligthMode
 :root {
   //=== cores para backgroud
-  --body-color: #fff;
-  --sidebar-color: #ecedf0;
-  --primary-color: #fff;
-  --secundary-color-: #ecedf0;
-  --active-color: #4f46e5;
-
-  //cores para textos
-  --text-color-principal: #1a1d1f;
-  --text-color-title: #1b1e20;
-  --text-color-especial: #6b6b6b;
-  --text-color-subtitle: #cbccba;
-  --text-color-text: #343d41;
-  --text-color-error: #f00;
-
+  --bg-body-color: #fff; // utilizado para plano de tele de fundo
+  --bg-body-secundary-color: #ecedf0; //utilizado para outros planas de fundo
+  --bg-accent-color: #e8f0fe;
+  // para contraste com o pllano principal
+  --bg-active-color: #4f46e5; //uitlilazdo para definir cores de objetos selecionados, ativou etc.
+  --bg-active-color-hover: #e3e9f7;
   //cores para componentes
-  --border-color: #f3f3f4;
-  --border-buttom-color: #3da58a;
+  --bg-border-color: #f3f3f4;
+  --bg-border-buttom-color: #3da58a;
+  --bg-other: #4d65ec;
+
+  //===cores para textos
+  --text-color-principal: #1a1d1f; //utilizado em títulos ou testos principais
+  --text-color-secundary: #cbccba; //utilidados em subtítilos para contraste com a cor principal
+  --text-accent-color: #1b1e20; //cor de destaque para chamar a atenção a algo importante
+  --text-color-text: #343d41; //utilazado em textos comuns
+  --text-color-especial: #0a0a0a; //utilizado para destacar algo
+  --text-color-against: #fff;
+  --text-color-active: #e3e9f7; //#e3e9f7
+  --text-color-error: #f00; // utlizado para chamar a atenção em algum erro
 
   //====Transitions
 
@@ -86,17 +90,27 @@ body,
 }
 // darkMode
 :root .darkMode {
-  --bg-color-principal: #040509;
-  --bg-color-secundary: #141b2d;
+  //=== cores para backgroud
+  --bg-body-color: #353537; // utilizado para plano de tele de fundo
+  --bg-body-secundary-color: #1f1f21; //utilizado para outros planas de fundo
+  --bg-accent-color: #121212; // para contraste com o pllano principal
+  --bg-active-color: #4f46e5; //uitlilazdo para definir cores de objetos selecionados, ativou etc.
+  //cores para componentes
+  --bg-border-color: #f3f3f4;
+  --bg-border-buttom-color: #3da58a;
+  --bg-other: #4d65ec;
 
-  --text-color-principal: #d0d1d5;
-  --text-color-title: #6870fa;
+  //===cores para textos
+  --text-color-principal: #e6e6e6; //utilizado em títulos ou testos principais
+  --text-color-secundary: #d7d7d7; //utilidados em subtítilos para contraste com a cor principal
+  --text-accent-color: #e5e5; //cor de destaque para chamar a atenção a algo importante
 
-  --text-color-text: #dbf5ee;
+  --text-color-text: #e5e5e5; //utilazado em textos comuns
+  --text-color-especial: #6b6b6b; //utilizado para destacar algo
+  --text-color-against: #fff;
+  --text-color-error: #f00; // utlizado para chamar a atenção em algum erro
 
-  --border-buttom-color: #3da58a;
-
-  --background-input-color: #141414;
+  //====Transitions
 
   .svg-ico-pc {
     display: flex;
@@ -117,7 +131,7 @@ body,
     cursor: pointer;
   }
 }
-
+//Definição para o tamanho default das images
 img {
   width: 100%;
 }
@@ -147,7 +161,6 @@ p {
 
 .title {
   font-family: "Ubuntu";
-  font-size: 3rem;
   font-weight: 700;
 
   text-transform: uppercase;
@@ -155,6 +168,7 @@ p {
   line-height: 2.25;
 }
 .subtitle {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.5;
@@ -171,11 +185,11 @@ input {
   box-sizing: border-box;
   width: 100%;
 
-  border-radius: 4px;
-  border-bottom: 2px solid var(--border-buttom-color);
-  background: var(--background-input-color);
-  color: var(--text-color-principal);
-  font-size: 15px;
+  border-radius: 0.3rem; //4px
+  border-bottom: 0.13rem solid var(--bg-border-buttom-color);
+  background: var(--bg-body-color);
+  color: var();
+  font-size: 0.9rem; //14px
 }
 
 .input-error {
@@ -210,8 +224,18 @@ input:-ms-input-placeholder {
   opacity: 0.6;
 }
 
-//configurações gerais par o container e sidebar
-// .container,
+//configurações gerais par o container
+.app {
+  display: flex;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 00px;
+}
+.container {
+  width: 100%;
+  height: 400px;
+}
+
 // #container {
 //   display: flex;
 //   flex-grow: 1;

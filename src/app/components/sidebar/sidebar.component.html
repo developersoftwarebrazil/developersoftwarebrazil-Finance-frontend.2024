@@ -20,14 +20,14 @@
       </div>
       <li class="side-item" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected!= 2}">
         <a>
-          <img src="../../../assets/icons/laptop.svg">
+          <img src="../../../assets/icons/laptop.svg" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected!= 2}">
           <span class="item-description"> Sistemas </span>
         </a>
 
       </li>
       <li class="side-item" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}">
         <a>
-          <img src="../../../assets/icons/category.svg">
+          <img src="../../../assets/icons/category.svg" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}">
           <span class="item-description">Categoria</span>
         </a>
       </li>
@@ -37,19 +37,20 @@
       </div>
       <li class="side-item" (click)="menuSelect(1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 1, '':this.menuService.menuSelected!= 1}">
         <a>
-          <img src="../../../assets/icons/dashboard.svg">
+          <img src="../../../assets/icons/dashboard.svg" (click)="menuSelect(1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 1, '':this.menuService.menuSelected!= 1}">
           <span class="item-description">Dashboard</span>
         </a>
       </li>
-      <li class="side-item" (click)="menuSelect(00)" [ngClass]="{'menu-active': this.menuService.menuSelected == 00, '':this.menuService.menuSelected!= 00}">
+      <li class="side-item" (click)="menuSelect(101)" [ngClass]="{'menu-active': this.menuService.menuSelected == 101, '':this.menuService.menuSelected!= 101}">
         <a>
-          <img src="../../../assets/icons/investimento.svg">
+          <img src="../../../assets/icons/investimento.svg" (click)="menuSelect(101)" [ngClass]="{'menu-active': this.menuService.menuSelected == 101, '':this.menuService.menuSelected!= 101}">
           <span class="item-description">Invetimentos</span>
+      
         </a>
       </li>
       <li class="side-item" (click)="menuSelect(4)" [ngClass]="{'menu-active': this.menuService.menuSelected == 4, '':this.menuService.menuSelected!= 4}">
         <a>
-          <img src="../../../assets/icons/despesa.svg">
+          <img src="../../../assets/icons/despesa.svg" (click)="menuSelect(4)" [ngClass]="{'menu-active': this.menuService.menuSelected == 4, '':this.menuService.menuSelected!= 4}">
           <span class="item-description">Despesas</span>
         </a>
       </li>
@@ -57,9 +58,9 @@
       <div class="menu-descriptions">
         <h3 class="item-description">definições do usuário</h3>
       </div>
-      <li class="side-item" (click)="menuSelect(000)" [ngClass]="{'menu-active': this.menuService.menuSelected == 000, '':this.menuService.menuSelected!= 000}">
+      <li class="side-item" (click)="menuSelect(1001)" [ngClass]="{'menu-active': this.menuService.menuSelected == 1001, '':this.menuService.menuSelected!= 1001}">
         <a href="#">
-          <img src="../../../assets/icons/user-manager.svg">
+          <img src="../../../assets/icons/user-manager.svg" (click)="menuSelect(1001)" [ngClass]="{'menu-active': this.menuService.menuSelected == 1001, '':this.menuService.menuSelected!= 1001}">
           <span class="item-description">Usuários</span>
         </a>
       </li>

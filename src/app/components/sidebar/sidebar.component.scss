@@ -3,14 +3,13 @@
   width: 8%;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--sidebar-color);
+  background-color: var(--bg-body-secundary-color);
   height: 100%;
 
   // border-radius: 0px 18px 18px 0px;
   position: fixed;
   transition: all 0.5s;
   min-width: 4rem; //80px
-  
 }
 
 #sidebar_content {
@@ -31,7 +30,7 @@
   margin: 0 0 0 0.5rem;
   object-fit: cover;
   border-radius: 50%;
-  border: 0.13rem solid var(--bg-color-secundary);
+  border: 0.13rem solid var(--bg-body-color);
 }
 
 #user_info {
@@ -57,7 +56,7 @@
   margin: 0.5rem 0 0 0.5rem;
   width: 90%;
   height: 0.03rem;
-  background: var(--border-color);
+  background: var(--bg-border-color);
 }
 
 #side_items {
@@ -75,12 +74,12 @@
 }
 
 .side-item.menu-active {
-  background-color: var(--active-color);
+  background-color: var(--bg-active-color);
 }
 
 .side-item:hover:not(.menu-active),
 #logout_btn:hover {
-  background-color: #e3e9f7;
+  background-color: var(--bg-active-color-hover);
 }
 
 .side-item a {
@@ -88,12 +87,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // color: #0a0a0a;
+
   color: var(--text-color-especial);
 }
-
-.side-item.active a {
-  color: #e3e9f7;
+.side-item span {
+  color: var(--text-color-especial)
+}
+.side-item.menu-active span {
+  color: var(--text-color-active);
 }
 
 .side-item a img {
@@ -124,13 +125,10 @@
 
 #open_btn {
   position: absolute;
-  top: 1.875rem;
+  top: 1.5rem;
   right: -1rem;
-  background-color: #4f46e5;
-  color: #e3e9f7;
+  background-color: var(--bg-active-color);
   border-radius: 50%;
-  // width: 1.3rem;
-  // height: 1.3rem;
   padding: 0.5;
   border: none;
   cursor: pointer;

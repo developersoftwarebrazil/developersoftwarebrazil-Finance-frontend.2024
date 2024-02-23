@@ -60,14 +60,13 @@ export class LoginComponent {
   }
 
   toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-    if (this.isDarkTheme) {
-      this.renderer.addClass(document.body, 'darkMode');
-    } else {
-      this.renderer.removeClass(document.body, 'darkMode');
+    const body = document.getElementsByTagName('body')[0];
+    if(body.classList.contains('darkMode')){
+      this.renderer.removeClass(body, 'darkMode');
+    }else{
+      this.renderer.addClass(body, 'darkMode')
     }
   }
-
 }
 
 

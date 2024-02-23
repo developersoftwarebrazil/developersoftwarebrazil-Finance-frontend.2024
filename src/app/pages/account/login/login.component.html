@@ -33,7 +33,7 @@
 
           <div class="login-form-fields-context">
             <label for="email" name="email" id="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Ex: exemplo@email.com" formControlName="email" required="" (focus)="onFocus()" (blur)="onBlur()" [class.no-outline]="inputFocused">
+            <input type="email" name="email" id="email" placeholder="Ex: exemplo@email.com" formControlName="email" required="" (focus)="onFocus()" (blur)="onBlur()" [class.no-outline]="inputFocused" autofocus>
             <label *ngIf="loginForm.get('email')?.errors?.['required']&& loginForm.get('email')?.touched" class="input-error">Campo obrigatório!</label>
           </div>
           <div class="login-form-fields-context">

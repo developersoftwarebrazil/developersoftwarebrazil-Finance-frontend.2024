@@ -5,7 +5,7 @@
 }
 
 .container-login-content {
-  border: 3px solid var(--border-color);
+  border: 3px solid var(--bg-border-color);
   grid-template-columns: 1fr 1fr;
   margin: 2rem 4rem 2rem 4rem;
 
@@ -13,7 +13,7 @@
 }
 .container-login-content .title {
   text-align: center;
-  color: var(--text-color-title);
+  color: var(--text-color-principal);
   margin: 1rem 0 1rem 1.5rem;
 
   font-size: 1.8rem;
@@ -25,7 +25,8 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 1rem;
-  background: var(--bg-color-secundary);
+  background: var(--bg-body-color);
+  height: 100%;
 }
 .theme-toggle {
   display: flex;
@@ -33,8 +34,9 @@
 }
 .login-content-info {
   width: 100%;
+  height: 100%;
   margin: 0 auto;
-  background-color: var(--bg-color-principal);
+  background-color: var(--bg-body-secundary-color);
   border-radius: 0.5rem 0 0 0.5rem;
 }
 .login-content-info .subtitle {
@@ -49,7 +51,7 @@
   content: "";
   width: 90%;
   height: 0.031rem;
-  background-color: var(--text-color-subtitle);
+  background-color: var(--bg-border-color);
   margin: 0 0 0.62rem 1rem;
 }
 //Configurações do conteúdo de informações laterap
@@ -69,7 +71,7 @@
   width: 90%;
 
   margin: 3rem 0 2rem -1rem;
-  border-left: 0.2px solid var(--text-color-subtitle);
+  border-left: 0.2px solid var(--bg-border-color);
 }
 
 .login-form-fields-context label {
@@ -84,8 +86,8 @@
   margin: 0 0 2rem 2rem;
   border: none;
   border-radius: 0.25rem;
-  border-bottom: 2px solid var(--border-buttom-color);
-  background: var(--bg-color-principal);
+  border-bottom: 2px solid var(--bg-border-buttom-color);
+  background: var(--bg-accent-color);
 }
 .login-form-fields-context .input-error {
   visibility: visible;
@@ -101,13 +103,13 @@
 
 .btn.sigining {
   background: #ad68c7;
-  color: var(--bg-color-principal);
+  color: var(--text-color-against);
   margin: 3rem 0 1rem 1rem;
 }
 
 .btn.login {
-  background: #5d8783;
-  color: var(--bg-color-principal);
+  background: var(--bg-other);
+  color: var(--text-color-against);
   margin: 3rem 0 0.5rem 0;
 }
 
