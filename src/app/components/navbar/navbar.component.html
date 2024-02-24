@@ -1,14 +1,13 @@
 <div class="container-navbar">
+
   <div class="navbar-search">
     <input type="text" name="seach" id="seach" placeholder="search">
     <button><i class="material-icons">search</i></button>
   </div>
 
     <div class="navbar-settins">
-      <button>
-      <!-- (click)="toggle()" -->
-
-        <i class="material-symbols-outlined">light_mode</i>
+      <button (click)="toggleTheme()">
+        <img class="svg-theme" src="../../../assets/icons/{{icon}}.svg" alt="icon theme toggle">
       </button>
       <button>
         <i class="material-symbols-outlined">notifications</i>

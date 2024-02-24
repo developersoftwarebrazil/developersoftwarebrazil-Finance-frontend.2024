@@ -2,6 +2,7 @@ import { Component, Renderer2 } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginService } from "../../../services/login.service";
+import { ETheme } from "../../../../enums/EThemes.enum";
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,13 @@ import { LoginService } from "../../../services/login.service";
 })
 export class LoginComponent {
 
+
   // variaveis
   loginForm: FormGroup;
   inputFocused: boolean = false;
-  isDarkTheme: boolean = false
+
+  public icon: string = ETheme.ICON_MOON;
+  public textTheme = ETheme.TEXT_MOON;
 
   constructor(
     private router: Router,
@@ -60,12 +64,17 @@ export class LoginComponent {
   }
 
   toggleTheme() {
-    const body = document.getElementsByTagName('body')[0];
-    if(body.classList.contains('darkMode')){
-      this.renderer.removeClass(body, 'darkMode');
-    }else{
-      this.renderer.addClass(body, 'darkMode')
+    const theme = document.body.classList.toggle('darkMode');
+    if (theme) {
+      return (
+        this.textTheme = ETheme.TEXT_SUN,
+        this.icon = ETheme.ICON_SUN
+      )
     }
+    return (
+      this.textTheme = ETheme.TEXT_MOON,
+      this.icon = ETheme.ICON_MOON
+    )
   }
 }
 

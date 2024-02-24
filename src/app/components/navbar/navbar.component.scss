@@ -1,18 +1,17 @@
 .container-navbar {
   display: flex;
-  margin: 0 1rem 3rem 18rem;
-  margin-right: 0;
+  margin: 0 1rem 3rem 16rem;
+  margin-right: 1rem;
 
   padding: 1.5rem 0;
-  background: inherit;
+  background: var(--bg-body-color);
   justify-content: space-between;
-
 }
 .navbar-search {
   display: flex;
   align-items: center;
   background: var(--sidebar-color);
-  margin-left: 1.875rem;
+  margin-left: 4rem;
   border-radius: 0.3rem;
 }
 .navbar-search button {
@@ -28,7 +27,22 @@
 
 .navbar-search > input {
   flex: 1;
-  margin-left: .13rem;
+  margin-left: 0.13rem;
   background: var(--bg-color);
   border: none;
+}
+:root {
+  .svg-icon-laptop {
+    width: 1rem;
+    height: 1rem;
+    background-image: url(../../../assets/icons/laptop.svg);
+  }
+}
+:root
+{
+  .svg-icon-laptop {
+    width: 1rem;
+    height: 1rem;
+    background-image: url(../../../assets/icons/laptop.darkMode.svg);
+  }
 }

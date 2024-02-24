@@ -24,8 +24,10 @@
       </div>
       <div class="login-content-form">
         <div class="theme-toggle">
-            <button class="svg-theme"(click)="toggleTheme()"style="background-color: transparent;"></button>
-          </div>
+          <button  (click)="toggleTheme()" style="background-color: transparent;">
+            <img class="svg-theme" src="../../../../assets/icons/{{icon}}.svg" alt="icon  theme"/>
+          </button>
+        </div>
         <form class="login-form-container-fields" [formGroup]="loginForm" (submit)="userLogin()">
 
 

@@ -19,8 +19,9 @@
         <h3 class="item-description">Sistemas</h3>
       </div>
       <li class="side-item" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected!= 2}">
-        <a>
-          <img src="../../../assets/icons/laptop.svg" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected!= 2}">
+        <a class="svg-icon-laptop">
+
+          <!-- <img src="../../../assets/icons/laptop.svg" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected!= 2}"> -->
           <span class="item-description"> Sistemas </span>
         </a>
 
@@ -45,7 +46,7 @@
         <a>
           <img src="../../../assets/icons/investimento.svg" (click)="menuSelect(101)" [ngClass]="{'menu-active': this.menuService.menuSelected == 101, '':this.menuService.menuSelected!= 101}">
           <span class="item-description">Invetimentos</span>
-      
+
         </a>
       </li>
       <li class="side-item" (click)="menuSelect(4)" [ngClass]="{'menu-active': this.menuService.menuSelected == 4, '':this.menuService.menuSelected!= 4}">
