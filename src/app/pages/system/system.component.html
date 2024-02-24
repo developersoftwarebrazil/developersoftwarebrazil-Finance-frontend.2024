@@ -1,3 +1,27 @@
 <div class="app">
-  <h1>system works!</h1>
+  <app-sidebar></app-sidebar>
+  <div class="container">
+    <app-navbar></app-navbar>
+    <div class="content">
+      <div class="title-content">
+        <div class="title">
+          <h2>Sistema</h2>
+          <h5>Adicione, liste ou edite os sistema</h5>
+        </div>
+      </div>
+      <div class="form-content">
+        <form>
+          <label for="name">Sistema</label>
+          <input type="text" name="name" id="name" laceholder="Nome" formControlName="name" required />
+          <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+                    systemForm.get('name')?.touched">
+                  Campo Obrigatório!
+                </label>
+        </form>
+      </div>
+
+      <!-- <div *ngIf="window == 1" class="base-content"></div>
+      <div *ngIf="window == 2" class="content-base"></div> -->
+    </div>
+  </div>
 </div>

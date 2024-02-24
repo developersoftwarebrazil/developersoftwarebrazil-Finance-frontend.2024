@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MenuService } from '../../services/menuservice';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
+import { MenuService } from "../../services/menuservice";
 
 @Component({
   selector: 'app-system',
@@ -7,11 +9,22 @@ import { MenuService } from '../../services/menuservice';
   styleUrl: './system.component.scss'
 })
 export class SystemComponent implements OnInit {
-  @Input() sidebarActive = false;
-  @Input() isSidebarActive = false;
 
-  constructor(public menuService: MenuService) { }
+
+  constructor(
+    private router: Router,
+    public formBuilder: FormBuilder,
+    public menuService: MenuService
+    ) { }
+
+  systemForm: FormGroup;
+
   ngOnInit(): void {
     this.menuService.menuSelected = 2;
   }
+
+  formData(){
+   return this.systemForm.controls;
+  }
+
 }
