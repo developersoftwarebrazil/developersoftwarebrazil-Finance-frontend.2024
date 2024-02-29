@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -13,9 +13,11 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.toggleNavTheme();
+  }
 
-  public toggleTheme() {
+  public toggleNavTheme() {
     const theme = document.body.classList.toggle('darkMode')
     if (theme) {
       return (

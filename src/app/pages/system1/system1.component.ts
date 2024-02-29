@@ -1,26 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MenuService } from '../../services/menuservice';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { MenuService } from "../../services/menuservice";
+import { AuthService } from "../../services/auth.service";
+import { SystemExpenseService } from "../../services/system.expense.service";
+import { SystemIncomeService } from "../../services/system.income.service";
 import { SystemExpenseModel } from '../../models/system.expense.model';
 import { SystemIncomeModel } from '../../models/system.income.model';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { SystemExpenseService } from '../../services/system.expense.service';
-import { SystemIncomeService } from '../../services/system.income.service';
-import { UserSystemExpenseService } from '../../services/user.system.expense.service';
-import { UserSystemIncomeService } from '../../services/user.system.income.service';
+import { UserSystemExpenseService } from "../../services/user.system.expense.service";
+import { UserSystemIncomeService } from "../../services/user.system.income.service";
 
 @Component({
-  selector: 'system',
+  selector: 'app-system',
   templateUrl: './system.component.html',
   styleUrl: './system.component.scss'
 })
-export class SystemComponent implements OnInit {
+export class SystemComponent1 implements OnInit {
 
-  //==Variávies
-  //Globals
+  //gerais
   @Input() sidebarActive = false;
   @Input() isSidebarActive = false;
+
   window: number = 1; // 1= listagem 2= cadastro 3= edição
 
   checked = false;
@@ -30,9 +30,7 @@ export class SystemComponent implements OnInit {
 
   systemForm: FormGroup;
 
-
-  // Despesas
-
+  //despesas
   tableListSystemExpense: Array<SystemExpenseModel>;
   id: string;
   page: number = 1;
@@ -48,8 +46,7 @@ export class SystemComponent implements OnInit {
 
   editItemExpense: SystemExpenseModel;
 
-  //Invextiemnots
-
+  //investimentos
   tableListSystemIncome: Array<SystemIncomeModel>;
   id2: string;
   page2: number = 1;
@@ -78,29 +75,73 @@ export class SystemComponent implements OnInit {
     public systemIncomeService: SystemIncomeService,
     public userSystemExpenseService: UserSystemExpenseService,
     public userSystemIncomeService: UserSystemIncomeService
+
   ) { }
 
 
   ngOnInit(): void {
-    this.menuService.menuSelected = 2;
-    this.configPage();
-    this.SystemExpenseUserList();
-    this.SystemUserIncomeList();
+    this.menuService.menuSelected == 2;
 
-    this.systemForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      month: ['', [Validators.required]],
-      monthCopy: ['', [Validators.required]],
-      year: ['', [Validators.required]],
-      yearCopy: ['', [Validators.required]],
-      dayMonthlyBookClose: ['', [Validators.required]],
-    })
+    // this.configPage();
+    // this.SystemExpenseUserList();
+    // // this.SystemUserIncomeList();
+
+    // this.systemForm = this.formBuilder.group({
+    //   name: ['', [Validators.required]],
+    //   month: ['', [Validators.required]],
+    //   monthCopy: ['', [Validators.required]],
+    //   year: ['', [Validators.required]],
+    //   yearCopy: ['', [Validators.required]],
+    //   dayMonthlyBookClose: ['', [Validators.required]],
+    // })
   }
 
-  //applicação
+  //Cofigurações da pagian
+  configPage() {
+
+    this.id = this.generateIdToPageConfigOfPagiantion();
+    this.config = {
+      id: this.id,
+      currentPage: this.page,
+      itemsPerPage: this.itemsPerPages
+    };
+
+    this.id1 = this.generateIdToPageConfigOfPagiantion();
+    this.config1 = {
+      id: this.id1,
+      currentPage: this.page1,
+      itemsPerPage: this.itemsPerPages
+    };
+
+    this.id2 = this.generateIdToPageConfigOfPagiantion();
+    this.config2 = {
+      id: this.id2,
+      currentPage: this.page2,
+      itemsPerPage: this.itemPerPage2,
+    };
+
+    this.id3 = this.generateIdToPageConfigOfPagiantion();
+    this.config3 = {
+      id: this.id3,
+      currentPage: this.page3,
+      itemsPerPage: this.itemPerPage3,
+    };
+  }
+
   formData() {
     return this.systemForm.controls;
   }
+
+  //Navega para a dashboard
+  goToHome() {
+    this.router.navigate(['/dashboard']);
+  }
+
+  register() {
+    this.window == 0;
+    this.systemForm.reset();
+  }
+
   sendData() {
     debugger
     var data = this.formData();
@@ -145,7 +186,7 @@ export class SystemComponent implements OnInit {
         }, (error) => console.error(error), () => { })
     }
 
-    if (this.editItemIncome) {
+    if  (this.editItemIncome) {
       this.editItemIncome.PropertyName = '';
       this.editItemIncome.Messages = '';
       this.editItemIncome.Notification = [];
@@ -180,48 +221,43 @@ export class SystemComponent implements OnInit {
         }, (error) => console.error(error), () => { })
     }
   }
-  register() {
-    this.window == 0;
-    this.systemForm.reset();
+  editExpense(id: number) {
+    this.systemExpenseService.GetSystemExpense(id)
+      .subscribe((response: SystemExpenseModel) => {
+        if (response) {
+          this.editItemExpense = response;
+          this.window = 2;
+
+          var data = this.formData();
+          data['name'].setValue(this.editItemExpense.Name);
+          data['month'].setValue(this.editItemExpense.Month);
+          data['monthCopy'].setValue(this.editItemExpense.MonthCopy);
+          data['year'].setValue(this.editItemExpense.Year);
+          data['yearCopy'].setValue(this.editItemExpense.YearCopy);
+          data['dayMonthlyBookClose'].setValue(this.editItemExpense.DayMonthlyBookClose);
+          this.checked = this.editItemExpense.GenerateExpensesCopy;
+
+          this.SystemExpenseUserList();
+        }
+      }, (error) => console.error(error), () => { });
+
   }
+  editIncome(id: number){
+    this.systemIncomeService.GetSystemIncome(id)
+      .subscribe((response: SystemIncomeModel) => {
+        if (response) {
+          this.editItemIncome = response;
+          this.window = 2;
 
+          var data = this.formData();
+          data['name'].setValue(this.editItemIncome.Name);
+          data['month'].setValue(this.editItemIncome.Month);
+          data['year'].setValue(this.editItemIncome.Year);
+          data['dayMonthlyBookClose'].setValue(this.editItemIncome.DayMonthlyBookClose);
 
-
-  //Navega para a dashboard
-  goToHome() {
-    this.router.navigate(['/dashboard']);
-  }
-
-  //Configurações da pagian
-  configPage() {
-
-    this.id = this.generateIdToPageConfigOfPagiantion();
-    this.config = {
-      id: this.id,
-      currentPage: this.page,
-      itemsPerPage: this.itemsPerPages
-    };
-
-    this.id1 = this.generateIdToPageConfigOfPagiantion();
-    this.config1 = {
-      id: this.id1,
-      currentPage: this.page1,
-      itemsPerPage: this.itemsPerPages
-    };
-
-    this.id2 = this.generateIdToPageConfigOfPagiantion();
-    this.config2 = {
-      id: this.id2,
-      currentPage: this.page2,
-      itemsPerPage: this.itemPerPage2,
-    };
-
-    this.id3 = this.generateIdToPageConfigOfPagiantion();
-    this.config3 = {
-      id: this.id3,
-      currentPage: this.page3,
-      itemsPerPage: this.itemPerPage3,
-    };
+          this.SystemUserIncomeList();
+        }
+      }, (error) => console.error(error), () => { })
   }
 
   isPayedHandleChange(item: any) {
@@ -278,7 +314,8 @@ export class SystemComponent implements OnInit {
     this.config3.itemsPerPage = this.itemPerPage3;
   }
 
-  //Despesas
+  //Configurações para o sistema
+  //Despesa
   SystemExpenseUserList() {
     this.editItemIncome = null;
     this.window = 1;
@@ -292,10 +329,11 @@ export class SystemComponent implements OnInit {
   UserSystemExpenseList() {
 
     this.userSystemExpenseService.UserSystemExpenseList(this.editItemExpense.Id)
-      .subscribe((response: Array<any>) => {
+      .subscribe((response: Array<any>) =>{
         this.tableListUserSystemExpense = response;
       })
   }
+
 
   addSystenExpenseUser() {
     this.userSystemEmailValid = true;
@@ -319,29 +357,6 @@ export class SystemComponent implements OnInit {
         }
       }, (error) => console.error(error));
   }
-
-  editExpense(id: number) {
-    this.systemExpenseService.GetSystemExpense(id)
-      .subscribe((response: SystemExpenseModel) => {
-        if (response) {
-          this.editItemExpense = response;
-          this.window = 2;
-
-          var data = this.formData();
-          data['name'].setValue(this.editItemExpense.Name);
-          data['month'].setValue(this.editItemExpense.Month);
-          data['monthCopy'].setValue(this.editItemExpense.MonthCopy);
-          data['year'].setValue(this.editItemExpense.Year);
-          data['yearCopy'].setValue(this.editItemExpense.YearCopy);
-          data['dayMonthlyBookClose'].setValue(this.editItemExpense.DayMonthlyBookClose);
-          this.checked = this.editItemExpense.GenerateExpensesCopy;
-
-          this.SystemExpenseUserList();
-        }
-      }, (error) => console.error(error), () => { });
-
-  }
-
   //Investimento
   SystemUserIncomeList() {
     this.editItemIncome = null;
@@ -380,23 +395,4 @@ export class SystemComponent implements OnInit {
         }
       }, (error) => console.error(error));
   }
-
-  editIncome(id: number) {
-    this.systemIncomeService.GetSystemIncome(id)
-      .subscribe((response: SystemIncomeModel) => {
-        if (response) {
-          this.editItemIncome = response;
-          this.window = 2;
-
-          var data = this.formData();
-          data['name'].setValue(this.editItemIncome.Name);
-          data['month'].setValue(this.editItemIncome.Month);
-          data['year'].setValue(this.editItemIncome.Year);
-          data['dayMonthlyBookClose'].setValue(this.editItemIncome.DayMonthlyBookClose);
-
-          this.SystemUserIncomeList();
-        }
-      }, (error) => console.error(error), () => { })
-  }
-
 }

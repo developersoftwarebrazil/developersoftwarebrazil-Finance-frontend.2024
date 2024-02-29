@@ -5,6 +5,8 @@ import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
 import { IncomeComponent } from "./income.component";
 import { IncomeRoutingModule } from "./income-routing.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
   providers: [],
@@ -15,6 +17,9 @@ import { IncomeRoutingModule } from "./income-routing.module";
     SidebarModule,
     NavbarModule,
 
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule,
   ]
 })
 export class IncomeModule {

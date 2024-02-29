@@ -2,9 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environment";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 
 export class LoginService {
 
@@ -12,9 +10,7 @@ export class LoginService {
   private readonly baseUrl = environment['endPoint'];
 
   // construtor da classe
-  constructor(
-    private httpClient: HttpClient
-  ) { }
+  constructor(private httpClient: HttpClient) { }
 
   // métodos
 

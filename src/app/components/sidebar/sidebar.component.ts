@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { MenuService } from '../../services/menuservice';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'sidebar',
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
@@ -12,12 +12,11 @@ export class SidebarComponent implements OnInit {
   @Input() isSidebarOpen = false;
   @Output() toggleSidebar = new EventEmitter();
 
-
   constructor(
     private router: Router,
     public menuService: MenuService
-  ) { }
-  ngOnInit(): void { }
+    ) { }
+    ngOnInit(): void { }
 
   //método para abrir e fechar o sidebar
   toggleSidebarOpen() {

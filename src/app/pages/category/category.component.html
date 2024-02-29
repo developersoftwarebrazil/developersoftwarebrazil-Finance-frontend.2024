@@ -1,1 +1,30 @@
-<p>system works!</p>
+<div class="app">
+  <sidebar></sidebar>
+  <div class="ocntent">
+    <navbar></navbar>
+    <div class="container">
+      <div class="header">
+        <div class="title-content">
+          <div class="title">
+            <h2>Categoria</h2>
+            pAdicione, edit sua categoria.
+          </div>
+        </div>
+      </div>
+      <div class="form-container">
+        <form class="form-container content" [formGroup]="systemForm" (submit)="sendData()">
+          <div class="row">
+              <label for="name" id="name">Categoria</label>
+              <input type="text" name="name" id="name" placeholder="Nome" formControlName="name" required />
+              <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+                  systemForm.get('name')?.touched">
+                Campo Obrigatório!
+              </label>
+            </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

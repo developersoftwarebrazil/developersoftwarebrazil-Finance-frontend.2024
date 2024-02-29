@@ -41,7 +41,7 @@ body,
   width: 100vw;
   margin: 0;
 }
-button{
+button {
   cursor: pointer;
 }
 
@@ -51,11 +51,9 @@ button{
   //=== cores para backgroud
   --bg-body-color: #fff; // utilizado para plano de tele de fundo
   --bg-body-secundary-color: #ecedf0; //utilizado para outros planas de fundo
-  --bg-accent-color: #e8f0fe;
-  // para contraste com o pllano principal
+  --bg-accent-color: #e8f0fe; // para contraste com o plano principal
   --bg-active-color: #4f46e5; //uitlilazdo para definir cores de objetos selecionados, ativou etc.
-  --bg-active-color-hover: #e3e9f7;
-  //cores para componentes
+  --bg-active-color-hover: #e3e9f7; //cores para componentes
   --bg-border-color: #f3f3f4;
   --bg-border-buttom-color: #3da58a;
   --bg-other: #4d65ec;
@@ -82,7 +80,14 @@ button{
     background-image: url("./assets/icons/icon-pc.svg");
     background-size: contain;
   }
-
+  .svg-ico-laptop {
+    padding: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("./assets/icons/laptop.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
 // darkMode
 :root .darkMode {
@@ -118,7 +123,14 @@ button{
     background-image: url("./assets/icons/icon-pc-black.svg");
     background-size: contain;
   }
-
+  .svg-ico-laptop {
+    padding: 0 0.1rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("./assets/icons/laptop.darkMode.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
 //Definição para o tamanho default das images
 img {
@@ -155,6 +167,37 @@ p {
   font-size: 0.75rem;
 }
 
+//====CONTIGURAÇÇÕES PARA O CONTEÚDO
+//configurações gerais par o container
+.app {
+  display: flex;
+ width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+//container
+.container {
+  flex-grow: 1;
+  width: 70vw;
+  background: var(--bg-body-color);
+}
+// content
+.content {
+
+  width: 70vw;
+
+  background: var(--bg-body-color);
+  background: red;
+  min-height: 20rem;
+  height: auto;
+  margin: 1rem 2rem 2rem 18rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+form {
+  width: 100%;
+}
+
 .title {
   font-family: "Ubuntu";
   font-weight: 700;
@@ -163,29 +206,6 @@ p {
 
   line-height: 2.25;
 }
-.subtitle {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  line-height: 1.5;
-}
-//====CONTIGURAÇÇÕES PARA O CONTEÚDO
-//container
-.container {
-  width: 100%;
-  height: 400px;
-  background: var(--bg-body-color);
-}
-// content
-.content {
-  flex-grow: 1;
-  background: red;
-  background: var(--bg-body-color);
-
-  transition: margin-left 0.3s ease-in-out;
-  z-index: 1;
-}
-
 .title-content {
   margin: 0 0 2rem 18rem;
   color: var(--text-color-principal);
@@ -199,10 +219,16 @@ p {
   color: var(--text-color-principal);
   font-weight: 100;
 }
-
 .title-content .title,
 .title-content h1 {
   background: var(--bg-color-secundary);
+}
+
+.subtitle {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 // CONFIGURAÇÕES GERAIS INPUT
@@ -249,14 +275,6 @@ input:-ms-input-placeholder {
 
 .disabled {
   opacity: 0.6;
-}
-
-//configurações gerais par o container
-.app {
-  display: flex;
-  width: 100%;
-  margin-right: 0;
-  margin-left: 00px;
 }
 
 // #container {

@@ -1,27 +1,27 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { SystemRoutingModule } from "./system-routing.module";
+
 import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
-import { SystemComponent } from "./system.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgSelectModule } from "@ng-select/ng-select";
+import { SystemRoutingModule1 } from "./system1-routing.module";
+import { SystemComponent1 } from "./system1.component";
+import { ReactiveFormsModule } from "@angular/forms";
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   providers: [],
-  declarations: [SystemComponent],
+  declarations: [SystemComponent1],
   imports: [
     CommonModule,
-    SystemRoutingModule,
+    SystemRoutingModule1,
     SidebarModule,
     NavbarModule,
 
-    FormsModule,
     ReactiveFormsModule,
-    NgSelectModule,
+    NgxPaginationModule
 
   ]
 })
-export class SystemModule {
+export class SystemModule1 {
   sidebarActive = false;
 }

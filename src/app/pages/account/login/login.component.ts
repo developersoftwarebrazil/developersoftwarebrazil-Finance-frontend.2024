@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginService } from "../../../services/login.service";
 import { ETheme } from "../../../../enums/EThemes.enum";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,7 @@ export class LoginComponent {
   // metodos
   // executado ao iniciar a página
   ngOnInit(): void {
+    this.toggleTheme();
     this.loginForm = this.formBuilder.group
       ({
         email: ["", [Validators.required, Validators.email]],

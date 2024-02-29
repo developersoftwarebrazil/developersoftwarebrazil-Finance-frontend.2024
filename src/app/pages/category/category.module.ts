@@ -4,6 +4,8 @@ import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
 import { CategoryComponent} from "./category.component";
 import { CategoryRoutingModule } from "./category-routing.module";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
   providers: [],
@@ -13,6 +15,10 @@ import { CategoryRoutingModule } from "./category-routing.module";
     CategoryRoutingModule,
     SidebarModule,
     NavbarModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule,
 
   ]
 })

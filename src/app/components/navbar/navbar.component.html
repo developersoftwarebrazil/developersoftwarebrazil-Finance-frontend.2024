@@ -2,28 +2,28 @@
 
   <div class="navbar-search">
     <input type="text" name="seach" id="seach" placeholder="search">
-    <button><i class="material-icons">search</i></button>
+    <img class="svg-menu" src="../../../assets/icons/search.svg" alt="icon theme toggle">
   </div>
 
     <div class="navbar-settins">
-      <button (click)="toggleTheme()">
-        <img class="svg-theme" src="../../../assets/icons/{{icon}}.svg" alt="icon theme toggle">
+      <button (click)="toggleNavTheme()">
+        <img class="svg-menu" src="../../../assets/icons/{{icon}}.svg" alt="icon theme toggle">
+      </button>
+
+      <button>
+        <img class="svg-menu" src="../../../assets/icons/notifications.svg" alt="icon theme toggle">
+
       </button>
       <button>
-        <i class="material-symbols-outlined">notifications</i>
-      </button>
-      <button>
-        <i class="material-symbols-outlined">settings</i>
+       <img class="svg-menu" src="../../../assets/icons/settings.svg" alt="icon theme settings">
       </button>
       <button >
       <!-- (click)="user()" -->
-
-        <i class="material-icons">person</i>
+      <img class="svg-menu" src="../../../assets/icons/user-manager.svg" alt="icon theme user">
       </button>
-      <button><i class="fa-regular fa-bell"></i></button>
-    <button
-
-    > <!-- (click)="selectMenuNav(1)" --><i class="material-symbols-outlined">logout </i></button>
+    <button> <!-- (click)="selectMenuNav(1)" -->
+      <img class="svg-menu" src="../../../assets/icons/logout.svg" alt="icon theme logout">
+    </button>
   </div>
 </div>
 
