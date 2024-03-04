@@ -30,15 +30,15 @@
   --title-secundary-color-font: #262626;
   --subtitle-principal-color-font: #979797;
   --subtitle-secundary-color-font: #b3b3b3;
-  --subtitle-special-color-font:#6b6b6b;
+  --subtitle-special-color-font: #6b6b6b;
   --paragraph-color-font: #979797;
   --link-buttom-color-font: #49494b;
   --active-color-font: #2b2b2b;
   --error-color-font: #f00;
   --agnst-colot-font: #000;
 
-//  Icons
-// sidebar
+  //  Icons
+  // sidebar
   .svg-ico-pc {
     display: flex;
     justify-content: center;
@@ -99,8 +99,8 @@
     background-repeat: no-repeat;
   }
   //navbar
-   // navbar
-   .svg-search-ico {
+  // navbar
+  .svg-search-ico {
     min-width: 1rem;
     min-height: 1rem;
     background-image: url("./assets/icons/light/search.svg");
@@ -114,10 +114,24 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
-  .svg-setting-ico {
+  .svg-settings-ico {
     min-width: 1rem;
     min-height: 1rem;
     background-image: url("./assets/icons/dark/settings.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-user-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/dark/user.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-logout-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/dark/logout.dark.svg");
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -142,7 +156,7 @@
   --title-secundary-color-font: #dedede;
   --subtitle-principal-color-font: #8b8b8d;
   --subtitle-secundary-color-font: #979797;
-  --subtitle-special-color-font:#6b6b6b;
+  --subtitle-special-color-font: #6b6b6b;
   --paragraph-color-font: #979797;
   --link-buttom-color-font: #a4a4a5;
   --active-color-font: #c9c9ca;
@@ -229,7 +243,21 @@
   .svg-settings-ico {
     min-width: 1rem;
     min-height: 1rem;
-    background-image: url("./assets/icons/dark/settings.dark.svg");
+    background-image: url("./assets/icons/light/settings.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-user-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/user.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-logout-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/logout.svg");
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -280,8 +308,11 @@ body {
     transition: transform 0.3s ease-in-out;
     z-index: 2;
   }
-  navbar{
+  navbar {
     display: flex;
+    width: 100%;
+    margin-left: 16rem;
+    background: red;
   }
 
   #content {

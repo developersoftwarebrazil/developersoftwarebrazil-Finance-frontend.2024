@@ -15,19 +15,24 @@
     </div>
 
     <ul id="side_items">
+      
       <div class="menu-descriptions">
         <h3 class="item-description">Sistemas</h3>
       </div>
+
       <li class="side-item" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}">
-        <a ><i class="svg-laptop-ico ico" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}"></i>  <span class="item-description">Sistema</span>
+        <a >
+          <i class="svg-laptop-ico ico" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}"></i>  <span class="item-description">Sistema</span>
         </a>
       </li>
       <li class="side-item" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}">
-        <a><i class="svg-category-ico" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}"></i><span class="item-description">Categoria</span>
+        <a>
+          <i class="svg-category-ico" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}"></i><span class="item-description">Categoria</span>
         </a>
       </li>
+
       <div class="menu-descriptions">
-        <h3 class="item-description">Entradas & Saídas</h3>
+        <h3 class="item-description">entradas & saídas</h3>
       </div>
       <li class="side-item" (click)="menuSelect(1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 1, '':this.menuService.menuSelected!= 1}">
         <a><i class="svg-dashboard-ico" (click)="menuSelect(1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 1, '':this.menuService.menuSelected!= 1}"></i><span class="item-description">Dashboard</span>

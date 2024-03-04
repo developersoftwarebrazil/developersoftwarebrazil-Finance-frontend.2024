@@ -22,10 +22,10 @@
 .navbar-search button {
   background: var(--body-selected-color-bg);
 
-  padding-right: 10px;
+  padding-right: 0.8rem;
 }
 .navbar-settings button {
-  background: transparent;
+  background-color: transparent;
   padding: 0 1rem;
 }
 
@@ -38,8 +38,9 @@
 }
 
 .svg-menu {
+  background: transparent;
+
   width: 1rem;
   height: 1rem;
   cursor: pointer;
-  z-index: 9999;
 }
