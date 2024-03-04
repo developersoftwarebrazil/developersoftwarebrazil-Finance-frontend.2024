@@ -1,19 +1,37 @@
 <div class="app">
   <sidebar></sidebar>
-  <div class="container">
+  <div class="ocntent">
     <navbar></navbar>
-    <div class="content">
+    <div class="container">
       <div class="header">
         <div class="title-content">
           <div class="title">
-            <h2>System</h2>
-            <h5>Bem vindo ao controle de contas</h5>
+            <h2>Sistema</h2>
+            <p>Adicione, edit seu sistema.</p>
 
           </div>
         </div>
       </div>
+      <div class="form-container">
+        <form class="form-page" [formGroup]="systemForm" (submit)="sendData()">
+          <form class="form-container content" [formGroup]="systemForm" (submit)="sendData()">
+            <div class="row">
+              <div class="group-row">
+                <label for="name" id="name">SIstema</label>
+                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="group-row">
+                <button class="btn">Salvar</button>
+              </div>
+            </div>
+          </form>
+        </form>
+      </div>
     </div>
 
   </div>
-
 </div>

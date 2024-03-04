@@ -15,12 +15,12 @@ export class AuthService {
     return Promise.resolve(true);
   }
 
-  autehenticatedUser(status: boolean) {
+  authenticatedUser(status: boolean) {
     localStorage.setItem('authenticatedUserWeb', JSON.stringify(status));
     return this.authenticatedUserWeb = status
   }
 
-  isUserAuthenticated(): Promise<boolean> {
+  userIsAuthenticated(): Promise<boolean> {
     this.authenticatedUserWeb = localStorage.getItem('authenticatedUserWeb') == 'true';
     return Promise.resolve(this.authenticatedUserWeb);
   }
@@ -57,7 +57,7 @@ export class AuthService {
   }
 
   clearUserData() {
-    this.autehenticatedUser(false);
+    this.authenticatedUser(false);
     this.clearToken();
     localStorage.clear();
     sessionStorage.clear();

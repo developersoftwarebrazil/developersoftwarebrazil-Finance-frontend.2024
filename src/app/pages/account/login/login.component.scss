@@ -5,15 +5,15 @@
 }
 
 .container-login-content {
-  border: 3px solid var(--bg-border-color);
+  border: 0.09px solid var(--border-principal-color);
   grid-template-columns: 1fr 1fr;
   margin: 2rem 4rem 2rem 4rem;
 
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
 }
 .container-login-content .title {
   text-align: center;
-  color: var(--text-color-principal);
+  color: var(--title-principal-color-font);
   margin: 1rem 0 1rem 1.5rem;
 
   font-size: 1.8rem;
@@ -25,8 +25,9 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 1rem;
-  background: var(--bg-body-color);
+  background: var(--body-secundary-color-bg);
   height: 100%;
+  border-radius: .2rem;
 }
 .theme-toggle {
   display: flex;
@@ -36,11 +37,11 @@
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-color: var(--bg-body-secundary-color);
+  background-color: var(--body-principal-color-bg);
   border-radius: 0.5rem 0 0 0.5rem;
 }
 .login-content-info .subtitle {
-  color: var(--text-color-principal);
+  color: var(--subtitle-principal-color-font);
   text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
@@ -51,7 +52,7 @@
   content: "";
   width: 90%;
   height: 0.031rem;
-  background-color: var(--bg-border-color);
+  background-color: var(--border-principal-color);
   margin: 0 0 0.62rem 1rem;
 }
 //Configurações do conteúdo de informações laterap
@@ -62,7 +63,7 @@
   text-align: center;
 }
 .login-info.text p {
-  color: var(--text-color-text);
+  color: var(--paragraph-color-font);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -71,14 +72,14 @@
   width: 90%;
 
   margin: 3rem 0 2rem -1rem;
-  border-left: 0.2px solid var(--bg-border-color);
+  border-left: 0.2rem solid var(--bordwr-principal-color);
 }
 
 .login-form-fields-context label {
   font-size: 1.5rem;
   display: block;
   padding: 0 0 0.31rem 2rem;
-  color: var(--text-color-principal);
+  color: var(--subtitle-secundary-color-font);
 }
 .login-form-fields-context input {
   width: 90%;
@@ -86,14 +87,15 @@
   margin: 0 0 2rem 2rem;
   border: none;
   border-radius: 0.25rem;
-  border-bottom: 2px solid var(--bg-border-buttom-color);
-  background: var(--bg-accent-color);
+  border-bottom: 2px solid var(--border-buttom-color);
+  background: var(--body-active-color-bg);
 }
+
 .login-form-fields-context .input-error {
   visibility: visible;
   margin-top: -1.6rem;
   font-size: 1rem;
-  color: var(--text-color-error);
+  color: var(--error-color-font);
 }
 
 .login-form-button {
@@ -102,14 +104,14 @@
 }
 
 .btn.sigining {
-  background: #ad68c7;
-  color: var(--text-color-against);
+  background: var(--body-theme-color-bg);
+  color: var(--active-color-font);
   margin: 3rem 0 1rem 1rem;
 }
 
 .btn.login {
-  background: var(--bg-other);
-  color: var(--text-color-against);
+  background: var(--body-theme-color-bg);
+  color: var(--active-color-font);
   margin: 3rem 0 0.5rem 0;
 }
 

@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuService } from './../../services/menuservice';
 import { Component, OnInit } from '@angular/core';
+import { SelectModel } from '../../models/select.model';
 
 @Component({
   selector: 'app-category',
@@ -10,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class CategoryComponent implements OnInit {
   //variáveis
   systemForm: FormGroup;
+  systemList= new Array<SelectModel>();
+  systemSelected = new SelectModel();
 
   constructor(
     public menuService: MenuService,

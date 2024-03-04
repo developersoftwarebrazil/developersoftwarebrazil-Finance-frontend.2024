@@ -5,24 +5,26 @@
   margin-right: 1rem;
 
   padding: 1.5rem 0;
-  background: var(--bg-body-color);
-  background-color: red;
+  background: var(--bg-body-principal-color);
+
   justify-content: space-between;
   align-items: center;
 }
 .navbar-search {
   display: flex;
   align-items: center;
-  background: var(--bg-body-secundary-color);
+  padding: 0.5rem 1rem;
+  background: var(--body-selected-color-bg);
 
   margin-left: 4rem;
   border-radius: 0.3rem;
 }
 .navbar-search button {
-  background: var(----text-color-principal);
+  background: var(--body-selected-color-bg);
+
   padding-right: 10px;
 }
-.navbar-settins button {
+.navbar-settings button {
   background: transparent;
   padding: 0 1rem;
 }
@@ -30,8 +32,9 @@
 .navbar-search > input {
   flex: 1;
   margin-left: 0.13rem;
-  background: var(--bg-color);
+
   border: none;
+  background: var(--body-selected-color-bg);
 }
 
 .svg-menu {

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menuservice';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SelectModel } from '../../models/select.model';
 
 @Component({
   selector: 'app-expense',
@@ -11,11 +12,19 @@ export class ExpenseComponent implements OnInit {
   //variáveis
   @Input() sidebarActive = false;
   @Input() isSidebarActive = false;
+
+  systemList= new Array<SelectModel>();
+  systemSelected = new SelectModel();
+
+  categoryList= new Array<SelectModel>();
+  categorySelected = new SelectModel();
+
   systemForm: FormGroup;
 
   constructor(
     public menuService: MenuService,
     public formBuilder: FormBuilder) { }
+
   ngOnInit(): void {
     this.menuService.menuSelected = 4;
 

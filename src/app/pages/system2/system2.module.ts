@@ -1,18 +1,18 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { SystemRoutingModule2 } from "./system2-routing.module";
 import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
-import { SystemComponent } from "./system.component";
-import { SystemRoutingModule } from "./system-routing.module";
+import { SystemComponent2 } from "./system2.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
   providers: [],
-  declarations: [SystemComponent],
+  declarations: [SystemComponent2],
   imports: [
     CommonModule,
-    SystemRoutingModule,
+    SystemRoutingModule2,
     SidebarModule,
     NavbarModule,
 
@@ -22,6 +22,6 @@ import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
 
   ]
 })
-export class SystemModule {
-
+export class SystemModule2 {
+  sidebarActive = false;
 }
