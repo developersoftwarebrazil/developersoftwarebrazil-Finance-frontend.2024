@@ -1,6 +1,7 @@
 #sidebar {
+  top: 0;
   display: flex;
-  width: 8%;
+  width: 10%;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--body-secundary-color-bg);
@@ -9,7 +10,7 @@
   position: fixed;
   transition: all 0.5s;
   min-width: 4rem; //80px
-  z-index: 100;
+  z-index: 1;
 }
 
 #sidebar_content {
@@ -76,6 +77,7 @@
 
 .side-item.menu-active {
   background-color: var(--bg-active-color);
+ 
 }
 
 .side-item:hover:not(.menu-active),

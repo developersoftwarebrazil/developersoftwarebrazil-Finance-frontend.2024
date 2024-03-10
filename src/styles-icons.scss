@@ -1,0 +1,201 @@
+:root {
+  //  Icons
+  // sidebar
+  .svg-ico-pc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem auto;
+    height: 13rem;
+    width: 13rem;
+    background-image: url("./assets/icons/light/icon-pc.svg");
+    background-size: contain;
+  }
+  .svg-laptop-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/light/laptop.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-category-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/light/category.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-dashboard-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/light/dashboard.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-income-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/light/income.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-expense-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/light/expense.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-user-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/light/user.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-arrow-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/light/arrow-left.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  //navbar
+  // navbar
+  .svg-search-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/search.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-notifications-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/notifications.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-settings-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/dark/settings.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-user-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/dark/user.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-logout-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/dark/logout.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+:root .darkMode {
+  //Icons
+  //sidebar
+  .svg-ico-pc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem auto;
+    height: 13rem;
+    width: 13rem;
+    background-image: url("./assets/icons/dark/icon-pc-black.svg");
+    background-size: contain;
+  }
+  .svg-laptop-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/dark/laptop.darkMode.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-category-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/dark/category.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-dashboard-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/dark/dashboard.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-income-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/dark/income.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-expense-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/dark/expense.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-user-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/dark/user.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-arrow-ico {
+    min-width: 2rem;
+    min-height: 2rem;
+    background-image: url("./assets/icons/dark/arrow-left\ dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  // navbar
+  .svg-search-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/dark/search.dark.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-notifications-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/notifications.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-settings-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/settings.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-user-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/user.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .svg-logout-ico {
+    min-width: 1rem;
+    min-height: 1rem;
+    background-image: url("./assets/icons/light/logout.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}

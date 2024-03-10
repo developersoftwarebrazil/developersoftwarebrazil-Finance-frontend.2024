@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   @Input() isSidebarOpen = false;
   @Output() toggleSidebar = new EventEmitter();
 
+
   constructor(
     private router: Router,
     public menuService: MenuService
@@ -21,7 +22,15 @@ export class SidebarComponent implements OnInit {
   //método para abrir e fechar o sidebar
   toggleSidebarOpen() {
     this.isSidebarOpen = !this.isSidebarOpen;
+    if(!this.isSidebarOpen){
+      const openSidebar = document.body.classList.remove('open-sidebar');
+
+    }else{
+      const openSidebar = document.body.classList.toggle('open-sidebar');
+    }
+
   }
+
 
   menuSelect(menu: number) {
     switch (menu) {

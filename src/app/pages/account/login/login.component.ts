@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { LoginService } from "../../../services/login.service";
 import { ETheme } from "../../../../enums/EThemes.enum";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

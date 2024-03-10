@@ -1,6 +1,6 @@
 // ====imports
 @import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
-
+@import "./styles-icons.scss";
 // ====resets
 * {
   padding: 0;
@@ -11,6 +11,14 @@
   text-decoration: none;
 }
 
+a {
+  display: block;
+  padding: 0.9rem;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
 // ====temas
 // background claro
 :root {
@@ -36,105 +44,6 @@
   --active-color-font: #2b2b2b;
   --error-color-font: #f00;
   --agnst-colot-font: #000;
-
-  //  Icons
-  // sidebar
-  .svg-ico-pc {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 4rem auto;
-    height: 13rem;
-    width: 13rem;
-    background-image: url("./assets/icons/light/icon-pc.svg");
-    background-size: contain;
-  }
-  .svg-laptop-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/light/laptop.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-category-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/light/category.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-dashboard-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/light/dashboard.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-income-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/light/income.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-expense-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/light/expense.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-user-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/light/user.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-arrow-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/light/arrow-left.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  //navbar
-  // navbar
-  .svg-search-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/light/search.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-notifications-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/light/notifications.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-settings-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/dark/settings.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-user-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/dark/user.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-logout-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/dark/logout.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
 }
 
 // background escuro
@@ -162,105 +71,6 @@
   --active-color-font: #c9c9ca;
   --error-color-font: #f00;
   --agnst-colot-font: #fff;
-
-  //Icons
-  //sidebar
-  .svg-ico-pc {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 4rem auto;
-    height: 13rem;
-    width: 13rem;
-    background-image: url("./assets/icons/dark/icon-pc-black.svg");
-    background-size: contain;
-  }
-  .svg-laptop-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/dark/laptop.darkMode.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-category-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/dark/category.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-dashboard-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/dark/dashboard.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-income-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/dark/income.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-expense-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/dark/expense.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-user-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/dark/user.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-arrow-ico {
-    min-width: 2rem;
-    min-height: 2rem;
-    background-image: url("./assets/icons/dark/arrow-left\ dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-
-  // navbar
-  .svg-search-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/dark/search.dark.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-notifications-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/light/notifications.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-settings-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/light/settings.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-user-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/light/user.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .svg-logout-ico {
-    min-width: 1rem;
-    min-height: 1rem;
-    background-image: url("./assets/icons/light/logout.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
 }
 
 // configurações globais do site
@@ -288,49 +98,65 @@ span {
 }
 
 body {
+  position: relative;
   background-color: var(--body-principal-color-bg);
   height: 100vh;
 }
+.container {
+  display: flex;
+  flex: 1 1;
+  background: red;
+  margin-left: 9rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.5s ease;
+}
+.open-sidebar .container {
+  margin-left: 17.5rem;
+  transition: all 0.3s ease;
+}
 
 //configurações gerais par o container e sidebar
-#container {
-  flex-grow: 1;
-  width: 100%;
-  height: 100vh;
-  background-color: var(--body-secundary-color-bg);
 
-  // configurações para o sidebar
-  sidebar {
-    display: block;
-    width: -11.5rem; //240px
-    height: 100vh;
-    transform: translateX(0);
-    transition: transform 0.3s ease-in-out;
-    z-index: 2;
-  }
-  navbar {
-    display: flex;
-    width: 100%;
-    margin-left: 16rem;
-    background: red;
-  }
+// #container {
+//   flex-grow: 1;
+//   width: 100% ;
+//   height: 100vh;
+//   background-color: var(--body-secundary-color-bg);
+//   background-color: green;
 
-  #content {
-    flex-grow: 1;
+//   // configurações para o sidebar
+//   sidebar {
+//     display: block;
+//     width: -11.5rem; //240px
+//     height: 100vh;
+//     transform: translateX(0);
+//     transition: transform 0.3s ease-in-out;
+//     z-index: 2;
+//   }
+//   navbar {
+//     display: flex;
+//     width: 100%;
+//     margin-left: 16rem;
+//     background: red;
+//   }
 
-    transition: margin-left 0.3s ease-in-out;
-    position: relative;
-  }
+//   #content {
 
-  &.sidebarActive {
-    sidebar {
-      transform: translateX(0);
-    }
-    #container {
-      margin-left: 0;
-    }
-  }
-}
+//     transition: margin-left 0.3s ease-in-out;
+//     position: relative;
+//   }
+
+//   &.isSidebarOpen{
+//     sidebar {
+//       transform: translateX(0);
+//     }
+//     #container {
+//       margin-left: 0;
+//     }
+//   }
+// }
 
 // .app {
 //   display: flex;

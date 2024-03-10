@@ -1,22 +1,19 @@
-.container-navbar {
+.content-navbar {
   display: flex;
-  width: 70vw;
-  margin: 0 0 3rem 16rem;
-  margin-right: 1rem;
 
   padding: 1.5rem 0;
   background: var(--bg-body-principal-color);
 
   justify-content: space-between;
-  align-items: center;
+  margin-left: 30rem;
 }
+
+
 .navbar-search {
   display: flex;
-  align-items: center;
   padding: 0.5rem 1rem;
   background: var(--body-selected-color-bg);
-
-  margin-left: 4rem;
+  margin: 0 auto 0 0.9rem;
   border-radius: 0.3rem;
 }
 .navbar-search button {

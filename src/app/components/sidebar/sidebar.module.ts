@@ -13,4 +13,7 @@ import { NavbarModule } from "../navbar/navbar.module";
   ],
   exports:[SidebarComponent]
 })
-export class SidebarModule{}
+export class SidebarModule{
+
+  
+}

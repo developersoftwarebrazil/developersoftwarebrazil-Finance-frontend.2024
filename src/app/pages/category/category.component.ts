@@ -11,7 +11,7 @@ import { SelectModel } from '../../models/select.model';
 export class CategoryComponent implements OnInit {
   //variáveis
   systemForm: FormGroup;
-  systemList= new Array<SelectModel>();
+  systemList = new Array<SelectModel>();
   systemSelected = new SelectModel();
 
   constructor(

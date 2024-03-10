@@ -1,35 +1,38 @@
-<div class="container-navbar">
 
-  <div class="navbar-search">
-    <input type="text" name="seach" id="seach" placeholder="search">
-    <i class="svg-search-ico"></i>
+  <div class="container-nav">
+    <div class="content-navbar">
+      <div class="navbar-search">
+        <input type="text" name="seach" id="seach" placeholder="search">
+        <i class="svg-search-ico"></i>
+      </div>
+      <div class="navbar-settings">
+
+        <button (click)="toggleNavTheme()">
+          <img class="svg-menu" src="../../../assets/icons/{{icon}}.svg" alt="icon theme toggle">
+        </button>
+
+        <button class="svg-menu">
+          <div class="svg-notifications-ico"></div>
+        </button>
+
+
+
+        <button class="svg-menu ">
+          <div class="svg-settings-ico"></div>
+        </button>
+        <button>
+          <!-- (click)="user()" -->
+          <div class="svg-user-ico"></div>
+          <!-- <img class="svg-menu" src="../../../assets/icons/user-manager.svg" alt="icon theme user"> -->
+        </button>
+        <button>
+          <!-- (click)="selectMenuNav(1)" -->
+          <!-- <img class="svg-menu" src="../../../assets/icons/logout.svg" alt="icon theme logout"> -->
+          <div class="svg-logout-ico"></div>
+
+        </button>
+
+      </div>
+    </div>
   </div>
-  <div class="navbar-settings">
 
-    <button (click)="toggleNavTheme()">
-      <img class="svg-menu" src="../../../assets/icons/{{icon}}.svg" alt="icon theme toggle">
-    </button>
-
-    <button class="svg-menu">
-      <div class="svg-notifications-ico"></div>
-    </button>
-
-
-
-    <button class="svg-menu ">
-      <div class="svg-settings-ico"></div>
-    </button>
-    <button>
-      <!-- (click)="user()" -->
-      <div class="svg-user-ico"></div>
-      <!-- <img class="svg-menu" src="../../../assets/icons/user-manager.svg" alt="icon theme user"> -->
-    </button>
-    <button>
-      <!-- (click)="selectMenuNav(1)" -->
-      <!-- <img class="svg-menu" src="../../../assets/icons/logout.svg" alt="icon theme logout"> -->
-      <div class="svg-logout-ico"></div>
-
-    </button>
-
-  </div>
-</div>
