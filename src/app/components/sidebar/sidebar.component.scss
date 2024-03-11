@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--body-secundary-color-bg);
-  height: 100%;
+  height: 100vh;
   // border-radius: 0px 18px 18px 0px;
   position: fixed;
   transition: all 0.5s;
@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 #user_avatar {
@@ -37,7 +37,7 @@
 #user_info {
   display: flex;
   flex-direction: column;
-  margin: 1re 1rem 2rem -0.3rem;
+  margin: 1re 1rem 1rem -0.3rem;
 }
 
 #user_info span:last-child {
@@ -71,13 +71,12 @@
 
 .side-item {
   border-radius: 0.5rem;
-  padding: 0.9rem;
+  // padding: 0.9rem;
   cursor: pointer;
 }
 
 .side-item.menu-active {
   background-color: var(--bg-active-color);
- 
 }
 
 .side-item:hover:not(.menu-active),

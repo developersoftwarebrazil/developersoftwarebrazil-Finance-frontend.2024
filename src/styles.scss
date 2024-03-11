@@ -102,222 +102,161 @@ body {
   background-color: var(--body-principal-color-bg);
   height: 100vh;
 }
-.container {
-  display: flex;
-  flex: 1 1;
-  background: red;
-  margin-left: 9rem;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  transition: all 0.5s ease;
-}
-.open-sidebar .container {
-  margin-left: 17.5rem;
-  transition: all 0.3s ease;
-}
 
 //configurações gerais par o container e sidebar
 
-// #container {
-//   flex-grow: 1;
-//   width: 100% ;
-//   height: 100vh;
-//   background-color: var(--body-secundary-color-bg);
-//   background-color: green;
+.open-sidebar .nav {
+  margin-left: 9.5rem;
+  width: calc(100% - 10.5rem);
+  transition: all 0.1s ease;
+}
+.container {
+  display: flex;
+  flex: 1 1;
+  background: var(--body-principal-color-bg);
+  margin: 0 0 1rem 11rem;
+  width: calc(100% - 12rem);
+  box-sizing: border-box;
+  height: calc(100vh - 10rem);
 
-//   // configurações para o sidebar
-//   sidebar {
-//     display: block;
-//     width: -11.5rem; //240px
-//     height: 100vh;
-//     transform: translateX(0);
-//     transition: transform 0.3s ease-in-out;
-//     z-index: 2;
-//   }
-//   navbar {
-//     display: flex;
-//     width: 100%;
-//     margin-left: 16rem;
-//     background: red;
-//   }
+  position: relative;
+  transition: all 0.5s ease;
+  // border: 0.065rem solid var(--border-principal-color);
+}
 
-//   #content {
+.open-sidebar .container {
+  margin-left: 20rem;
+  width: calc(100% - 21.5rem);
+  transition: all 0.3s ease;
+}
+.content {
+  width: 100%;
+}
+.header {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.form-container {
+  flex: 1;
+  background-color: var(--body-selected-color-bg);
+  margin: 1rem;
+  border-radius: 0.9rem;
+}
+.group-row input {
+  border-bottom: 3px solid var(--border-buttom-color);
+}
 
-//     transition: margin-left 0.3s ease-in-out;
-//     position: relative;
-//   }
+.row {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 3rem;
+}
+.row-select-patter {
+  margin: 0.5rem 0 1rem 0;
+  width: 30rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: 0.3rem; //4px
+  border-bottom: 0.13rem solid var(--bg-border-buttom-color);
+  background: var(--body-selected-color-bg);
+  color: var(--text-color-principal);
+  font-size: 0.9rem; //14px
+}
+.row-select-patter {
+  display: grid;
+}
+.title {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 2.25;
+}
+.title-content {
+  margin: 1rem 0 2rem 2rem;
+  color: var(--text-color-principal);
+  font-weight: bold;
+}
+.title-content h2 {
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+  font-size: 32px;
+}
+.title-content h5 {
+  color: var(--text-color-principal);
+  font-weight: 100;
+}
+.title-content .title,
+.title-content h1 {
+  background: var(--bg-color-secundary);
+}
 
-//   &.isSidebarOpen{
-//     sidebar {
-//       transform: translateX(0);
-//     }
-//     #container {
-//       margin-left: 0;
-//     }
-//   }
-// }
+.subtitle {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
 
-// .app {
-//   display: flex;
-//   width: 99vw;
-//   margin-right: 0;
-//   margin-left: 0;
-//   // background-color: orange;
-// }
+label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+// CONFIGURAÇÕES GERAIS INPUT
+// inputs
+input {
+  display: flex;
+  box-sizing: border-box;
+  padding: 1rem;
+  margin: 0.5rem 0 1rem 0;
+  width: 30rem;
 
-// // content
-// .content {
-//   width: 70vw;
+  border-radius: 0.5rem; //4px
+  border-bottom: 0.13rem solid var(--bg-border-buttom-color);
+  background: var(--body-principal-color-bg);
+  color: var(--text-color-principal);
+  font-size: 0.9rem; //14px
+}
 
-//   background: var(--bg-body-color);
-//   // background: red;
-//   min-height: 20rem;
-//   height: auto;
-//   margin: 1rem 2rem 2rem 18rem;
-//   transition: margin-left 0.3s ease-in-out;
-// }
-// .row {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding-bottom: 1rem;
-// }
-// .row-select-patter  {
-//   margin: .5rem 0 1rem 0;
-//   width: 30rem;
-//   padding: 1rem;
-//   box-sizing: border-box;
-//   border-radius: 0.3rem; //4px
-//   border-bottom: 0.13rem solid var(--bg-border-buttom-color);
-//   background: var(--bg-body-secundary-color);
+.input-error {
+  display: block;
+  color: var(--text-color-error);
+}
+.no-outline:focus {
+  outline: none;
+}
+// Modificar a cor de sugestão do browser
+/* Para o Chrome */
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--text-color-principal);
+}
 
-//   color: var(--text-color-principal);
-//   font-size: 0.9rem; //14px
-// }
-// .row-select-patter {
-//   display: grid;
-// }
-// .title {
-//   font-family: "Ubuntu";
-//   font-weight: 700;
+/* Para o Internet Explorer */
+input:-ms-input-placeholder {
+  color: var(--text-color-especial);
+}
+.ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
+  background: var(--bg-body-secundary-color);
+  color: var(--text-color-principal);
+  border-radius: 0.3rem; //4px
+  border-bottom: 0.13rem solid var(--bg-border-buttom-color);
+}
 
-//   text-transform: uppercase;
+.ng-select span {
+  background-color: inherit;
+}
 
-//   line-height: 2.25;
-// }
-// .title-content {
-//   margin: 0 0 2rem 18rem;
-//   color: var(--text-color-principal);
-//   font-weight: bold;
-// }
-// .title-content h2 {
-//   text-transform: uppercase;
-//   font-size: 32px;
-// }
-// .title-content h5 {
-//   color: var(--text-color-principal);
-//   font-weight: 100;
-// }
-// .title-content .title,
-// .title-content h1 {
-//   background: var(--bg-color-secundary);
-// }
+// Configurações  gerais de botões
+.btn {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 900;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
 
-// .subtitle {
-//   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-//   font-size: 2rem;
-//   font-weight: 400;
-//   line-height: 1.5;
-// }
-
-// // CONFIGURAÇÕES GERAIS INPUT
-// // inputs
-// input {
-//   display: flex;
-//   box-sizing: border-box;
-//   padding: 1rem;
-//   width: 30rem;
-
-//   border-radius: 0.3rem; //4px
-//   border-bottom: 0.13rem solid var(--bg-border-buttom-color);
-//   background: var(--bg-body-secundary-color);
-//   color: var(--text-color-principal);
-//   font-size: 0.9rem; //14px
-// }
-
-// .input-error {
-//   display: block;
-//   color: var(--text-color-error);
-// }
-// .no-outline:focus {
-//   outline: none;
-// }
-// // Modificar a cor de sugestão do browser
-// /* Para o Chrome */
-// input:-webkit-autofill {
-//   -webkit-text-fill-color: var(--text-color-especial);
-// }
-
-// /* Para o Internet Explorer */
-// input:-ms-input-placeholder {
-//   color: var(--text-color-especial);
-// }
-// .ng-select.ng-select-opened.ng-select-bottom > .ng-select-container {
-//   background: var(--bg-body-secundary-color);
-//   color: var(--text-color-principal);
-//   border-radius: 0.3rem; //4px
-//   border-bottom: 0.13rem solid var(--bg-border-buttom-color);
-// }
-
-// .ng-select span {
-//   background-color: inherit;
-// }
-
-// // Configurações  gerais de botões
-// .btn {
-//   font-family: "Ubuntu", sans-serif;
-//   font-weight: 900;
-//   padding: 0.75rem 1.5rem;
-//   border: none;
-//   border-radius: 0.25rem;
-//   text-transform: uppercase;
-// }
-
-// .disabled {
-//   opacity: 0.6;
-// }
-
-// #container {
-//   display: flex;
-//   width: 100%;
-//   height: 100vh;
-//   background-color: #040509;
-
-//   // configurações para o sidebar
-//   app-sidebar {
-//     display: block;
-//     width: -11.5rem; //240px
-//     height: 100vh;
-
-//     transform: translateX(0);
-//     transition: transform 0.3s ease-in-out;
-//   }
-
-//   #content {
-//     flex-grow: 1;
-//     background: red;
-//     transition: margin-left 0.3s ease-in-out;
-//     z-index: 1;
-//     position: relative;
-//   }
-
-//   &.sidebarActive {
-//     #container {
-//       margin-left: -0rem;
-//     }
-//     app-sidebar {
-//       transform: translateX(0);
-//     }
-//   }
-// }
+.disabled {
+  opacity: 0.6;
+}

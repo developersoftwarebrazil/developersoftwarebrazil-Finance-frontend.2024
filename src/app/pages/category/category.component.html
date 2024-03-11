@@ -1,21 +1,21 @@
-<sidebar/>
+<sidebar />
+<div class="nav">
+  <navbar></navbar>
+</div>
+<div class="container">
+  <div class="content">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Categoria</h2>
+          <p>Adicione, edit sua categoria.</p>
 
-
-<div class="app">
-  <div class="ocntent">
-    <navbar></navbar>
-    <div class="container">
-      <div class="header">
-        <div class="title-content">
-          <div class="title">
-            <h2>Categoria</h2>
-            <p>Adicione, edit sua categoria.</p>
-
-          </div>
         </div>
       </div>
-      <form class="form-container content" [formGroup]="systemForm" (submit)="sendData()">
-        <div class="form-container">
+    </div>
+    <div class="form-container">
+      <form class="form-page" [formGroup]="systemForm" (submit)="sendData()">
+        <div class="form-content">
           <div class="row">
             <div class="group-row">
               <label for="name" id="name">Categoria</label>
@@ -33,8 +33,7 @@
           <button class="btn">Salvar</button>
         </div>
       </form>
-
     </div>
-
   </div>
+
 </div>
