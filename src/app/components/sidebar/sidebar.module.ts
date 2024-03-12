@@ -15,5 +15,5 @@ import { NavbarModule } from "../navbar/navbar.module";
 })
 export class SidebarModule{
 
-  
+
 }

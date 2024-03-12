@@ -2,20 +2,19 @@
   <div id="sidebar_content">
     <!-- Aqui fica os dados do usuário -->
     <div id="user">
-      <img src="../../../assets/photos/profile.jpg" id="user_avatar" alt="Avatar">
+      <img id="user_avatar" src="../../../assets/photos/profile.jpg"  alt="Avatar">
 
       <p id="user_info">
         <span class="item-description">
-          <h4>Paulo Galdino</h4>
+          <h2>Paulo Galdino</h2>
         </span>
         <span class="item-description">
-          <h6> Developer Manager</h6>
+          <h4> Developer Manager</h4>
         </span>
       </p>
     </div>
 
     <ul id="side_items">
-
       <div class="menu-descriptions">
         <h3 class="item-description">Sistemas</h3>
       </div>
@@ -47,7 +46,6 @@
         <a><i class="svg-expense-ico" (click)="menuSelect(4)" [ngClass]="{'menu-active': this.menuService.menuSelected == 4, '':this.menuService.menuSelected!= 4}"></i><span class="item-description">Despesas</span>
         </a>
       </li>
-
       <div class="menu-descriptions">
         <h3 class="item-description">definições do usuário</h3>
       </div>
@@ -61,6 +59,7 @@
     </ul>
 
     <button class="svg-arrow-ico" id="open_btn" (click)="toggleSidebarOpen()">
+      
     </button>
   </div>
 
