@@ -1,5 +1,5 @@
+import { IncomeModule } from './income.module';
 import { RouterModule, Routes } from "@angular/router";
-
 import { NgModule } from "@angular/core";
 import { IncomeComponent } from "./income.component";
 

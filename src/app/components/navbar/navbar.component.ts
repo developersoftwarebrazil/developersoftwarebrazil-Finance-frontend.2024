@@ -1,5 +1,5 @@
-import { ETheme } from './../../../enums/EThemes.enum';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ETheme } from '../../../enums/EThemes.enum';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
     this.toggleNavTheme();
   }
 
@@ -23,7 +24,7 @@ export class NavbarComponent implements OnInit {
       return (
         this.textTheme = ETheme.TEXT_SUN,
         this.icon = ETheme.ICON_SUN
-        );
+      );
     }
 
 

@@ -1,44 +1,67 @@
-<div class="app">
-  <sidebar></sidebar>
+<sidebar />
+<div class="nav">
+  <navbar></navbar>
+</div>
+<div class="container">
   <div class="content">
-    <navbar></navbar>
-    <div class="container">
-      <div class="header">
-        <div class="title-content">
-          <div class="title">
-            <h2>Despesa</h2>
-            <p>Adicione, edit sua categoria.</p>
-
-          </div>
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Despesas</h2>
+          <p>Adicione, edite suas despesas. Gerencie seus gastos</p>
         </div>
       </div>
-      <div class="form-container">
-      <form class="form-container content" [formGroup]="systemForm" (submit)="sendData()">
+    </div>
+    <div class="form-container">
+      <form class="form-page" [formGroup]="expenseForm" (submit)="sendData()">
+        <div class="form-content">
           <div class="row">
             <div class="group-row">
-              <label for="name" id="name">Categoria</label>
+              <label >Categoria</label>
               <input name="name" id="name" placeholder="Nome" formControlName="name" required />
-              <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
-                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+              <label class="error-input" *ngIf="expenseForm.get('name')?.errors?.['required'] && expenseForm.get('name')?.touched">Campo Obrigatório!</label>
             </div>
           </div>
           <div class="row">
             <div class="group-row">
-              <label for="" id="" name="">Sistema</label>
+              <label for="system" id="system" name="system">Escolha um sistema</label>
               <ng-select class="row-select-patter" [(ngModel)]="systemSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemSelect"></ng-select>
             </div>
           </div>
           <div class="row">
             <div class="group-row">
-              <label for="" id="" name="">Categoria</label>
-              <ng-select class="row-select-patter" [(ngModel)]="categorySelected" [items]="categoryList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemSelect"></ng-select>
+              <label>Escolha a categoria </label>
+              <ng-select class="row-select-patter" [(ngModel)]="categorySelected" [items]="categoryList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="categorySelect"></ng-select>
             </div>
           </div>
-          <button class="btn">Salvar</button>
-        </form>
-      </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Valor</label>
+              <input type="number" name="value" id="value" placeholder="Digite um valor" formControlName="value" required />
+              <label class="error-input" *ngIf="expenseForm.get('value')?.errors?.['required'] &&
+                expenseForm.get('value')?.touched">
+                Campo Obrigatório!
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Data de vencimento</label>
+              <input type="date" name="date" id="date"  formControlName="date" required />
+              <label class="error-input" *ngIf="expenseForm.get('date')?.errors?.['required'] &&
+                expenseForm.get('date')?.touched">
+                Campo Obrigatório!
+              </label>
 
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <button class="btn-form">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-
   </div>
 </div>

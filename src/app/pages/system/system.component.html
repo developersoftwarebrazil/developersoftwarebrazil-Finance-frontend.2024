@@ -14,25 +14,25 @@
     </div>
     <div class="form-container">
       <form class="form-page" [formGroup]="systemForm" (submit)="sendData()">
-        <form class="form-container content" [formGroup]="systemForm" (submit)="sendData()">
-          <div class="row">
-            <div class="group-row">
-              <label for="name" id="name">Sistema</label>
-              <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
-              <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+        <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
+          <div class="form-content">
+            <div class="row">
+              <div class="group-row">
+                <label for="name" id="name">Sistema</label>
+                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
                   systemForm.get('name')?.touched">Campo Obrigatório!</label>
+              </div>
+
             </div>
-            
-          </div>
-          <div class="row">
-            <div class="group-row">
-              <button class="btn">Salvar</button>
+            <div class="row">
+              <div class="group-row">
+                <button class="btn-form">Salvar</button>
+              </div>
             </div>
           </div>
         </form>
       </form>
     </div>
   </div>
-
-
 </div>

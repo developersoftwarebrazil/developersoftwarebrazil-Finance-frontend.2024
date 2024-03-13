@@ -2,10 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
-import { CategoryComponent} from "./category.component";
+import { NgSelectModule } from "@ng-select/ng-select";
+import { CategoryComponent } from "./category.component";
 import { CategoryRoutingModule } from "./category-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgSelectModule } from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -16,8 +16,6 @@ import { NgSelectModule } from "@ng-select/ng-select";
     CategoryRoutingModule,
     SidebarModule,
     NavbarModule,
-
-
 
     FormsModule,
     ReactiveFormsModule,

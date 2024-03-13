@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menuservice';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { SelectModel } from '../../models/select.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-income',
@@ -9,21 +10,34 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class IncomeComponent implements OnInit {
   //variáveis
-  @Input() sidebarActive = false;
-  @Input() isSidebarActive = false;
-  systemForm: FormGroup;
+  incomeForm: FormGroup;
+  systemList = new Array<SelectModel>();
+  systemSelected = new SelectModel();
+
+  categoryList = new Array<SelectModel>();
+  categorySelected = new SelectModel();
 
   constructor(
     public menuService: MenuService,
-    public formBuilder: FormBuilder) { }
-
+    public formBuilder: FormBuilder
+  ) { }
   ngOnInit(): void {
-    this.menuService.menuSelected = 5;
-    this.systemForm = this.formBuilder.group({name:['',[Validators.name]]})
+    this.menuService.menuSelected == 5;
+
+    this.incomeForm = this.formBuilder.group(
+      {
+        name: ['', [Validators.required]],
+        value: ['', [Validators.required]],
+        data: ['', [Validators.required]],
+        systemSelect: ['', [Validators.required]],
+        categorySelect: ['', [Validators.required]],
+
+      });
   }
-   // apllicção
-   dataForm() {
-    return this.systemForm.controls;
+
+  // apllicção
+  dataForm() {
+    return this.incomeForm.controls;
   }
   sendData() {
     debugger

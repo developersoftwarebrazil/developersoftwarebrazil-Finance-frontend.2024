@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
 import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
+import { NgSelectModule } from "@ng-select/ng-select";
 import { ExpenseComponent } from "./expense.component";
 import { ExpenseRoutingModule } from "./expense-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgSelectModule } from "@ng-select/ng-select";
+
 
 @NgModule({
   providers: [],
@@ -24,5 +24,5 @@ import { NgSelectModule } from "@ng-select/ng-select";
   ]
 })
 export class ExpenseModule {
-  sidebarActive = false;
+
 }

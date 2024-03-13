@@ -100,7 +100,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 0.9rem;
-    transition: width 0.6s;
+    transition: all 0.6s;
     height: 0;
   }
   #open_btn {
@@ -113,12 +113,13 @@
     border: none;
     cursor: pointer;
     .svg-arrow-ico {
-      transition: transform 0.3s ease;
+      transform: rotate(895deg);
+      transition: transform 0.9s ease;
     }
   }
 }
 #sidebar.open-sidebar {
-  min-width: 20%;
+  min-width: 21%;
 }
 
 #sidebar.open-sidebar .item-description {

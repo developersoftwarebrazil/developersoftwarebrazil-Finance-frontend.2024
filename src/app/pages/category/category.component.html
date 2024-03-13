@@ -1,6 +1,6 @@
 <sidebar />
 <div class="nav">
-  <navbar></navbar>
+  <navbar />
 </div>
 <div class="container">
   <div class="content">
@@ -14,26 +14,28 @@
       </div>
     </div>
     <div class="form-container">
-      <form class="form-page" [formGroup]="systemForm" (submit)="sendData()">
+      <form class="form-page" [formGroup]="categoryForm" (submit)="sendData()">
         <div class="form-content">
           <div class="row">
             <div class="group-row">
               <label for="name" id="name">Categoria</label>
               <input name="name" id="name" placeholder="Nome" formControlName="name" required />
-              <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
-                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+              <label class="error-input" *ngIf="categoryForm.get('name')?.errors?.['required'] && categoryForm.get('name')?.touched">Campo Obrigatório!</label>
             </div>
           </div>
           <div class="row">
             <div class="group-row">
-              <label for="" id="" name="">Sistema</label>
+              <label for="" id="" name="">Escolha um sistema</label>
               <ng-select class="row-select-patter" [(ngModel)]="systemSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemSelect"></ng-select>
             </div>
           </div>
-          <button class="btn">Salvar</button>
+          <div class="row">
+            <div class="group-row">
+              <button class="btn-form">Salvar</button>
+            </div>
+          </div>
         </div>
       </form>
     </div>
   </div>
-
 </div>

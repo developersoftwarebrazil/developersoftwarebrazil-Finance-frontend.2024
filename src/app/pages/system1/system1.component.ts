@@ -12,8 +12,8 @@ import { UserSystemIncomeService } from "../../services/user.system.income.servi
 
 @Component({
   selector: 'app-system',
-  templateUrl: './system.component.html',
-  styleUrl: './system.component.scss'
+  templateUrl: './system1.component.html',
+  styleUrl: './system1.component.scss'
 })
 export class SystemComponent1 implements OnInit {
 

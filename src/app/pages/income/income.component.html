@@ -1,7 +1,67 @@
-<sidebar></sidebar>
-<navbar></navbar>
+<sidebar />
+<div class="nav">
+  <navbar></navbar>
+</div>
 <div class="container">
   <div class="content">
-    <p>despeas work</p>
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Investementos</h2>
+          <p>Adicione, edite seus inventimentos. Veja quanto vem tem e gerencie seus gastos</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <form class="form-page" [formGroup]="incomeForm" (submit)="sendData()">
+        <div class="form-content">
+          <div class="row">
+            <div class="group-row">
+              <label >Categoria</label>
+              <input name="name" id="name" placeholder="Nome" formControlName="name" required />
+              <label class="error-input" *ngIf="incomeForm.get('name')?.errors?.['required'] && incomeForm.get('name')?.touched">Campo Obrigatório!</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label for="system" id="system" name="system">Escolha um sistema</label>
+              <ng-select class="row-select-patter" [(ngModel)]="systemSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemSelect"></ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Escolha a categoria </label>
+              <ng-select class="row-select-patter" [(ngModel)]="categorySelected" [items]="categoryList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="categorySelect"></ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Valor</label>
+              <input type="number" name="value" id="value" placeholder="Digite um valor" formControlName="value" required />
+              <label class="error-input" *ngIf="incomeForm.get('value')?.errors?.['required'] &&
+                incomeForm.get('value')?.touched">
+                Campo Obrigatório!
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Data de vencimento</label>
+              <input type="date" name="date" id="date"  formControlName="date" required />
+              <label class="error-input" *ngIf="incomeForm.get('date')?.errors?.['required'] &&
+                incomeForm.get('date')?.touched">
+                Campo Obrigatório!
+              </label>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <button class="btn-form">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

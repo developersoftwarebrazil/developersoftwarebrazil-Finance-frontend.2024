@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menuservice';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { SelectModel } from '../../models/select.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-expense',
@@ -10,30 +10,34 @@ import { SelectModel } from '../../models/select.model';
 })
 export class ExpenseComponent implements OnInit {
   //variáveis
-  @Input() sidebarActive = false;
-  @Input() isSidebarActive = false;
-
-  systemList= new Array<SelectModel>();
+  expenseForm: FormGroup;
+  systemList = new Array<SelectModel>();
   systemSelected = new SelectModel();
 
-  categoryList= new Array<SelectModel>();
+  categoryList = new Array<SelectModel>();
   categorySelected = new SelectModel();
-
-  systemForm: FormGroup;
 
   constructor(
     public menuService: MenuService,
-    public formBuilder: FormBuilder) { }
-
+    public formBuilder: FormBuilder
+  ) { }
   ngOnInit(): void {
-    this.menuService.menuSelected = 4;
+    this.menuService.menuSelected == 5;
 
-    this.systemForm = this.formBuilder.group({name:['',[Validators.name]]})
+    this.expenseForm = this.formBuilder.group(
+      {
+        name: ['', [Validators.required]],
+        value: ['', [Validators.required]],
+        data: ['', [Validators.required]],
+        systemSelect: ['', [Validators.required]],
+        categorySelect: ['', [Validators.required]],
+
+      });
   }
 
   // apllicção
   dataForm() {
-    return this.systemForm.controls;
+    return this.expenseForm.controls;
   }
   sendData() {
     debugger
