@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
+
 export class AuthService {
   private authenticatedUserWeb: boolean = false;
   private token: any;
@@ -30,7 +31,7 @@ export class AuthService {
     this.token = this.token
   }
 
-  get getTolen() {
+  get getToken() {
     this.token = localStorage.getItem('token');
     return this.token;
   }

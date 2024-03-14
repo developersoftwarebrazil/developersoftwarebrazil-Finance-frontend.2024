@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { LoginService } from "../../../services/login.service";
 import { ETheme } from "../../../../enums/EThemes.enum";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthService } from "../../../services/auth.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,6 +25,7 @@ export class LoginComponent {
     private renderer: Renderer2,
     private loginService: LoginService,
     public formBuilder: FormBuilder,
+    public authService: AuthService
 
   ) { }
 
@@ -54,7 +56,9 @@ export class LoginComponent {
   // metodo executado apos o dados serem preenchido no formulário
   userLogin() {
     this.loginService.login(this.formData["email"].value, this.formData['password'].value)
-      .subscribe(token => {
+    .subscribe(token => {
+        this.authService.setToken(token);
+        this.authService.authenticatedUser(true);
         alert(token);
         this.router.navigate(['/dashboard']);
       },
