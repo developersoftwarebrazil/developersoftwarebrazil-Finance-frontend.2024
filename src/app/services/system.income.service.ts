@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environment";
-import { SystemIncomeModel } from "../models/system.income.model";
+import { SystemIncomeModel } from "../models/income.system.model";
 
 @Injectable({ providedIn: 'root' })
 

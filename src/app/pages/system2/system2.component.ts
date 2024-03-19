@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menuservice';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SystemExpenseModel } from '../../models/system.expense.model';
-import { SystemIncomeModel } from '../../models/system.income.model';
+import { SystemExpenseModel } from '../../models/expense.system.model';
+import { SystemIncomeModel } from '../../models/income.system.model';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { SystemExpenseService } from '../../services/system.expense.service';
+import { SystemExpenseService } from '../../services/expense.system.service';
 import { SystemIncomeService } from '../../services/system.income.service';
 import { UserSystemExpenseService } from '../../services/user.system.expense.service';
 import { UserSystemIncomeService } from '../../services/user.system.income.service';

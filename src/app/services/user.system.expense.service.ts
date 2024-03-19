@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environment";
-import { SystemExpenseModel } from "../models/system.expense.model";
+import { SystemExpenseModel } from "../models/expense.system.model";
 
 export class UserSystemExpenseService {
 

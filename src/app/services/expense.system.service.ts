@@ -1,18 +1,18 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environment";
-import { SystemExpenseModel } from "../models/system.expense.model";
+import { ExpenseSystemModel } from "../models/expense.system.model";
 
 @Injectable({ providedIn: 'root' })
 
-export class SystemExpenseService {
+export class ExpenseSystemService {
 
-  private readonly baseUrl = environment['endPoint'];
+  private readonly baseUrl = environment["endPoint"];
   constructor(private httpClient: HttpClient) { }
 
   //Despense
-  AddSystemExpense(systemExpense: SystemExpenseModel) {
-    return this.httpClient.post<SystemExpenseModel>(`${this.baseUrl}/AddSystemExpense`, systemExpense);
+  AddSystemExpense(expenseSystem: ExpenseSystemModel) {
+    return this.httpClient.post<ExpenseSystemModel>(`${this.baseUrl}/AddSystemExpense`, expenseSystem);
   }
 
   SystemExpenseUserList(userEmail: string) {
@@ -23,8 +23,8 @@ export class SystemExpenseService {
     return this.httpClient.get(`${this.baseUrl}/GetSystemExpense?id=${id}`);
   }
 
-  UpdateSystemExpense(systemExpense: SystemExpenseModel) {
-    return this.httpClient.put<SystemExpenseModel>(`${this.baseUrl}/UpdateSystemExpense`, systemExpense)
+  UpdateSystemExpense(expenseSystem: ExpenseSystemModel) {
+    return this.httpClient.put<ExpenseSystemModel>(`${this.baseUrl}/UpdateSystemExpense`, expenseSystem)
   }
 
   GenerateSystemExpenseCopy() {

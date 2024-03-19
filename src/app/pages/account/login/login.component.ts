@@ -1,9 +1,15 @@
-import { Component, Renderer2 } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  Component,
+  Renderer2
+} from "@angular/core";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginService } from "../../../services/login.service";
 import { ETheme } from "../../../../enums/EThemes.enum";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthService } from "../../../services/auth.service";
 @Component({
   selector: 'app-login',
@@ -15,6 +21,7 @@ export class LoginComponent {
 
   // variaveis
   loginForm: FormGroup;
+
   inputFocused: boolean = false;
 
   public icon: string = ETheme.ICON_MOON;
@@ -58,6 +65,7 @@ export class LoginComponent {
     this.loginService.login(this.formData["email"].value, this.formData['password'].value)
     .subscribe(token => {
         this.authService.setToken(token);
+        this.authService.setUserEmail(this.formData["email"].value);
         this.authService.authenticatedUser(true);
         alert(token);
         this.router.navigate(['/dashboard']);

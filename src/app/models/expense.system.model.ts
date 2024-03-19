@@ -1,4 +1,4 @@
-export class SystemExpenseModel {
+export class ExpenseSystemModel {
 
   Id: number;
   Name: string;
@@ -10,6 +10,7 @@ export class SystemExpenseModel {
   GenerateExpensesCopy: boolean;
 
   PropertyName: string = "";
-  Messages: string = '';
+  Messages: string = "";
   Notification: [] = [];
+
 }

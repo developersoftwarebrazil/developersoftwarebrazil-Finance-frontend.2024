@@ -1,5 +1,3 @@
-import { Router } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
@@ -12,13 +10,10 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  checkToken() {
-    return Promise.resolve(true);
-  }
-
+  //Configurações para o usuário
   authenticatedUser(status: boolean) {
     localStorage.setItem('authenticatedUserWeb', JSON.stringify(status));
-    return this.authenticatedUserWeb = status
+    this.authenticatedUserWeb = status;
   }
 
   userIsAuthenticated(): Promise<boolean> {
@@ -26,15 +21,6 @@ export class AuthService {
     return Promise.resolve(this.authenticatedUserWeb);
   }
 
-  setToken(tolen: string) {
-    localStorage.setItem('token', this.token)
-    this.token = this.token
-  }
-
-  get getToken() {
-    this.token = localStorage.getItem('token');
-    return this.token;
-  }
 
   setUserEmail(email: string) {
     localStorage.setItem('userEmail', email);
@@ -52,15 +38,29 @@ export class AuthService {
 
   }
 
-  clearToken() {
-    this.token = null;
-    this.user = null;
-  }
-
   clearUserData() {
     this.authenticatedUser(false);
     this.clearToken();
     localStorage.clear();
     sessionStorage.clear();
+  }
+
+  // Configurações para o Token
+  checkToken() {
+    return Promise.resolve(true);
+  }
+  setToken(token: string) {
+    localStorage.setItem('token', token)
+    this.token = token
+  }
+
+  get getToken() {
+    this.token = localStorage.getItem('token');
+    return this.token;
+  }
+
+  clearToken() {
+    this.token = null;
+    this.user = null;
   }
 }

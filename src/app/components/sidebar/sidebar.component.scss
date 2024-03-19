@@ -76,10 +76,12 @@
       }
       .side-item.menu-active {
         background-color: var(--bg-active-color);
+        background-color: red;
       }
       .side-item:hover:not(.menu-active),
       #logout_btn:hover {
         background-color: var(--bg-active-color);
+        background-color: red;
       }
       .side-item a {
         text-decoration: none;

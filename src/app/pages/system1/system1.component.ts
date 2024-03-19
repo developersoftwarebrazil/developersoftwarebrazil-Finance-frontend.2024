@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { MenuService } from "../../services/menuservice";
 import { AuthService } from "../../services/auth.service";
-import { SystemExpenseService } from "../../services/system.expense.service";
+import { SystemExpenseService } from "../../services/expense.system.service";
 import { SystemIncomeService } from "../../services/system.income.service";
-import { SystemExpenseModel } from '../../models/system.expense.model';
-import { SystemIncomeModel } from '../../models/system.income.model';
+
 import { UserSystemExpenseService } from "../../services/user.system.expense.service";
 import { UserSystemIncomeService } from "../../services/user.system.income.service";
+import { ExpenseSystemModel } from "../../models/expense.system.model";
+import { IncomeSystemModel } from "../../models/income.system.model";
 
 @Component({
   selector: 'app-system',
@@ -31,7 +32,7 @@ export class SystemComponent1 implements OnInit {
   systemForm: FormGroup;
 
   //despesas
-  tableListSystemExpense: Array<SystemExpenseModel>;
+  tableListSystemExpense: Array<ExpenseSystemModel>;
   id: string;
   page: number = 1;
   config: any;
@@ -44,10 +45,10 @@ export class SystemComponent1 implements OnInit {
   config1: any;
   itemPerPage1: number = 10;
 
-  editItemExpense: SystemExpenseModel;
+  editItemExpense: ExpenseSystemModel;
 
   //investimentos
-  tableListSystemIncome: Array<SystemIncomeModel>;
+  tableListSystemIncome: Array<IncomeSystemModel>;
   id2: string;
   page2: number = 1;
   config2: any;
@@ -60,7 +61,7 @@ export class SystemComponent1 implements OnInit {
   config3: any;
   itemPerPage3: number = 10;
 
-  editItemIncome: SystemIncomeModel;
+  editItemIncome: IncomeSystemModel;
 
   // usuários
   userSystemEmail: string = '';
@@ -186,7 +187,7 @@ export class SystemComponent1 implements OnInit {
         }, (error) => console.error(error), () => { })
     }
 
-    if  (this.editItemIncome) {
+    if (this.editItemIncome) {
       this.editItemIncome.PropertyName = '';
       this.editItemIncome.Messages = '';
       this.editItemIncome.Notification = [];
@@ -242,7 +243,7 @@ export class SystemComponent1 implements OnInit {
       }, (error) => console.error(error), () => { });
 
   }
-  editIncome(id: number){
+  editIncome(id: number) {
     this.systemIncomeService.GetSystemIncome(id)
       .subscribe((response: SystemIncomeModel) => {
         if (response) {
@@ -329,7 +330,7 @@ export class SystemComponent1 implements OnInit {
   UserSystemExpenseList() {
 
     this.userSystemExpenseService.UserSystemExpenseList(this.editItemExpense.Id)
-      .subscribe((response: Array<any>) =>{
+      .subscribe((response: Array<any>) => {
         this.tableListUserSystemExpense = response;
       })
   }

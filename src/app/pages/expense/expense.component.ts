@@ -22,7 +22,7 @@ export class ExpenseComponent implements OnInit {
     public formBuilder: FormBuilder
   ) { }
   ngOnInit(): void {
-    this.menuService.menuSelected == 5;
+    this.menuService.menuSelected = 4;
 
     this.expenseForm = this.formBuilder.group(
       {

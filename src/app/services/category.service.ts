@@ -15,8 +15,8 @@ export class CategoryService {
     return this.httpClient.post<CategoryModel>(`${this.baseUrl}/AddCategory`, category);
   }
 
-  CategoryUserExpenseList(userEmail: string) {
-    return this.httpClient.get(`${this.baseUrl}/CategoryUserExpenseList?userEmail=${userEmail}`);
+  SystemExpenseUserList(userEmail: string) {
+    return this.httpClient.get(`${this.baseUrl}/SystemExpenseUserList?userEmail=${userEmail}`);
   }
 
   GetCategory(id: number) {
