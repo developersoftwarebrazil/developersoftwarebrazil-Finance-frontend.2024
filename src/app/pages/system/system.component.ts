@@ -36,11 +36,11 @@ export class SystemComponent {
     this.systemForm = this.formBuilder.group
     ({
       name: ['', [Validators.required]],
-      month: ['', [Validators.required]],
-      monthCopy: ['', [Validators.required]],
-      dayMonthlyBookClose: ['', [Validators.required]],
-      year: ['', [Validators.required]],
-      yearCopy: ['', [Validators.required]],
+      // month: ['', [Validators.required]],
+      // monthCopy: ['', [Validators.required]],
+      // dayMonthlyBookClose: ['', [Validators.required]],
+      // year: ['', [Validators.required]],
+      // yearCopy: ['', [Validators.required]],
     });
   }
 
@@ -57,12 +57,12 @@ export class SystemComponent {
     item.Name = data["name"].value;
 
     item.Id = 0;
-    item.Month = data["month"].value;
-    item.MonthCopy = data["monthCopy"].value;
-    item.DayMonthlyBookClose = data["dayMonthlyBookClose"].value;
-    item.Year = data["year"].value;
-    item.YearCopy = data["yearCopy"].value;
-    // item.GenerateExpensesCopy= this.checked
+    item.Month =0;
+    item.MonthCopy =0;
+    item.DayMonthlyBookClose = 0;
+    item.Year =0;
+    item.YearCopy =0;
+     item.GenerateExpensesCopy= true;
 
 
 

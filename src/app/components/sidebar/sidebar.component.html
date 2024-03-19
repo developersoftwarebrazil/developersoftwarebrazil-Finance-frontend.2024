@@ -2,14 +2,16 @@
   <div id="sidebar_content">
     <!-- Aqui fica os dados do usuário -->
     <div id="user">
-      <img id="user_avatar" src="../../../assets/photos/profile.png"  alt="Avatar">
+      <img id="user_avatar" src="../../../assets/photos/profile.png" alt="Avatar">
 
       <p id="user_info">
         <span class="item-description">
-          <h2>Paulo Galdino</h2>
+          <!-- no futuro pegar do ban de dados -->
+          <h2>Seu Nome</h2>
         </span>
         <span class="item-description">
-          <h4> Developer Manager</h4>
+          <!-- no futuro pegar do ban de dados -->
+          <h4> Tipo de usua´rio do sistema</h4>
         </span>
       </p>
     </div>
@@ -20,8 +22,8 @@
       </div>
 
       <li class="side-item" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}">
-        <a >
-          <i class="svg-laptop-ico ico" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}"></i>  <span class="item-description">Sistema</span>
+        <a>
+          <i class="svg-laptop-ico ico" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}"></i> <span class="item-description">Sistema</span>
         </a>
       </li>
       <li class="side-item" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}">
