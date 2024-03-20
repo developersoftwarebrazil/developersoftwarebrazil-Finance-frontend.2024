@@ -2,17 +2,17 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
-import { SystemComponent } from "./system.component";
-import { SystemRoutingModule } from "./system-routing.module";
+import { SystemIncomeComponent } from "./system-income.component";
+import { SystemIncomeRoutingModule } from "./system-income-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
   providers: [],
-  declarations: [SystemComponent],
+  declarations: [SystemIncomeComponent],
   imports: [
     CommonModule,
-    SystemRoutingModule,
+    SystemIncomeRoutingModule,
     SidebarModule,
     NavbarModule,
 
@@ -22,6 +22,6 @@ import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
 
   ]
 })
-export class SystemModule {
+export class SystemIncomeModule {
 
 }

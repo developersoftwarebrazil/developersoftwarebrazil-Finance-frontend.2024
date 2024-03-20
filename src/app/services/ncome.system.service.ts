@@ -1,18 +1,20 @@
+
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../../environment";
-import { SystemIncomeModel } from "../models/income.system.model";
+import { IncomeSystemModel } from "../models/income.system.model";
+
 
 @Injectable({ providedIn: 'root' })
 
-export class SystemIncomeService {
+export class IncomeSystemService {
 
   private readonly baseUrl = environment['endPoint'];
   constructor(private httpClient: HttpClient) { }
 
   //Investiemnto
-  AddSystemIncome(systemIncome: SystemIncomeModel) {
-    return this.httpClient.post<SystemIncomeModel>(`${this.baseUrl}/AddSystemIncome`, systemIncome);
+  AddSystemIncome(systemIncome: IncomeSystemModel) {
+    return this.httpClient.post<IncomeSystemModel>(`${this.baseUrl}/AddSystemIncome`, systemIncome);
   }
 
   SystemUserIncomeList(userEmail: string) {
@@ -22,8 +24,8 @@ export class SystemIncomeService {
   GetSystemIncome(id: number) {
     return this.httpClient.get(`${this.baseUrl}/GetSystemIncome?id=${id}`);
   }
-  UpdateSystemIncome(systemIncome: SystemIncomeModel) {
-    return this.httpClient.put<SystemIncomeModel>(`${this.baseUrl}/UpdateSystemIncome`, systemIncome)
+  UpdateSystemIncome(systemIncome: IncomeSystemModel) {
+    return this.httpClient.put<IncomeSystemModel>(`${this.baseUrl}/UpdateSystemIncome`, systemIncome)
   }
 
   //Usuário do sistema para investimento

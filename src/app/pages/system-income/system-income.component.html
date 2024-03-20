@@ -1,0 +1,38 @@
+<sidebar></sidebar>
+<div class="nav">
+  <navbar></navbar>
+</div>
+<div class="container">
+  <div class="content">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Sistema para Investimento</h2>
+          <h5>Adicione, edit seu sistema.</h5>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="form-page" >
+        <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
+          <div class="form-content">
+            <div class="row">
+              <div class="group-row">
+                <label for="name" id="name">Sistema de Investimentos</label>
+                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="group-row">
+                <button class="btn-form">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

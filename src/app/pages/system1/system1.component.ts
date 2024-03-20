@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { MenuService } from "../../services/menuservice";
 import { AuthService } from "../../services/auth.service";
 import { SystemExpenseService } from "../../services/expense.system.service";
-import { SystemIncomeService } from "../../services/system.income.service";
+import { SystemIncomeService } from "../../services/ncome.system.service";
 
 import { UserSystemExpenseService } from "../../services/user.system.expense.service";
 import { UserSystemIncomeService } from "../../services/user.system.income.service";

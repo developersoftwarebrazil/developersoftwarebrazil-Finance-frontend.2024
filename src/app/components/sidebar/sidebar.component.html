@@ -23,9 +23,16 @@
 
       <li class="side-item" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}">
         <a>
-          <i class="svg-laptop-ico ico" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}"></i> <span class="item-description">Sistema</span>
+          <i class="svg-laptop-ico ico" (click)="menuSelect(2)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2, '':this.menuService.menuSelected != 2}"></i> <span class="item-description">Sistema Despesas</span>
         </a>
       </li>
+
+      <li class="side-item" (click)="menuSelect(2.1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2.1, '':this.menuService.menuSelected != 2.1}">
+        <a>
+          <i class="svg-laptop-ico ico" (click)="menuSelect(2.1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 2.1, '':this.menuService.menuSelected != 2.1}"></i> <span class="item-description">Sistema Investimentos</span>
+        </a>
+      </li>
+
       <li class="side-item" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}">
         <a>
           <i class="svg-category-ico" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}"></i><span class="item-description">Categoria</span>
@@ -60,9 +67,7 @@
 
     </ul>
 
-    <button class="svg-arrow-ico" id="open_btn" (click)="toggleSidebarOpen()">
-
-    </button>
+    <button class="svg-arrow-ico" id="open_btn" (click)="toggleSidebarOpen()"> </button>
   </div>
 
   <div id="logout">

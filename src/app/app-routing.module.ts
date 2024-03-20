@@ -22,8 +22,13 @@ const routes: Routes = [
 
   },
   {
-    path: 'system',
-    loadChildren: () => import('./pages/system/system.module').then(m => m.SystemModule),
+    path: 'system-expense',
+    loadChildren: () => import('./pages/system-expense/system-expense.module').then(m => m.SystemExpenseModule),
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'system-income',
+    loadChildren: () => import('./pages/system-income/system-income.module').then(m => m.SystemIncomeModule),
     canActivate:[AuthGuard]
   },
   {

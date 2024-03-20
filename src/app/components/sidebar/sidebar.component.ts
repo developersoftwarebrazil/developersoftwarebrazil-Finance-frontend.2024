@@ -16,16 +16,16 @@ export class SidebarComponent implements OnInit {
   constructor(
     private router: Router,
     public menuService: MenuService
-    ) { }
-    ngOnInit(): void { }
+  ) { }
+  ngOnInit(): void { }
 
   //método para abrir e fechar o sidebar
   toggleSidebarOpen() {
     this.isSidebarOpen = !this.isSidebarOpen;
-    if(!this.isSidebarOpen){
+    if (!this.isSidebarOpen) {
       const openSidebar = document.body.classList.remove('open-sidebar');
 
-    }else{
+    } else {
       const openSidebar = document.body.classList.toggle('open-sidebar');
     }
 
@@ -39,7 +39,10 @@ export class SidebarComponent implements OnInit {
         break;
 
       case 2:
-        this.router.navigate(['/system']);
+        this.router.navigate(['/system-expense']);
+        break;
+      case 2.1:
+        this.router.navigate(['/system-income']);
         break;
 
       case 3:
