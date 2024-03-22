@@ -7,8 +7,8 @@
     <div class="header">
       <div class="title-content">
         <div class="title">
-          <h2>Despesas</h2>
-          <p>Adicione, edite suas despesas. Gerencie seus gastos</p>
+          <h2>Investimentos</h2>
+          <p>Controle suas entradas, adicione, edite seus investiemntos. Veja onde seu dinnheiro é invetido.</p>
         </div>
       </div>
     </div>
@@ -43,16 +43,11 @@
 
             </div>
           </div>
-          <div class="row">
-            <div class="group-row">
-              <label for="system" id="system" name="system">Escolha um sistema</label>
-              <ng-select class="row-select-patter" [(ngModel)]="systemSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemSelect"></ng-select>
-            </div>
-          </div>
+
           <div class="row">
             <div class="group-row">
               <label>Escolha a categoria </label>
-              <ng-select class="row-select-patter" [(ngModel)]="categorySelected" [items]="categoryList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="categorySelect"></ng-select>
+              <ng-select class="row-select-patter" [(ngModel)]="categorySelected" [items]="categoryList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="categoryUserExpenseList"></ng-select>
             </div>
           </div>
 

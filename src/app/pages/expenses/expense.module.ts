@@ -1,26 +1,25 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarModule } from '../../components/sidebar/sidebar.module';
 import { NavbarModule } from '../../components/navbar/navbar.module';
-import { IncomeComponent } from './income.component';
-import { IncomeRoutingModule } from './income-routing.module';
+import { ExpenseComponent } from './expense.component';
+import { ExpenseRoutingModule } from './expense-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
-
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
-  declarations: [IncomeComponent],
+  declarations: [ExpenseComponent],
   imports: [
     CommonModule,
-    IncomeRoutingModule,
+    ExpenseRoutingModule,
     SidebarModule,
     NavbarModule,
 
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    MatSlideToggleModule
   ]
 })
-export class IncomeModule { }
+export class ExpenseModule { }

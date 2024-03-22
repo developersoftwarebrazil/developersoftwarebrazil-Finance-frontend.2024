@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
-  title = 'finance-web-ui.v1';
+  title = 'finance-web-ui.v4';
 }

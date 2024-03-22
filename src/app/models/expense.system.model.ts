@@ -11,6 +11,6 @@ export class ExpenseSystemModel {
 
   PropertyName: string = "";
   Messages: string = "";
-  Notification: [] = [];
+  Notification: [];
 
 }

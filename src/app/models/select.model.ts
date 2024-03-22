@@ -1,4 +1,4 @@
 export class SelectModel {
-  Id: string = "";
-  Name: string = "";
+  id: string = "";
+  name: string = "";
 }

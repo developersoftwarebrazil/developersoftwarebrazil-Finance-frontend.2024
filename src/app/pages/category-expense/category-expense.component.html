@@ -1,0 +1,42 @@
+<sidebar />
+<div class="nav">
+  <navbar />
+</div>
+<div class="container">
+  <div class="content">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Categoria para Despesas</h2>
+          <p>Adicione, edit sua categoria.</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <form class="form-page" [formGroup]="categoryExpenseForm" (submit)="sendExpenseData()">
+        <div class="form-content">
+          <div class="row">
+            <div class="group-row">
+              <label for="name" id="name">Categoria para despesas</label>
+              <input name="name" id="name" placeholder="Nome" formControlName="name" required />
+              <label class="error-input" *ngIf="categoryExpenseForm.get('name')?.errors?.['required'] && categoryExpenseForm.get('name')?.touched">Campo Obrigatório!</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label for="" id="" name="">Escolha um sistema despesa </label>
+              <ng-select class="row-select-patter" [(ngModel)]="systemExpenseSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemExpenseSelected"></ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <button class="btn-form">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

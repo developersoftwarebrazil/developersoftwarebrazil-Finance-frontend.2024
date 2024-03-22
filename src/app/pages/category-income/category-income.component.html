@@ -7,28 +7,29 @@
     <div class="header">
       <div class="title-content">
         <div class="title">
-          <h2>Categoria</h2>
+          <h2>Categoria para investimenots</h2>
           <p>Adicione, edit sua categoria.</p>
 
         </div>
       </div>
     </div>
     <div class="form-container">
-      <form class="form-page" [formGroup]="categoryForm" (submit)="sendData()">
+      <form class="form-page" [formGroup]="categoryIncomeForm" (submit)="sendIncomeData()">
         <div class="form-content">
           <div class="row">
             <div class="group-row">
-              <label for="name" id="name">Categoria</label>
+              <label for="name" id="name">Categoria para investimentos</label>
               <input name="name" id="name" placeholder="Nome" formControlName="name" required />
-              <label class="error-input" *ngIf="categoryForm.get('name')?.errors?.['required'] && categoryForm.get('name')?.touched">Campo Obrigatório!</label>
+              <label class="error-input" *ngIf="categoryIncomeForm.get('name')?.errors?.['required'] && categoryIncomeForm.get('name')?.touched">Campo Obrigatório!</label>
             </div>
           </div>
           <div class="row">
             <div class="group-row">
-              <label for="" id="" name="">Escolha um sistema</label>
-              <ng-select class="row-select-patter" [(ngModel)]="systemSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemSelect"></ng-select>
+              <label for="" id="" name="">Escolha um sistema </label>
+              <ng-select class="row-select-patter" [(ngModel)]="systemIncomeSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemIncomeSelected"></ng-select>
             </div>
           </div>
+
           <div class="row">
             <div class="group-row">
               <button class="btn-form">Salvar</button>

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environment";
-import { SystemIncomeModel } from "../models/income.system.model";
+import { IncomeSystemModel } from "../models/income.system.model";
 
 
 export class UserSystemIncomeService {
@@ -11,7 +11,7 @@ export class UserSystemIncomeService {
 
   //Usuário para o sistema de investimento
   RegisterUserOnSystemIncome(userSystemIncomeId: number, userEmail: string) {
-    return this.httpClient.post<SystemIncomeModel>(`${this.baseUrl}/RegisterUserExpenseOnSystem?userSystemIncomeId=${userSystemIncomeId}&userEmail=${userEmail}`, null);
+    return this.httpClient.post<IncomeSystemModel>(`${this.baseUrl}/RegisterUserExpenseOnSystem?userSystemIncomeId=${userSystemIncomeId}&userEmail=${userEmail}`, null);
   }
 
   UserSystemIncomeList(userIncomeId: number) {

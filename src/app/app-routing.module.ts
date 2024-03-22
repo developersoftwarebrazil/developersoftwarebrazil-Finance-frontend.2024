@@ -18,33 +18,38 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
 
   },
   {
     path: 'system-expense',
     loadChildren: () => import('./pages/system-expense/system-expense.module').then(m => m.SystemExpenseModule),
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'system-income',
     loadChildren: () => import('./pages/system-income/system-income.module').then(m => m.SystemIncomeModule),
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
-    path: 'category',
-    loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule),
-    canActivate:[AuthGuard]
+    path: 'category-expense',
+    loadChildren: () => import('./pages/category-expense/category-expense.module').then(m => m.CategoryExpenseModule),
+    canActivate: [AuthGuard]
+  }, ,
+  {
+    path: 'category-income',
+    loadChildren: () => import('./pages/category-income/category.module').then(m => m.CategoryIncomeModule),
+    canActivate: [AuthGuard]
   },
   {
-    path: 'expense',
-    loadChildren: () => import('./pages/expense/expense.module').then(m => m.ExpenseModule),
-    canActivate:[AuthGuard]
+    path: 'incomes',
+    loadChildren: () => import('./pages/incomes/income.module').then(m => m.IncomeModule),
+    canActivate: [AuthGuard]
   },
   {
-    path: 'income',
-    loadChildren: () => import('./pages/income/income.module').then(m => m.IncomeModule),
-    canActivate:[AuthGuard]
+    path: 'expenses',
+    loadChildren: () => import('./pages/expenses/expense.module').then(m => m.ExpenseModule),
+    canActivate: [AuthGuard]
   }
 ];
 

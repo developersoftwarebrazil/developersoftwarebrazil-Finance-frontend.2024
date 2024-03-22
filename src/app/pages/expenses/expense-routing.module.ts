@@ -1,3 +1,4 @@
+import { ExpenseModule } from './expense.module';
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { ExpenseComponent } from "./expense.component";

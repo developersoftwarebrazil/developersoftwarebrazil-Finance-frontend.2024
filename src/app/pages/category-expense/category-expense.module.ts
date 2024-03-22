@@ -3,17 +3,18 @@ import { CommonModule } from "@angular/common";
 import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
 import { NgSelectModule } from "@ng-select/ng-select";
-import { ExpenseComponent } from "./expense.component";
-import { ExpenseRoutingModule } from "./expense-routing.module";
+import { CategoryExpenseComponent } from "./category-expense.component";
+import { CategoryExpenseRoutingModule } from "./category-expense-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
   providers: [],
-  declarations: [ExpenseComponent],
+  declarations: [CategoryExpenseComponent],
   imports: [
     CommonModule,
-    ExpenseRoutingModule,
+    CategoryExpenseRoutingModule,
+
     SidebarModule,
     NavbarModule,
 
@@ -23,6 +24,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
   ]
 })
-export class ExpenseModule {
+export class CategoryExpenseModule {
 
 }

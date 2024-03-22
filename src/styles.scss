@@ -100,7 +100,7 @@ span {
 body {
   position: relative;
   background-color: var(--body-principal-color-bg);
-  height: 100vh;
+  height: 200vh;
 }
 
 //configurações gerais par o container e sidebar
@@ -141,7 +141,7 @@ body {
   background-color: var(--body-selected-color-bg);
 
   border-radius: 0.9rem;
-  
+
   .form-page {
     display: flex;
     justify-content: center;

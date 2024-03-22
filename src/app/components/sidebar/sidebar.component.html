@@ -35,10 +35,15 @@
 
       <li class="side-item" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}">
         <a>
-          <i class="svg-category-ico" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}"></i><span class="item-description">Categoria</span>
+          <i class="svg-category-ico" (click)="menuSelect(3)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3, '':this.menuService.menuSelected!= 3}"></i><span class="item-description">Categoria despesas</span>
         </a>
       </li>
 
+      <li class="side-item" (click)="menuSelect(3.1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3.1, '':this.menuService.menuSelected!= 3.1}">
+        <a>
+          <i class="svg-category-ico" (click)="menuSelect(3.1)" [ngClass]="{'menu-active': this.menuService.menuSelected == 3.1, '':this.menuService.menuSelected!= 3.1}"></i><span class="item-description">Categoria investimentos</span>
+        </a>
+      </li>
       <div class="menu-descriptions">
         <h3 class="item-description">entradas & saídas</h3>
       </div>

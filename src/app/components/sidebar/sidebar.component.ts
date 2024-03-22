@@ -46,14 +46,16 @@ export class SidebarComponent implements OnInit {
         break;
 
       case 3:
-        this.router.navigate(['/category']);
+        this.router.navigate(['/category-expense']);
         break;
-
+        case 3.1:
+          this.router.navigate(['/category-income']);
+          break;
       case 4:
-        this.router.navigate(['/expense']);
+        this.router.navigate(['/expenses']);
         break;
       case 5:
-        this.router.navigate(['/income']);
+        this.router.navigate(['/incomes']);
         break;
       case 6:
         this.router.navigate(['/user']);

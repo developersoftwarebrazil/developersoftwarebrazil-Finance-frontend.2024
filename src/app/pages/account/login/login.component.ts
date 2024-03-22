@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 import { LoginService } from "../../../services/login.service";
 import { ETheme } from "../../../../enums/EThemes.enum";
 import { AuthService } from "../../../services/auth.service";
+import { ThemeService } from "../../../services/theme.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +23,7 @@ export class LoginComponent {
   // variaveis
   loginForm: FormGroup;
 
+  systemTheme: string;
   inputFocused: boolean = false;
 
   public icon: string = ETheme.ICON_MOON;
@@ -29,16 +31,18 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
+    private themeService: ThemeService,
     private renderer: Renderer2,
     private loginService: LoginService,
     public formBuilder: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
 
   ) { }
 
   // metodos
   // executado ao iniciar a página
   ngOnInit(): void {
+    this.systemTheme= this.themeService.detectSystemTheme();
     this.toggleTheme();
     this.loginForm = this.formBuilder.group
       ({
@@ -63,7 +67,7 @@ export class LoginComponent {
   // metodo executado apos o dados serem preenchido no formulário
   userLogin() {
     this.loginService.login(this.formData["email"].value, this.formData['password'].value)
-    .subscribe(token => {
+      .subscribe(token => {
         this.authService.setToken(token);
         this.authService.setUserEmail(this.formData["email"].value);
         this.authService.authenticatedUser(true);

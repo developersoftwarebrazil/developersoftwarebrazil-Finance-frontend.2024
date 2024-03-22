@@ -68,7 +68,7 @@ export class SystemIncomeComponent {
       .subscribe((response: IncomeSystemModel) => {
         this.systemForm.reset();
 
-        this.systemIncomeService.RegisterUserOnSystemIncome(response.Id, this.authService.getToken())
+        this.systemIncomeService.RegisterUserOnSystemIncome(response.Id, this.authService.getUserEmail())
           .subscribe((response: any) => {
             debugger
           }, (error) => console.error(error), () => { })

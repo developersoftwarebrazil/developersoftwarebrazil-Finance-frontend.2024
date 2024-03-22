@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environment";
-import { SystemExpenseModel } from "../models/expense.system.model";
+import { ExpenseSystemModel } from "../models/expense.system.model";
 
 export class UserSystemExpenseService {
 
@@ -10,7 +10,7 @@ export class UserSystemExpenseService {
 
   //Usuário para o sistema de despesa
   RegisterUserOnSystemExpense(userSystemExpenseId: number, userEmail: string) {
-    return this.httpClient.post<SystemExpenseModel>(`${this.baseUrl}/RegisterUserExpenseOnSystem?userSystemExpenseId=${userSystemExpenseId}&userEmail=${userEmail}`, null);
+    return this.httpClient.post<ExpenseSystemModel>(`${this.baseUrl}/RegisterUserExpenseOnSystem?userSystemExpenseId=${userSystemExpenseId}&userEmail=${userEmail}`, null);
   }
 
   UserSystemExpenseList(userExpenseId: number) {

@@ -1,7 +1,7 @@
 export class IncomeModel {
   PropertyName: string = "";
   Messages: string = '';
-  Notification: [] = [];
+  Notification: [];
 
   Id: number;
   Name: string;
