@@ -53,12 +53,12 @@ export class CategoryExpenseComponent implements OnInit {
 
     let itemExpense = new CategoryExpenseModel();
 
-    itemExpense.Name = data["name"].value;
     itemExpense.Id = 0;
+    itemExpense.Name = data["name"].value;
     itemExpense.SystemExpenseId = parseInt(this.systemExpenseSelected.id);
-    itemExpense.SystemIncomeId = 1;
 
-    this.categoryExpenseService.AddCategory(itemExpense)
+
+    this.categoryExpenseService.AddCategoryExpense(itemExpense)
       .subscribe((response: CategoryExpenseModel) => {
         this.categoryExpenseForm.reset();
       }, (error) => console.error(error), () => { })
@@ -66,7 +66,6 @@ export class CategoryExpenseComponent implements OnInit {
   }
 
   systemExpenseUserList() {
-
     this.expenseSystemService.SystemExpenseUserList(this.authSevice.getUserEmail())
       .subscribe((response: Array<ExpenseSystemModel>) => {
         var systemExpenseList = [];

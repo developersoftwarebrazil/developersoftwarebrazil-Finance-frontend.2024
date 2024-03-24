@@ -21,7 +21,7 @@ export class CategoryIncomeComponent implements OnInit {
   systemTheme: string;
 
   systemList = new Array<SelectModel>();
-  systemExpenseSelected = new SelectModel();
+
   systemIncomeSelected = new SelectModel();
 
   constructor(
@@ -58,8 +58,9 @@ export class CategoryIncomeComponent implements OnInit {
     itemIncome.Name = data["name"].value;
     itemIncome.Id = 0;
     itemIncome.SystemIncomeId = parseInt(this.systemIncomeSelected.id);
-    itemIncome.SystemExpenseId = 1;
-    this.categoryIncomeService.AddCategory(itemIncome)
+    
+
+    this.categoryIncomeService.AddCategoryIncome(itemIncome)
       .subscribe((response: CategoryIncomeModel) => {
         this.categoryIncomeForm.reset();
       }, (error) => console.error(error), () => { })

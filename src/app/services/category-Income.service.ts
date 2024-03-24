@@ -5,14 +5,15 @@ import { CategoryIncomeModel } from "../models/category-income.model";
 
 @Injectable({ providedIn: 'root' })
 
+
 export class CategoryIncomeService {
 
   private readonly baseUrl = environment['endPoint'];
   constructor(private httpClient: HttpClient) { }
 
   //Despense
-  AddCategory(category: CategoryIncomeModel) {
-    return this.httpClient.post<CategoryIncomeModel>(`${this.baseUrl}/AddCategory`, category);
+  AddCategoryIncome(categoryIncome: CategoryIncomeModel) {
+    return this.httpClient.post<CategoryIncomeModel>(`${this.baseUrl}/AddCategoryIncome`, categoryIncome);
   }
 
   CategoryUserIncomeList(userEmail: string) {

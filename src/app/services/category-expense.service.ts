@@ -11,8 +11,8 @@ export class CategoryExpenseService {
   constructor(private httpClient: HttpClient) { }
 
   //Despense
-  AddCategory(category: CategoryExpenseModel) {
-    return this.httpClient.post<CategoryExpenseModel>(`${this.baseUrl}/AddCategory`, category);
+  AddCategoryExpense(categoryExpense: CategoryExpenseModel) {
+    return this.httpClient.post<CategoryExpenseModel>(`${this.baseUrl}/AddCategoryExpense`, categoryExpense);
   }
 
   CategoryUserExpenseList(userEmail: string) {

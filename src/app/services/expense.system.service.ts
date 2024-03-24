@@ -11,8 +11,8 @@ export class ExpenseSystemService {
   constructor(private httpClient: HttpClient) { }
 
   //Despense
-  AddSystemExpense(expenseSystem: ExpenseSystemModel) {
-    return this.httpClient.post<ExpenseSystemModel>(`${this.baseUrl}/AddSystemExpense`, expenseSystem);
+  AddSystemExpense(expenseSystemExpense: ExpenseSystemModel) {
+    return this.httpClient.post<ExpenseSystemModel>(`${this.baseUrl}/AddSystemExpense`, expenseSystemExpense);
   }
 
   SystemExpenseUserList(userEmail: string) {
@@ -23,8 +23,8 @@ export class ExpenseSystemService {
     return this.httpClient.get(`${this.baseUrl}/GetSystemExpense?id=${id}`);
   }
 
-  UpdateSystemExpense(expenseSystem: ExpenseSystemModel) {
-    return this.httpClient.put<ExpenseSystemModel>(`${this.baseUrl}/UpdateSystemExpense`, expenseSystem)
+  UpdateSystemExpense(expenseSystemExpense: ExpenseSystemModel) {
+    return this.httpClient.put<ExpenseSystemModel>(`${this.baseUrl}/UpdateSystemExpense`, expenseSystemExpense)
   }
 
   GenerateSystemExpenseCopy() {
