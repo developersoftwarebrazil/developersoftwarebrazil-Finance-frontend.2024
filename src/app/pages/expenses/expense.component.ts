@@ -17,9 +17,9 @@ import { CategoryExpenseModel } from '../../models/category-expense.model';
 export class ExpenseComponent implements OnInit {
   //variáveis
   expenseForm: FormGroup;
-  color = 'accent';
-  checked = false;
-  disabled = false;
+  // color = 'accent';
+  isChecked = false;
+  // disabled = false;
 
 
   categoryExpenseList = new Array<SelectModel>();
@@ -45,6 +45,7 @@ export class ExpenseComponent implements OnInit {
 
         categoryUserExpenseList: ['', [Validators.required]],
 
+
       });
 
     this.categoryUserExpenseList();
@@ -60,9 +61,13 @@ export class ExpenseComponent implements OnInit {
 
     let itemExpense = new ExpenseModel();
 
-    itemExpense.Name = data["name"].value;
     itemExpense.Id = 0;
+    itemExpense.Name = data["name"].value;
     itemExpense.CategoryId = parseInt(this.categoryExpenseSelected.id);
+    itemExpense.Value = data["value"].value;
+    itemExpense.DueDate = data["date"].value;
+    itemExpense.PayedOut = this.isChecked;
+    itemExpense.CategoryId = parseInt(this.categoryExpenseSelected.id)
 
     this.expenseService.AddExpense(itemExpense)
       .subscribe((response: ExpenseModel) => {
@@ -70,9 +75,6 @@ export class ExpenseComponent implements OnInit {
       }, (error) => console.error(error), () => { })
   }
 
-  handleChangePayed(item: any) {
-    this.checked = item.checked as boolean;
-  }
   categoryUserExpenseList() {
     this.categoryExpenseService.CategoryUserExpenseList(this.authSevice.getUserEmail())
       .subscribe((response: Array<CategoryExpenseModel>) => {
@@ -87,6 +89,8 @@ export class ExpenseComponent implements OnInit {
         this.categoryExpenseList = categoryExpenseList;
       })
   }
-
+  onToggleChange(isChecked: boolean) {
+    console.log('Toggle state:', isChecked);
+  }
 
 }

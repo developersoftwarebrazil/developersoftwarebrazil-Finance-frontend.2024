@@ -49,6 +49,21 @@
 
             </div>
           </div>
+
+          <div class="row">
+            <div class="group-row">
+                    <mat-slide-toggle
+                        class="group-slide"
+                        [color]="color"
+                        [checked]="checked"
+                        [disabled]="disabled"
+                        (change)="PayedhandleChange($event)">
+                    Pago?
+                    </mat-slide-toggle>
+
+            </div>
+        </div>
+
           <div class="row">
             <div class="group-row">
               <button class="btn-form">Salvar</button>

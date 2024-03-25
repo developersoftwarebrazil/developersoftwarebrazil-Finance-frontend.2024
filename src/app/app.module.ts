@@ -23,6 +23,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/account/login/login.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthGuard } from './pages/guards/auth-guard.service';
+import { SlideToggleComponent } from './components/slide-toggle/slide-toggle.component';
+import { SlideToggleModule } from './components/slide-toggle/slide-toggle.module';
 
 const RxJS = [LoaderInterceptor, HTTPStatus]
 
@@ -30,6 +32,7 @@ const RxJS = [LoaderInterceptor, HTTPStatus]
   declarations: [
     AppComponent,
     LoginComponent,
+  
 
   ],
   imports: [
@@ -42,6 +45,7 @@ const RxJS = [LoaderInterceptor, HTTPStatus]
 
     FormsModule,
     ReactiveFormsModule,
+    SlideToggleModule,
 
     NgxSpinnerModule
   ],

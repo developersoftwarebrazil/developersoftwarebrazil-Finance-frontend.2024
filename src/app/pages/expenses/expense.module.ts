@@ -6,20 +6,27 @@ import { ExpenseComponent } from './expense.component';
 import { ExpenseRoutingModule } from './expense-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SlideToggleComponent } from '../../components/slide-toggle/slide-toggle.component';
+import { SlideToggleModule } from '../../components/slide-toggle/slide-toggle.module';
+
 
 @NgModule({
-  declarations: [ExpenseComponent],
+  declarations: [
+    ExpenseComponent,
+    SlideToggleComponent
+  ],
   imports: [
     CommonModule,
     ExpenseRoutingModule,
     SidebarModule,
     NavbarModule,
+    SlideToggleModule,
 
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    MatSlideToggleModule
+
+
   ]
 })
 export class ExpenseModule { }

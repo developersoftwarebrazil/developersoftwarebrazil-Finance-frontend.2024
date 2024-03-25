@@ -4,9 +4,10 @@ import { SelectModel } from '../../models/select.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
-import { IncomeSystemService } from '../../services/ncome.system.service';
 import { CategoryIncomeService } from '../../services/category-Income.service';
 import { CategoryIncomeModel } from '../../models/category-income.model';
+import { IncomeModel } from '../../models/income.model';
+import { IncomeService } from '../../services/income.service';
 
 @Component({
   selector: 'app-income',
@@ -16,8 +17,10 @@ import { CategoryIncomeModel } from '../../models/category-income.model';
 export class IncomeComponent implements OnInit {
   //variáveis
   incomeForm: FormGroup;
-  // systemList = new Array<SelectModel>();
-  // systemSelected = new SelectModel();
+  color = 'accent';
+  checked = false;
+  disabled = false;
+
 
   categoryIncomeList = new Array<SelectModel>();
   categoryIncomeSelected = new SelectModel();
@@ -25,7 +28,7 @@ export class IncomeComponent implements OnInit {
   constructor(
     public menuService: MenuService,
     public formBuilder: FormBuilder,
-    public incomeSystemService: IncomeSystemService,
+    public incomeService: IncomeService,
     public categoryIncomeService: CategoryIncomeService,
     public authSevice: AuthService
   ) { }
@@ -41,7 +44,7 @@ export class IncomeComponent implements OnInit {
         categoryInccomeSelect: ['', [Validators.required]],
 
       });
-      this.categoryUserIncomeList();
+    this.categoryUserIncomeList();
   }
 
   // apllicção
@@ -51,14 +54,24 @@ export class IncomeComponent implements OnInit {
   sendData() {
     debugger
     var data = this.dataForm();
-    alert(data['name'].value);
+
+    let itemIncome = new IncomeModel();
+    itemIncome.Id = 0;
+    itemIncome.Name = data["name"].value;
+    itemIncome.Value = data["value"].value;
+    itemIncome.IncomeDate = data["value"].value;
+
+    this.incomeService.AddIncome(itemIncome)
+      .subscribe((reponse: IncomeModel) => {
+        this.incomeForm.reset();
+      }, (error) => console.error(error), () => { })
   }
 
-  categoryUserIncomeList(){
+  categoryUserIncomeList() {
     this.categoryIncomeService.CategoryUserIncomeList(this.authSevice.getUserEmail())
-      .subscribe((response: Array<CategoryIncomeModel>)=>{
+      .subscribe((response: Array<CategoryIncomeModel>) => {
         var categoryIncomeList = [];
-        response.forEach((r)=>{
+        response.forEach((r) => {
           var item = new SelectModel();
           item.id = r.Id.toString();
           item.name = r.Name;
@@ -67,5 +80,10 @@ export class IncomeComponent implements OnInit {
         });
         this.categoryIncomeList = categoryIncomeList;
       })
+  }
+
+  //método psrs side toggle
+  PayedhandleChange(item:any) {
+    this.checked = item.checked as boolean;
   }
 }

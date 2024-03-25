@@ -6,6 +6,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
 import { IncomeComponent } from "./income.component";
 import { IncomeRoutingModule } from "./income-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    MatSlideToggleModule
 
   ]
 })

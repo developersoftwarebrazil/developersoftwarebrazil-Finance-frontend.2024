@@ -6,6 +6,7 @@ import { SystemExpenseComponent } from "./system-expense.component";
 import { SystemExpenseRoutingModule } from "./system-expense-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
+import { SlideToggleModule } from "../../components/slide-toggle/slide-toggle.module";
 
 @NgModule({
   providers: [],
@@ -19,6 +20,7 @@ import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    SlideToggleModule
 
   ]
 })
