@@ -4,9 +4,9 @@ import { SelectModel } from '../../models/select.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
-import { CategoryExpenseService } from '../../services/category-expense.service';
-import { ExpenseSystemService } from '../../services/expense.system.service';
-import { CategoryExpenseModel } from '../../models/category-expense.model';
+import { IncomeSystemService } from '../../services/ncome.system.service';
+import { CategoryIncomeService } from '../../services/category-Income.service';
+import { CategoryIncomeModel } from '../../models/category-income.model';
 
 @Component({
   selector: 'app-income',
@@ -15,39 +15,38 @@ import { CategoryExpenseModel } from '../../models/category-expense.model';
 })
 export class IncomeComponent implements OnInit {
   //variáveis
-  expenseForm: FormGroup;
-  systemList = new Array<SelectModel>();
-  systemSelected = new SelectModel();
+  incomeForm: FormGroup;
+  // systemList = new Array<SelectModel>();
+  // systemSelected = new SelectModel();
 
-  categoryList = new Array<SelectModel>();
-  categorySelected = new SelectModel();
+  categoryIncomeList = new Array<SelectModel>();
+  categoryIncomeSelected = new SelectModel();
 
   constructor(
     public menuService: MenuService,
     public formBuilder: FormBuilder,
-
-    public expenseSystemService: ExpenseSystemService,
-    public categoryExpenseService: CategoryExpenseService,
+    public incomeSystemService: IncomeSystemService,
+    public categoryIncomeService: CategoryIncomeService,
     public authSevice: AuthService
   ) { }
   ngOnInit(): void {
     this.menuService.menuSelected = 4;
 
-    this.expenseForm = this.formBuilder.group(
+    this.incomeForm = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
         value: ['', [Validators.required]],
         data: ['', [Validators.required]],
-        systemSelect: ['', [Validators.required]],
-        categorySelect: ['', [Validators.required]],
+        systemIncomeSelect: ['', [Validators.required]],
+        categoryInccomeSelect: ['', [Validators.required]],
 
       });
-      this.categoryUserExpenseList();
+      this.categoryUserIncomeList();
   }
 
   // apllicção
   dataForm() {
-    return this.expenseForm.controls;
+    return this.incomeForm.controls;
   }
   sendData() {
     debugger
@@ -55,18 +54,18 @@ export class IncomeComponent implements OnInit {
     alert(data['name'].value);
   }
 
-  categoryUserExpenseList(){
-    this.categoryExpenseService.CategoryUserExpenseList(this.authSevice.getUserEmail())
-      .subscribe((response: Array<CategoryExpenseModel>)=>{
-        var categoryExpenseList = [];
+  categoryUserIncomeList(){
+    this.categoryIncomeService.CategoryUserIncomeList(this.authSevice.getUserEmail())
+      .subscribe((response: Array<CategoryIncomeModel>)=>{
+        var categoryIncomeList = [];
         response.forEach((r)=>{
           var item = new SelectModel();
           item.id = r.Id.toString();
           item.name = r.Name;
 
-          categoryExpenseList.push(item)
+          categoryIncomeList.push(item)
         });
-        this.categoryList = categoryExpenseList;
+        this.categoryIncomeList = categoryIncomeList;
       })
   }
 }

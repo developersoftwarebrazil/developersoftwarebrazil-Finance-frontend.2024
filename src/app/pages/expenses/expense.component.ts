@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { SelectModel } from '../../models/select.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { CategoryIncomeService } from '../../services/category-Income.service';
-import { IncomeSystemService } from '../../services/ncome.system.service';
-import { CategoryIncomeModel } from '../../models/category-income.model';
-import { IncomeModel } from '../../models/income.model';
-import { IncomeService } from '../../services/income.service';
+import { ExpenseSystemService } from '../../services/expense.system.service';
+import { ExpenseService } from '../../services/expense.service';
+import { CategoryExpenseService } from '../../services/category-expense.service';
+import { ExpenseModel } from '../../models/expense.model';
+import { CategoryExpenseModel } from '../../models/category-expense.model';
 
 @Component({
   selector: 'app-expense',
@@ -16,76 +16,75 @@ import { IncomeService } from '../../services/income.service';
 })
 export class ExpenseComponent implements OnInit {
   //variáveis
-  incomeForm: FormGroup;
+  expenseForm: FormGroup;
   color = 'accent';
   checked = false;
   disabled = false;
-  // systemList = new Array<SelectModel>();
-  // systemSelected = new SelectModel();
 
-  categoryList = new Array<SelectModel>();
-  categorySelected = new SelectModel();
+
+  categoryExpenseList = new Array<SelectModel>();
+  categoryExpenseSelected = new SelectModel();
 
   constructor(
     public menuService: MenuService,
     public formBuilder: FormBuilder,
 
-    public incomeSystemService: IncomeSystemService,
-    public incomeService: IncomeService,
-    public categoryIncomeService: CategoryIncomeService,
+    public expenseSystemService: ExpenseSystemService,
+    public expenseService: ExpenseService,
+    public categoryExpenseService: CategoryExpenseService,
     public authSevice: AuthService
   ) { }
   ngOnInit(): void {
-    this.menuService.menuSelected == 5;
+    this.menuService.menuSelected = 5;
 
-    this.incomeForm = this.formBuilder.group(
+    this.expenseForm = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
         value: ['', [Validators.required]],
         data: ['', [Validators.required]],
 
-        categoryUserIncomeList: ['', [Validators.required]],
+        categoryUserExpenseList: ['', [Validators.required]],
 
       });
 
-    this.categoryUserIncomeList();
+    this.categoryUserExpenseList();
   }
 
   // apllicção
   dataForm() {
-    return this.incomeForm.controls;
+    return this.expenseForm.controls;
   }
   sendData() {
     debugger
     var data = this.dataForm();
 
-    let itemIncome = new IncomeModel();
+    let itemExpense = new ExpenseModel();
 
-    itemIncome.Name = data["name"].value;
-    itemIncome.Id = 0;
-    itemIncome.CategoryId = parseInt(this.categorySelected.id);
+    itemExpense.Name = data["name"].value;
+    itemExpense.Id = 0;
+    itemExpense.CategoryId = parseInt(this.categoryExpenseSelected.id);
 
-    this.incomeService.AddIncome(itemIncome)
-      .subscribe((response: IncomeModel) => {
-        this.incomeForm.reset();
+    this.expenseService.AddExpense(itemExpense)
+      .subscribe((response: ExpenseModel) => {
+        this.expenseForm.reset();
       }, (error) => console.error(error), () => { })
   }
 
   handleChangePayed(item: any) {
     this.checked = item.checked as boolean;
   }
-  categoryUserIncomeList() {
-    this.categoryIncomeService.CategoryUserIncomeList(this.authSevice.getUserEmail())
-      .subscribe((response: Array<CategoryIncomeModel>) => {
-        var categoryIncomeList = [];
+  categoryUserExpenseList() {
+    this.categoryExpenseService.CategoryUserExpenseList(this.authSevice.getUserEmail())
+      .subscribe((response: Array<CategoryExpenseModel>) => {
+        var categoryExpenseList = [];
         response.forEach((r) => {
           var item = new SelectModel();
           item.id = r.Id.toString();
           item.name = r.Name;
 
-          categoryIncomeList.push(item)
+          categoryExpenseList.push(item)
         });
-        this.categoryList = categoryIncomeList;
+        this.categoryExpenseList = categoryExpenseList;
       })
   }
 
