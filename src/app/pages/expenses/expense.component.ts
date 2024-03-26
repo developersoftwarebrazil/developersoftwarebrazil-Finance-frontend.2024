@@ -41,9 +41,9 @@ export class ExpenseComponent implements OnInit {
       {
         name: ['', [Validators.required]],
         value: ['', [Validators.required]],
-        data: ['', [Validators.required]],
-
+        date: ['', [Validators.required]],
         categoryUserExpenseList: ['', [Validators.required]],
+        categoryExpenseSelect:['',[Validators.required]]
 
 
       });
@@ -62,12 +62,12 @@ export class ExpenseComponent implements OnInit {
     let itemExpense = new ExpenseModel();
 
     itemExpense.Id = 0;
-    itemExpense.Name = data["name"].value;
-    itemExpense.CategoryId = parseInt(this.categoryExpenseSelected.id);
     itemExpense.Value = data["value"].value;
     itemExpense.DueDate = data["date"].value;
     itemExpense.PayedOut = this.isChecked;
-    itemExpense.CategoryId = parseInt(this.categoryExpenseSelected.id)
+    itemExpense.TransactionTypes= 1;
+    itemExpense.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
+    itemExpense.Name = data["name"].value;
 
     this.expenseService.AddExpense(itemExpense)
       .subscribe((response: ExpenseModel) => {
@@ -89,8 +89,9 @@ export class ExpenseComponent implements OnInit {
         this.categoryExpenseList = categoryExpenseList;
       })
   }
-  onToggleChange(isChecked: boolean) {
-    console.log('Toggle state:', isChecked);
+  payedHandleChange(itemExpense: any) {
+
+    this.isChecked = itemExpense.isChecked as boolean;
   }
 
 }

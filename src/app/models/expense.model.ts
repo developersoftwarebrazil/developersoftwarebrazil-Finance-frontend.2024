@@ -15,5 +15,5 @@ export class ExpenseModel {
   PayedOut: boolean;
   OverdueExpense: Date;
   TransactionTypes: number;
-  CategoryId: number;
+  CategoryExpenseId: number;
 }
