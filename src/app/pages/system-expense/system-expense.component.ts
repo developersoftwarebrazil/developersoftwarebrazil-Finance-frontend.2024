@@ -17,7 +17,7 @@ export class SystemExpenseComponent {
   systemForm: FormGroup;
 
   // checked = false;
-  // generateExpenseCopy = 'accent';
+   generateExpenseCopy = 'accent';
   // disabled = false;
 
   systemList = new Array<SelectModel>();
@@ -30,17 +30,18 @@ export class SystemExpenseComponent {
     public formBuilder: FormBuilder,
     public authService: AuthService
   ) { }
+
   ngOnInit(): void {
     this.menuService.menuSelected = 2;
 
     this.systemForm = this.formBuilder.group
       ({
         name: ['', [Validators.required]],
-        // month: ['', [Validators.required]],
-        // monthCopy: ['', [Validators.required]],
-        // dayMonthlyBookClose: ['', [Validators.required]],
-        // year: ['', [Validators.required]],
-        // yearCopy: ['', [Validators.required]],
+        month: ['', [Validators.required]],
+        monthCopy: ['', [Validators.required]],
+        dayMonthlyBookClose: ['', [Validators.required]],
+        year: ['', [Validators.required]],
+        yearCopy: ['', [Validators.required]],
       });
   }
 
@@ -54,9 +55,9 @@ export class SystemExpenseComponent {
 
     alert(data["name"].value);
     let item = new ExpenseSystemModel();
-    item.Name = data["name"].value;
 
     item.Id = 0;
+    item.Name = data["name"].value;
     item.Month = 0;
     item.MonthCopy = 0;
     item.DayMonthlyBookClose = 0;

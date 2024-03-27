@@ -39,9 +39,10 @@ export class IncomeComponent implements OnInit {
       {
         name: ['', [Validators.required]],
         value: ['', [Validators.required]],
-        data: ['', [Validators.required]],
-        systemIncomeSelect: ['', [Validators.required]],
-        categoryInccomeSelect: ['', [Validators.required]],
+        date: ['', [Validators.required]],
+
+        categoryIncomeSelect: ['', [Validators.required]],
+        categoryUserIncomeList: ['', [Validators.required]]
 
       });
     this.categoryUserIncomeList();
@@ -56,10 +57,17 @@ export class IncomeComponent implements OnInit {
     var data = this.dataForm();
 
     let itemIncome = new IncomeModel();
+
     itemIncome.Id = 0;
     itemIncome.Name = data["name"].value;
+    itemIncome.Month = 0;
+    itemIncome.Year = 0;
     itemIncome.Value = data["value"].value;
-    itemIncome.IncomeDate = data["value"].value;
+    itemIncome.RegistrationDate = data["date"].value;
+    itemIncome.RegistrationChangeDate = data["date"].value;
+    itemIncome.IncomeDate = data["date"].value;
+    itemIncome.TransactionTypes = 2;
+    itemIncome.CategoryIncomeId = parseInt(this.categoryIncomeSelected.id);
 
     this.incomeService.AddIncome(itemIncome)
       .subscribe((reponse: IncomeModel) => {
@@ -83,7 +91,7 @@ export class IncomeComponent implements OnInit {
   }
 
   //método psrs side toggle
-  PayedhandleChange(item:any) {
+  PayedhandleChange(item: any) {
     this.checked = item.checked as boolean;
   }
 }

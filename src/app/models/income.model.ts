@@ -12,6 +12,8 @@ export class IncomeModel {
   RegistrationChangeDate: Date;
   IncomeDate: Date;
   TransactionTypes: number;
-  CategoryId: number;
+  CategoryIncomeId: number;
 
 }
+
+

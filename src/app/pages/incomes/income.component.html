@@ -24,7 +24,7 @@
           </div>
           <div class="row">
             <div class="group-row">
-              <label>Ex=scolha a categoria de investimentos</label>
+              <label>Escolha a categoria da renda</label>
               <ng-select class="row-select-patter" [(ngModel)]="categoryIncomeSelected" [items]="categoryIncomeList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="categoryUserIncomeList"></ng-select>
             </div>
           </div>
@@ -49,21 +49,6 @@
 
             </div>
           </div>
-
-          <div class="row">
-            <div class="group-row">
-                    <mat-slide-toggle
-                        class="group-slide"
-                        [color]="color"
-                        [checked]="checked"
-                        [disabled]="disabled"
-                        (change)="PayedhandleChange($event)">
-                    Pago?
-                    </mat-slide-toggle>
-
-            </div>
-        </div>
-
           <div class="row">
             <div class="group-row">
               <button class="btn-form">Salvar</button>
