@@ -3,7 +3,64 @@
   <navbar></navbar>
 </div>
 <div class="container">
-  <div class="content">
+
+  <!-- Conteúdo para a tabela de listagem de sistemas  -->
+  <div class="content page" *ngIf="screenType == 1">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Listagem Sistema para Investimentos</h2>
+          <h5>Gerenciamento de sistemas para investimentos, adicione edite e remova.</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="bread-crumbs">
+        <div class="svg-home-ico" (click)="goToHomePage()">
+        </div>
+        <h5 (click)="register()">Adicionar sistema</h5>
+      </div>
+    </div>
+    <div class="page-content">
+      <!-- Tabela  -->
+      <table cellSpacing="0" cellPadding="0">
+        <thead>
+          <tr>
+            <td>Código</td>
+            <td>Nome</td>
+            <td>Ação</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="select-item" *ngFor="let item of systemIncomeTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
+            <td>{{item.Id}}</td>
+            <td>{{item.Name}}</td>
+            <td class="action"><a (click)="register()">Adicionar</a> | <a>Editar</a> | <a>Remover</a> </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Paginação  -->
+      <div class="table-footer" *ngIf="pagination && systemIncomeTableList">
+        <label for="" class="show-Items">Mostrar</label>
+        <ng-select class="show-drop-table" [(ngModel)]="itemPerPages" [clearable]="false" [searchable]="false">
+          <ng-option [value]="5">5</ng-option>
+          <ng-option [value]="10">10</ng-option>
+          <ng-option [value]="50">50</ng-option>
+          <ng-option value="100">100</ng-option>
+        </ng-select>
+
+        <div class="paginstion-container">
+          <pagination-controls id="{{this.id}}" previousLabel="Anterior" nextLabel="Próximo" [responsive]="true" (pageChange)="pageChange($event)">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- conteúdo para o cadastro de sistema -->
+  <div class="content" *ngIf="screenType == 2">
     <div class="header">
       <div class="title-content">
         <div class="title">
@@ -35,4 +92,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Conteúdo para a edição de sistemas  -->
+  <div class="content" *ngIf="screenType == 3"></div>
+
+  <!-- Conteúdo para a remover de sistemas  -->
+  <div class="content" *ngIf="screenType == 3"></div>
+
 </div>

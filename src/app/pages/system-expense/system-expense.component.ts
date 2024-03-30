@@ -19,9 +19,11 @@ export class SystemExpenseComponent {
   isChecked = false;
   generateExpenseCopy = 'accent';
 
-  //Cofigurações para a tabela de listagens
+  // Define qual tela será visualizada no sistema
   screenType = 1; // 1-listagem, 2-cadastro, 3-edição, 4-deletar
-  systemExpenseListTable: Array<ExpenseSystemModel>;
+
+  //Cofigurações para a tabela de listagens
+  systemExpenseTableList: Array<ExpenseSystemModel>;
   id: string;
   page: number = 1;
   config: any;
@@ -44,7 +46,6 @@ export class SystemExpenseComponent {
 
     this.configPage();
     this.systemExpenseUserList();
-    console.log(this.systemExpenseUserList())
     this.systemForm = this.formBuilder.group
       ({
         name: ['', [Validators.required]],
@@ -56,7 +57,7 @@ export class SystemExpenseComponent {
     });
   }
 
-  //métodos da apllicção default
+  //métodos default da aplicção
   dataForm() {
     return this.systemForm.controls;
   }
@@ -93,7 +94,6 @@ export class SystemExpenseComponent {
     this.router.navigate(['/dashboard']);
   }
   //métodos usados para carregar e configurar as tableas
-
   configPage() {
     this.id = this.configPageToGenerateId();
     this.config = {
@@ -131,7 +131,7 @@ export class SystemExpenseComponent {
 
     this.expenseSystemService.SystemExpenseUserList(this.authService.getUserEmail())
       .subscribe((response: Array<ExpenseSystemModel>) => {
-        this.systemExpenseListTable = response;
+        this.systemExpenseTableList = response;
 
       }
         , (error) => console.error(error), () => { })

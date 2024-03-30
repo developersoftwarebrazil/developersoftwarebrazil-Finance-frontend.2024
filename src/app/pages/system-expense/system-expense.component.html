@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="select-item" *ngFor="let item of systemExpenseListTable | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
+          <tr class="select-item" *ngFor="let item of systemExpenseTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
             <td>{{item.Id}}</td>
             <td>{{item.Name}}</td>
             <td class="action"><a (click)="register()">Adicionar</a> | <a>Editar</a> | <a>Remover</a> </td>
@@ -42,7 +42,7 @@
       </table>
 
       <!-- Paginação  -->
-      <div class="table-footer" *ngIf="pagination && systemExpenseListTable">
+      <div class="table-footer" *ngIf="pagination && systemExpenseTableList">
         <label for="" class="show-Items">Mostrar</label>
         <ng-select class="show-drop-table" [(ngModel)]="itemPerPages" [clearable]="false" [searchable]="false">
           <ng-option [value]="5">5</ng-option>

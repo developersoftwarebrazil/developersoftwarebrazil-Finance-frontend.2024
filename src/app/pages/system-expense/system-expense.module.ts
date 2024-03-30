@@ -20,11 +20,9 @@ import {MatIconModule} from "@angular/material/icon"
 
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule,
     SlideToggleModule,
 
     NgxPaginationModule,
-    FormsModule,
     NgSelectModule,
     MatIconModule
 
