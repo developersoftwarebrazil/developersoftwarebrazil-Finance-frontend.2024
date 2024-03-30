@@ -90,7 +90,6 @@ export class ExpenseComponent implements OnInit {
       })
   }
   payedHandleChange(itemExpense: any) {
-
     this.isChecked = itemExpense.isChecked as boolean;
   }
 

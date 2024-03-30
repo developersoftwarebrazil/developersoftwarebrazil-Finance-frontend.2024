@@ -1,0 +1,106 @@
+// tabela
+table {
+  width: 100%;
+  background: var(--body-secundary-color-bg);
+
+  thead {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    background: var(--body-theme-color-bg);
+    color: var(--text-color-especial);
+
+    td {
+      padding: 1rem;
+    }
+    td:first-child {
+      border-radius: 8px 0 0 0;
+    }
+    td:last-child {
+      border-radius: 0 8px 0 0;
+    }
+  }
+  tbody {
+    td {
+      padding: 0px 0 0 1rem;
+      color: var(--against-color-font);
+      font-family: "Ubuntu";
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      cursor: pointer;
+    }
+    .action {
+      display: flex;
+      align-items: baseline;
+    }
+  }
+}
+.table-line {
+  height: 3.125rem;
+}
+
+.white-line {
+  background-color: var(--body-selected-color-bg);
+}
+
+.table-footer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  padding: 0.9rem 0;
+  background: var(--body-theme-color-bg);
+  border-radius: 0 0 8px 8px;
+}
+
+// Controla o mostrar quantidade de pitems para a paginação
+.show-Items {
+  margin: 0 1rem 0 1rem;
+  font-family: "Ubuntu";
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.show-drop-table .ng-select-container.ng-has-value {
+  padding: 2px;
+  background: var(--body-selected-color-bg);
+
+  color: var(--text-color-especial);
+  border: inherit;
+}
+
+.show-drop-table .ng-option-label {
+  color: var(--text-color-especial);
+}
+//Controla o container de paginação do footer da tablea
+.paginstion-container {
+  margin-left: auto;
+  align-items: center;
+}
+
+.ngx-pagination {
+  margin-top: 10px;
+  padding: 2px 2px !important;
+  cursor: default !important;
+}
+li.current {
+  background-color: black;
+}
+.ngx-pagination .current {
+  border-radius: 4px;
+}
+.ngx-pagination .current span {
+  color: var(--against-color-font);
+}
+//Contrloar as setas
+.ngx-pagination .ng-star-inserted,
+.ngx-pagination .pagination-previous::before,
+.ngx-pagination .pagination-next::after {
+  color: var(--against-color-font);
+  font-size: 1.3rem;
+}

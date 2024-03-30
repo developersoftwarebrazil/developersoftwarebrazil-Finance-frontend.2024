@@ -7,7 +7,8 @@ import { SystemExpenseRoutingModule } from "./system-expense-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
 import { SlideToggleModule } from "../../components/slide-toggle/slide-toggle.module";
-
+import { NgxPaginationModule } from "ngx-pagination";
+import {MatIconModule} from "@angular/material/icon"
 @NgModule({
   providers: [],
   declarations: [SystemExpenseComponent],
@@ -20,7 +21,12 @@ import { SlideToggleModule } from "../../components/slide-toggle/slide-toggle.mo
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    SlideToggleModule
+    SlideToggleModule,
+
+    NgxPaginationModule,
+    FormsModule,
+    NgSelectModule,
+    MatIconModule
 
   ]
 })

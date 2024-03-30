@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ETheme } from '../../../enums/EThemes.enum';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,9 @@ export class NavbarComponent implements OnInit {
   public icon: string = ETheme.ICON_MOON;
   public textTheme = ETheme.ICON_MOON;
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
 
@@ -32,6 +35,10 @@ export class NavbarComponent implements OnInit {
       this.textTheme = ETheme.TEXT_MOON,
       this.icon = ETheme.ICON_MOON
     );
+  }
+  goToLoginPage(){
+    localStorage.clear();
+    this.router.navigate(['/login'])
   }
 
 }

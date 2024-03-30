@@ -1,11 +1,11 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MenuService } from '../../services/menuservice';
-import { Component, OnInit } from '@angular/core';
-import { SelectModel } from '../../models/select.model';
-import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
-import { ExpenseSystemService } from '../../services/expense.system.service';
-import { ExpenseSystemModel } from '../../models/expense.system.model';
+import { Component } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { ExpenseSystemModel } from "../../models/expense.system.model";
+import { SelectModel } from "../../models/select.model";
+import { AuthService } from "../../services/auth.service";
+import { ExpenseSystemService } from "../../services/expense.system.service";
+import { MenuService } from "../../services/menuservice";
 
 @Component({
   selector: 'system',
@@ -16,16 +16,24 @@ export class SystemExpenseComponent {
   //variáveis
   systemForm: FormGroup;
 
-  // checked = false;
-   generateExpenseCopy = 'accent';
-  // disabled = false;
+  isChecked = false;
+  generateExpenseCopy = 'accent';
 
-  systemList = new Array<SelectModel>();
-  systemSelected = new SelectModel();
+  //Cofigurações para a tabela de listagens
+  screenType = 1; // 1-listagem, 2-cadastro, 3-edição, 4-deletar
+  systemExpenseListTable: Array<ExpenseSystemModel>;
+  id: string;
+  page: number = 1;
+  config: any;
+  pagination: boolean = true;
+  itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
+
+  systemEspenseList = new Array<SelectModel>();
+  systemExpenseSelected = new SelectModel();
 
   constructor(
     private router: Router,
-    public systemExpenseService: ExpenseSystemService,
+    public expenseSystemService: ExpenseSystemService,
     public menuService: MenuService,
     public formBuilder: FormBuilder,
     public authService: AuthService
@@ -34,6 +42,9 @@ export class SystemExpenseComponent {
   ngOnInit(): void {
     this.menuService.menuSelected = 2;
 
+    this.configPage();
+    this.systemExpenseUserList();
+    console.log(this.systemExpenseUserList())
     this.systemForm = this.formBuilder.group
       ({
         name: ['', [Validators.required]],
@@ -42,10 +53,10 @@ export class SystemExpenseComponent {
         dayMonthlyBookClose: ['', [Validators.required]],
         year: ['', [Validators.required]],
         yearCopy: ['', [Validators.required]],
-      });
+    });
   }
 
-  // apllicção
+  //métodos da apllicção default
   dataForm() {
     return this.systemForm.controls;
   }
@@ -65,18 +76,66 @@ export class SystemExpenseComponent {
     item.YearCopy = 0;
     item.GenerateExpensesCopy = true;
 
-
-
     // faz a chamada no backend
-    this.systemExpenseService.AddSystemExpense(item)
+    this.expenseSystemService.AddSystemExpense(item)
       // se tudo ocorreu certo
       .subscribe((response: ExpenseSystemModel) => {
         this.systemForm.reset();
 
-        this.systemExpenseService.RegisterUserOnSystemExpense(response.Id, this.authService.getUserEmail())
+        this.expenseSystemService.RegisterUserOnSystemExpense(response.Id, this.authService.getUserEmail())
           .subscribe((response: any) => {
             debugger
           }, (error) => console.error(error), () => { })
       }, (error) => console.error(error), () => { })
+  }
+  // redireciona para a pagiá home do site
+  goToHomePage(){
+    this.router.navigate(['/dashboard']);
+  }
+  //métodos usados para carregar e configurar as tableas
+
+  configPage() {
+    this.id = this.configPageToGenerateId();
+    this.config = {
+      id: this.id,
+      currentPage: this.page,
+      itemsPerPage: this.itemPerPages,
+    };
+  }
+
+  configPageToGenerateId() {
+    var result = '';
+    var charecters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = charecters.length;
+    for (var i = 0; i < 5; i++) {
+      result += charecters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+  //mostra a pagina de cadastro
+  register() {
+    this.screenType = 2;
+    this.systemForm.reset();
+  }
+  itemPerPagesChange() {
+    this.page = 1;
+    this.config.currentPage = this.page;
+    this.config.itemsPerPage = this.page;
+  }
+  pageChange(event: any) {
+    this.page = event;
+    this.config.currentPage = this.page;
+  }
+  systemExpenseUserList() {
+    this.screenType = 1;
+
+    this.expenseSystemService.SystemExpenseUserList(this.authService.getUserEmail())
+      .subscribe((response: Array<ExpenseSystemModel>) => {
+        this.systemExpenseListTable = response;
+
+      }
+        , (error) => console.error(error), () => { })
+
+
   }
 }
