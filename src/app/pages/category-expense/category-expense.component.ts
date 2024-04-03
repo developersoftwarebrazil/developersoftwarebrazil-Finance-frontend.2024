@@ -7,6 +7,7 @@ import { ExpenseSystemModel } from '../../models/expense.system.model';
 import { AuthService } from '../../services/auth.service';
 import { CategoryExpenseModel } from '../../models/category-expense.model';
 import { CategoryExpenseService } from '../../services/category-expense.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,12 +19,23 @@ export class CategoryExpenseComponent implements OnInit {
   //variáveis
   categoryExpenseForm: FormGroup;
 
+  // Define qual tela será visualizada no sistema
+  screenType = 1; // 1-listagem, 2-cadastro, 3-edição, 4-deletar
+
+  //Cofigurações para a tabela de listagens
+  categoryExpenseTableList: Array<CategoryExpenseModel>;
+  id: string;
+  page: number = 1;
+  config: any;
+  pagination: boolean = true;
+  itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
 
   systemList = new Array<SelectModel>();
   systemExpenseSelected = new SelectModel();
 
 
   constructor(
+    public router: Router,
     public menuService: MenuService,
     public formBuilder: FormBuilder,
     public expenseSystemService: ExpenseSystemService,
@@ -35,6 +47,8 @@ export class CategoryExpenseComponent implements OnInit {
 
     this.menuService.menuSelected = 3;
 
+    this.configPage();
+    this.categoryExpenseUserList();
     this.categoryExpenseForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       systemExpenseSelected: ['', [Validators.required]],
@@ -42,11 +56,14 @@ export class CategoryExpenseComponent implements OnInit {
     this.systemExpenseUserList();
   }
 
-  // apllicção
+  // métodos da apllicção
   dataForm() {
     return this.categoryExpenseForm.controls;
   }
-
+ // redireciona para a pagiá home do site
+ goToHomePage(){
+  this.router.navigate(['/dashboard']);
+}
   sendExpenseData() {
     debugger
     var data = this.dataForm();
@@ -80,5 +97,50 @@ export class CategoryExpenseComponent implements OnInit {
         this.systemList = systemExpenseList;
       })
   }
+  //Configurações e métodos para a tabela
 
+  //métodos usados para carregar e configurar as tableas
+  configPage() {
+    this.id = this.configPageToGenerateId();
+    this.config = {
+      id: this.id,
+      currentPage: this.page,
+      itemsPerPage: this.itemPerPages,
+    };
+  }
+
+  configPageToGenerateId() {
+    var result = '';
+    var charecters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = charecters.length;
+    for (var i = 0; i < 5; i++) {
+      result += charecters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+  //mostra a pagina de cadastro
+  register() {
+    this.screenType = 2;
+    this.categoryExpenseForm.reset();
+  }
+  itemPerPagesChange() {
+    this.page = 1;
+    this.config.currentPage = this.page;
+    this.config.itemsPerPage = this.page;
+  }
+  pageChange(event: any) {
+    this.page = event;
+    this.config.currentPage = this.page;
+  }
+  categoryExpenseUserList() {
+    this.screenType = 1;
+
+    this.categoryExpenseService.CategoryUserExpenseList(this.authSevice.getUserEmail())
+      .subscribe((response: Array<CategoryExpenseModel>) => {
+        this.categoryExpenseTableList = response;
+
+      }
+        , (error) => console.error(error), () => { })
+
+  }
 }

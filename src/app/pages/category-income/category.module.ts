@@ -6,6 +6,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
 import { CategoryIncomeComponent } from "./category-income.component";
 import { CategoryIncomeRoutingModule } from "./category-income-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NgxPaginationModule } from "ngx-pagination";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    NgxPaginationModule
 
   ]
 })
