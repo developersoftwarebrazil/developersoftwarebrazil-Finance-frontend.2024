@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,13 +9,14 @@ import { LoginService } from '../../../services/login.service';
   templateUrl: './login.v1.component.html',
   styleUrl: './login.v1.component.scss'
 })
-export class LoginComponent{
+export class LoginComponent {
 
   // variaveis
   loginForm: FormGroup;
   inputFocused: boolean = false;
 
   constructor(
+    private spinner: NgxSpinnerService,
     private router: Router,
     private loginService: LoginService,
     public formBuilder: FormBuilder,
@@ -23,6 +25,8 @@ export class LoginComponent{
   // metodos
   // executado ao iniciar a página
   ngOnInit(): void {
+    this.spinner.show()
+
     this.loginForm = this.formBuilder.group
       ({
         email: ["", [Validators.required, Validators.email]],
@@ -47,7 +51,7 @@ export class LoginComponent{
   userLogin() {
     this.loginService.login(this.formData["email"].value, this.formData['password'].value)
       .subscribe(token => {
-        alert(token);
+
         this.router.navigate(['/dashboard']);
       },
         err => {

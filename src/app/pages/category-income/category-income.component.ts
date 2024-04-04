@@ -65,10 +65,10 @@ export class CategoryIncomeComponent implements OnInit {
     return this.categoryIncomeForm.controls;
   }
 
-   // redireciona para a pagiá home do site
- goToHomePage(){
-  this.router.navigate(['/dashboard']);
-}
+  // redireciona para a pagiá home do site
+  goToHomePage() {
+    this.router.navigate(['/dashboard']);
+  }
 
   sendIncomeData() {
     debugger
@@ -84,6 +84,8 @@ export class CategoryIncomeComponent implements OnInit {
     this.categoryIncomeService.AddCategoryIncome(itemIncome)
       .subscribe((response: CategoryIncomeModel) => {
         this.categoryIncomeForm.reset();
+        this.categoryIncomeUserList();
+
       }, (error) => console.error(error), () => { })
   }
 

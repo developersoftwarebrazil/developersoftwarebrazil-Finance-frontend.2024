@@ -8,6 +8,7 @@ import { CategoryIncomeService } from '../../services/category-Income.service';
 import { CategoryIncomeModel } from '../../models/category-income.model';
 import { IncomeModel } from '../../models/income.model';
 import { IncomeService } from '../../services/income.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-income',
@@ -21,11 +22,22 @@ export class IncomeComponent implements OnInit {
   checked = false;
   disabled = false;
 
+  // Define qual tela será visualizada no sistema
+  screenType = 1; // 1-listagem, 2-cadastro, 3-edição, 4-deletar
+
+  //Cofigurações para a tabela de listagens
+  incomeTableList: Array<IncomeModel>;
+  id: string;
+  page: number = 1;
+  config: any;
+  pagination: boolean = true;
+  itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
 
   categoryIncomeList = new Array<SelectModel>();
   categoryIncomeSelected = new SelectModel();
 
   constructor(
+    public router: Router,
     public menuService: MenuService,
     public formBuilder: FormBuilder,
     public incomeService: IncomeService,
@@ -34,7 +46,8 @@ export class IncomeComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.menuService.menuSelected = 4;
-
+    this, this.configPage();
+    this.incomeUserList();
     this.incomeForm = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
@@ -72,6 +85,7 @@ export class IncomeComponent implements OnInit {
     this.incomeService.AddIncome(itemIncome)
       .subscribe((reponse: IncomeModel) => {
         this.incomeForm.reset();
+        this.incomeUserList();
       }, (error) => console.error(error), () => { })
   }
 
@@ -94,4 +108,52 @@ export class IncomeComponent implements OnInit {
   PayedhandleChange(item: any) {
     this.checked = item.checked as boolean;
   }
+  // redireciona para a pagiá home do site
+  goToHomePage() {
+    this.router.navigate(['/dashboard']);
+  }
+  //métodos usados para carregar e configurar as tableas
+  configPage() {
+    this.id = this.configPageToGenerateId();
+    this.config = {
+      id: this.id,
+      currentPage: this.page,
+      itemsPerPage: this.itemPerPages,
+    };
+  }
+
+  configPageToGenerateId() {
+    var result = '';
+    var charecters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = charecters.length;
+    for (var i = 0; i < 5; i++) {
+      result += charecters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+  //mostra a pagina de cadastro
+  register() {
+    this.screenType = 2;
+    this.incomeForm.reset();
+  }
+  itemPerPagesChange() {
+    this.page = 1;
+    this.config.currentPage = this.page;
+    this.config.itemsPerPage = this.page;
+  }
+  pageChange(event: any) {
+    this.page = event;
+    this.config.currentPage = this.page;
+  }
+  incomeUserList() {
+    this.screenType = 1;
+
+    this.incomeService.IncomeUserList(this.authSevice.getUserEmail())
+      .subscribe((response: Array<IncomeModel>) => {
+        this.incomeTableList = response;
+
+      }
+        , (error) => console.error(error), () => { })
+  }
+
 }

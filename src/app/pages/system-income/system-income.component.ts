@@ -20,16 +20,16 @@ export class SystemIncomeComponent {
   //Deifine qual tela será vixualizada no sistema
   screenType: number = 1;// 1-listagem, 2-cadastro, 3-edição, 4-deletar
 
-   //Cofigurações para a tabela de listagens
-   systemIncomeTableList: Array<IncomeSystemModel>;
-   id: string;
-   page: number = 1;
-   config: any;
-   pagination: boolean = true;
-   itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
+  //Cofigurações para a tabela de listagens
+  systemIncomeTableList: Array<IncomeSystemModel>;
+  id: string;
+  page: number = 1;
+  config: any;
+  pagination: boolean = true;
+  itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
 
-   systemIncomeList = new Array<SelectModel>();
-   systemIncomeSelected = new SelectModel();
+  systemIncomeList = new Array<SelectModel>();
+  systemIncomeSelected = new SelectModel();
 
   constructor(
     private router: Router,
@@ -44,14 +44,14 @@ export class SystemIncomeComponent {
     this.configPage();
     this.systemUserIncomeList();
     this.systemForm = this.formBuilder.group
-    ({
-      name: ['', [Validators.required]],
-      month: ['', [Validators.required]],
-      monthCopy: ['', [Validators.required]],
-      dayMonthlyBookClose: ['', [Validators.required]],
-      year: ['', [Validators.required]],
-      yearCopy: ['', [Validators.required]],
-    });
+      ({
+        name: ['', [Validators.required]],
+        month: ['', [Validators.required]],
+        monthCopy: ['', [Validators.required]],
+        dayMonthlyBookClose: ['', [Validators.required]],
+        year: ['', [Validators.required]],
+        yearCopy: ['', [Validators.required]],
+      });
   }
 
   //Métodos default da  aplicção
@@ -68,9 +68,9 @@ export class SystemIncomeComponent {
     item.Name = data["name"].value;
 
     item.Id = 0;
-    item.Month =0;
+    item.Month = 0;
     item.DayMonthlyBookClose = 0;
-    item.Year =0;
+    item.Year = 0;
 
     // faz a chamada no backend
     this.incomeSystemService.AddSystemIncome(item)
@@ -79,13 +79,14 @@ export class SystemIncomeComponent {
         this.systemForm.reset();
 
         this.incomeSystemService.RegisterUserOnSystemIncome(response.Id, this.authService.getUserEmail())
-          .subscribe((response: any) => {
-            debugger
+        .subscribe((response: any) => {
+          debugger
+          this.systemUserIncomeList();
           }, (error) => console.error(error), () => { })
       }, (error) => console.error(error), () => { })
   }
-   // redireciona para a pagiá home do site
-   goToHomePage(){
+  // redireciona para a pagiá home do site
+  goToHomePage() {
     this.router.navigate(['/dashboard']);
   }
 

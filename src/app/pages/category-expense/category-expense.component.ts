@@ -60,10 +60,10 @@ export class CategoryExpenseComponent implements OnInit {
   dataForm() {
     return this.categoryExpenseForm.controls;
   }
- // redireciona para a pagiá home do site
- goToHomePage(){
-  this.router.navigate(['/dashboard']);
-}
+  // redireciona para a pagiá home do site
+  goToHomePage() {
+    this.router.navigate(['/dashboard']);
+  }
   sendExpenseData() {
     debugger
     var data = this.dataForm();
@@ -78,6 +78,8 @@ export class CategoryExpenseComponent implements OnInit {
     this.categoryExpenseService.AddCategoryExpense(itemExpense)
       .subscribe((response: CategoryExpenseModel) => {
         this.categoryExpenseForm.reset();
+        this.categoryExpenseUserList();
+
       }, (error) => console.error(error), () => { })
 
   }

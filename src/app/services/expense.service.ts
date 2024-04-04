@@ -15,4 +15,9 @@ export class ExpenseService {
     return this.httpClient.post<ExpenseModel>(`${this.baseUrl}/AddExpense`, expense);
   }
 
+  ExpenseUserList(userEmail:string)
+  {
+      return  this.httpClient.get(`${this.baseUrl}/ExpenseUserList?userEmail=${userEmail}`);
+  }
+
 }

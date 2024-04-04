@@ -7,6 +7,7 @@ import { IncomeComponent } from "./income.component";
 import { IncomeRoutingModule } from "./income-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { NgxPaginationModule } from "ngx-pagination";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NgxPaginationModule
 
   ]
 })

@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SlideToggleComponent } from '../../components/slide-toggle/slide-toggle.component';
 import { SlideToggleModule } from '../../components/slide-toggle/slide-toggle.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { SlideToggleModule } from '../../components/slide-toggle/slide-toggle.mo
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-
+    NgxPaginationModule
 
   ]
 })

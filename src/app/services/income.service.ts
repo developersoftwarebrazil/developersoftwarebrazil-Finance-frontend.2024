@@ -14,5 +14,8 @@ export class IncomeService {
   AddIncome(income: IncomeModel) {
     return this.httpClient.post<IncomeModel>(`${this.baseUrl}/AddIncome`, income);
   }
+  IncomeUserList(userEmail: string){
+    return  this.httpClient.get(`${this.baseUrl}/IncomeUserList?userEmail=${userEmail}`);
+  }
 
 }

@@ -84,8 +84,9 @@ export class SystemExpenseComponent {
         this.systemForm.reset();
 
         this.expenseSystemService.RegisterUserOnSystemExpense(response.Id, this.authService.getUserEmail())
-          .subscribe((response: any) => {
-            debugger
+        .subscribe((response: any) => {
+          debugger
+          this.systemExpenseUserList();
           }, (error) => console.error(error), () => { })
       }, (error) => console.error(error), () => { })
   }

@@ -8,6 +8,7 @@ import { ExpenseService } from '../../services/expense.service';
 import { CategoryExpenseService } from '../../services/category-expense.service';
 import { ExpenseModel } from '../../models/expense.model';
 import { CategoryExpenseModel } from '../../models/category-expense.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-expense',
@@ -21,6 +22,20 @@ export class ExpenseComponent implements OnInit {
   isChecked = false;
   // disabled = false;
 
+  generateExpenseCopy = 'accent';
+
+  // Define qual tela será visualizada no sistema
+  screenType = 1; // 1-listagem, 2-cadastro, 3-edição, 4-deletar
+
+  //Cofigurações para a tabela de listagens
+  expenseTableList: Array<ExpenseModel>;
+  id: string;
+  page: number = 1;
+  config: any;
+  pagination: boolean = true;
+  itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
+  ExpenseList = new Array<SelectModel>();
+  ExpenseSelected = new SelectModel();
 
   categoryExpenseList = new Array<SelectModel>();
   categoryExpenseSelected = new SelectModel();
@@ -28,7 +43,7 @@ export class ExpenseComponent implements OnInit {
   constructor(
     public menuService: MenuService,
     public formBuilder: FormBuilder,
-
+    public router: Router,
     public expenseSystemService: ExpenseSystemService,
     public expenseService: ExpenseService,
     public categoryExpenseService: CategoryExpenseService,
@@ -37,24 +52,28 @@ export class ExpenseComponent implements OnInit {
   ngOnInit(): void {
     this.menuService.menuSelected = 5;
 
+    this.configPage();
+    this.expenseUserList();
+    this.categoryUserExpenseList();
     this.expenseForm = this.formBuilder.group(
       {
         name: ['', [Validators.required]],
         value: ['', [Validators.required]],
         date: ['', [Validators.required]],
         categoryUserExpenseList: ['', [Validators.required]],
-        categoryExpenseSelect:['',[Validators.required]]
+        categoryExpenseSelect: ['', [Validators.required]]
 
 
       });
 
-    this.categoryUserExpenseList();
+
   }
 
   // apllicção
   dataForm() {
     return this.expenseForm.controls;
   }
+
   sendData() {
     debugger
     var data = this.dataForm();
@@ -65,16 +84,17 @@ export class ExpenseComponent implements OnInit {
     itemExpense.Value = data["value"].value;
     itemExpense.DueDate = data["date"].value;
     itemExpense.PayedOut = this.isChecked;
-    itemExpense.TransactionTypes= 1;
+    itemExpense.TransactionTypes = 1;
     itemExpense.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
     itemExpense.Name = data["name"].value;
 
     this.expenseService.AddExpense(itemExpense)
       .subscribe((response: ExpenseModel) => {
         this.expenseForm.reset();
+        this.expenseUserList();
+
       }, (error) => console.error(error), () => { })
   }
-
   categoryUserExpenseList() {
     this.categoryExpenseService.CategoryUserExpenseList(this.authSevice.getUserEmail())
       .subscribe((response: Array<CategoryExpenseModel>) => {
@@ -91,6 +111,54 @@ export class ExpenseComponent implements OnInit {
   }
   payedHandleChange(itemExpense: any) {
     this.isChecked = itemExpense.isChecked as boolean;
+  }
+
+  // redireciona para a pagiá home do site
+  goToHomePage() {
+    this.router.navigate(['/dashboard']);
+  }
+  //métodos usados para carregar e configurar as tableas
+  configPage() {
+    this.id = this.configPageToGenerateId();
+    this.config = {
+      id: this.id,
+      currentPage: this.page,
+      itemsPerPage: this.itemPerPages,
+    };
+  }
+
+  configPageToGenerateId() {
+    var result = '';
+    var charecters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = charecters.length;
+    for (var i = 0; i < 5; i++) {
+      result += charecters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+  //mostra a pagina de cadastro
+  register() {
+    this.screenType = 2;
+    this.expenseForm.reset();
+  }
+  itemPerPagesChange() {
+    this.page = 1;
+    this.config.currentPage = this.page;
+    this.config.itemsPerPage = this.page;
+  }
+  pageChange(event: any) {
+    this.page = event;
+    this.config.currentPage = this.page;
+  }
+  expenseUserList() {
+    this.screenType = 1;
+
+    this.expenseService.ExpenseUserList(this.authSevice.getUserEmail())
+      .subscribe((response: Array<ExpenseModel>) => {
+        this.expenseTableList = response;
+
+      }
+        , (error) => console.error(error), () => { })
   }
 
 }
