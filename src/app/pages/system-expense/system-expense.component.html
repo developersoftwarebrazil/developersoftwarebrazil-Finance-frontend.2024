@@ -1,11 +1,15 @@
+
 <sidebar></sidebar>
 <div class="nav">
   <navbar></navbar>
 </div>
 <div class="container">
 
+  
   <!-- Conteúdo para a tabela de listagem de sistemas  -->
-  <div class="content page" *ngIf="screenType == 1">
+  <div
+  
+  class="content page" *ngIf="screenType == 1">
     <div class="header">
       <div class="title-content">
         <div class="title">
@@ -36,7 +40,11 @@
           <tr class="select-item" *ngFor="let item of systemExpenseTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
             <td>{{item.Id}}</td>
             <td>{{item.Name}}</td>
-            <td class="action"><a (click)="register()">Adicionar</a> | <a>Editar</a> | <a>Remover</a> </td>
+            <td class="action">
+              <a (click)="register()">Adicionar</a> |
+              <a (click)="edition(item.Id)">Editar</a> |
+              <a>Remover</a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -106,8 +114,37 @@
       <div class="title-content">
         <div class="title">
           <h2>Edição de Sistema para despesas</h2>
-          <h5>Geneciamnto de sistemas para despesas, adicione edite e remova.</h5>
+          <h5>Edite o sistemas para despesas, edite e remova.</h5>
         </div>
+        <div class="menu">
+          <div class="bread-crumbs">
+            <div class="svg-home-ico" (click)="goToHomePage()">
+            </div>
+            <h5 (click)="systemExpenseUserList()"> ir para a Lista de sistemas</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="form-page">
+        <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
+          <div class="form-content">
+            <div class="row">
+              <div class="group-row">
+                <label for="name" id="name">Editar Sistema</label>
+                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="group-row">
+                <button class="btn-form">Salvar Alterações </button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

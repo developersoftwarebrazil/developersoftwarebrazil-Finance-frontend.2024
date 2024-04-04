@@ -18,9 +18,9 @@ export class ExpenseSystemService {
   SystemExpenseUserList(userEmail: string) {
     return this.httpClient.get(`${this.baseUrl}/SystemExpenseUserList?userEmail=${userEmail}`);
   }
-
-  GetSystemExpense(id: number) {
-    return this.httpClient.get(`${this.baseUrl}/GetSystemExpense?id=${id}`);
+//GetExpenseSystem
+  GetExpenseSystem(id: number) {
+    return this.httpClient.get(`${this.baseUrl}/GetExpenseSystem?id=${id}`);
   }
 
   UpdateSystemExpense(expenseSystemExpense: ExpenseSystemModel) {

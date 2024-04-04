@@ -36,7 +36,7 @@
           <tr class="select-item" *ngFor="let item of systemIncomeTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
             <td>{{item.Id}}</td>
             <td>{{item.Name}}</td>
-            <td class="action"><a (click)="register()">Adicionar</a> | <a>Editar</a> | <a>Remover</a> </td>
+            <td class="action"><a (click)="register()">Adicionar</a> | <a (click)="edition(item.Id)">Editar</a> | <a>Remover</a> </td>
           </tr>
         </tbody>
       </table>
@@ -67,6 +67,13 @@
           <h2>Sistema para Investimento</h2>
           <h5>Adicione, edit seu sistema.</h5>
         </div>
+        <div class="menu">
+          <div class="bread-crumbs">
+            <div class="svg-home-ico" (click)="goToHomePage()">
+            </div>
+            <h5 (click)="systemUserIncomeList()">Ir para a listagemde Sistema de investimentos</h5>
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-container">
@@ -75,7 +82,7 @@
           <div class="form-content">
             <div class="row">
               <div class="group-row">
-                <label for="name" id="name">Sistema de Investimentos</label>
+                <label for="name" id="name">Sistema</label>
                 <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
                 <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
                   systemForm.get('name')?.touched">Campo Obrigatório!</label>
@@ -94,7 +101,45 @@
   </div>
 
   <!-- Conteúdo para a edição de sistemas  -->
-  <div class="content" *ngIf="screenType == 3"></div>
+  <div class="content" *ngIf="screenType == 3">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Edição de Sistema para investimentos</h2>
+          <h5>Edite o sistemas para investiemntos, edite e remova.</h5>
+        </div>
+        <div class="menu">
+          <div class="bread-crumbs">
+            <div class="svg-home-ico" (click)="goToHomePage()">
+            </div>
+            <h5 (click)="systemUserIncomeList()"> ir para a Lista de sistemas</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="form-page">
+        <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
+          <div class="form-content">
+            <div class="row">
+              <div class="group-row">
+                <label for="name" id="name">Editar Sistema</label>
+                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="group-row">
+                <button class="btn-form">Salvar Alterações </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <!-- Conteúdo para a remover de sistemas  -->
   <div class="content" *ngIf="screenType == 3"></div>

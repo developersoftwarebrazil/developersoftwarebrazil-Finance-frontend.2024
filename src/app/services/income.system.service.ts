@@ -21,8 +21,9 @@ export class IncomeSystemService {
     return this.httpClient.get(`${this.baseUrl}/SystemUserIncomeList?userEmail=${userEmail}`);
   }
 
-  GetSystemIncome(id: number) {
-    return this.httpClient.get(`${this.baseUrl}/GetSystemIncome?id=${id}`);
+  //GetIncomeSystem
+  GetIncomeSystem(id: number) {
+    return this.httpClient.get(`${this.baseUrl}/GetIncomeSystem?id=${id}`);
   }
   UpdateSystemIncome(systemIncome: IncomeSystemModel) {
     return this.httpClient.put<IncomeSystemModel>(`${this.baseUrl}/UpdateSystemIncome`, systemIncome)

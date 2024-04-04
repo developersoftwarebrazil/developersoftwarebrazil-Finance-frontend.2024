@@ -9,6 +9,7 @@ import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
 import { SlideToggleModule } from "../../components/slide-toggle/slide-toggle.module";
 import { NgxPaginationModule } from "ngx-pagination";
 import {MatIconModule} from "@angular/material/icon"
+
 @NgModule({
   providers: [],
   declarations: [SystemExpenseComponent],
@@ -24,8 +25,9 @@ import {MatIconModule} from "@angular/material/icon"
 
     NgxPaginationModule,
     NgSelectModule,
-    MatIconModule
-
+    MatIconModule,
+    NgxPaginationModule,
+  
   ]
 })
 export class SystemExpenseModule {

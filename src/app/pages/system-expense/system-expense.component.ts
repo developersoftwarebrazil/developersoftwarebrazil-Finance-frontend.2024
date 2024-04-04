@@ -6,6 +6,7 @@ import { SelectModel } from "../../models/select.model";
 import { AuthService } from "../../services/auth.service";
 import { ExpenseSystemService } from "../../services/expense.system.service";
 import { MenuService } from "../../services/menuservice";
+import { endWith } from "rxjs";
 
 @Component({
   selector: 'system',
@@ -38,7 +39,7 @@ export class SystemExpenseComponent {
     public expenseSystemService: ExpenseSystemService,
     public menuService: MenuService,
     public formBuilder: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -54,7 +55,7 @@ export class SystemExpenseComponent {
         dayMonthlyBookClose: ['', [Validators.required]],
         year: ['', [Validators.required]],
         yearCopy: ['', [Validators.required]],
-    });
+      });
   }
 
   //métodos default da aplicção
@@ -66,32 +67,62 @@ export class SystemExpenseComponent {
     var data = this.dataForm();
 
     alert(data["name"].value);
-    let item = new ExpenseSystemModel();
+    if (this.editionItem) {
+      this.editionItem.PropertyName = '';
+      this.editionItem.Messages = '';
+      this.editionItem.Notification = [];
+      this.editionItem.Name = data["name"].value;
 
-    item.Id = 0;
-    item.Name = data["name"].value;
-    item.Month = 0;
-    item.MonthCopy = 0;
-    item.DayMonthlyBookClose = 0;
-    item.Year = 0;
-    item.YearCopy = 0;
-    item.GenerateExpensesCopy = true;
-
-    // faz a chamada no backend
-    this.expenseSystemService.AddSystemExpense(item)
-      // se tudo ocorreu certo
-      .subscribe((response: ExpenseSystemModel) => {
-        this.systemForm.reset();
-
-        this.expenseSystemService.RegisterUserOnSystemExpense(response.Id, this.authService.getUserEmail())
-        .subscribe((response: any) => {
-          debugger
+      // faz a chamada no backend
+      this.expenseSystemService.UpdateSystemExpense(this.editionItem)
+        // se tudo ocorreu certo
+        .subscribe((response: ExpenseSystemModel) => {
+          this.systemForm.reset();
           this.systemExpenseUserList();
-          }, (error) => console.error(error), () => { })
+        }, (error) => console.error(error), () => { })
+    }
+    else {
+      let item = new ExpenseSystemModel();
+
+      item.Id = 0;
+      item.Name = data["name"].value;
+      item.Month = 0;
+      item.MonthCopy = 0;
+      item.DayMonthlyBookClose = 0;
+      item.Year = 0;
+      item.YearCopy = 0;
+      item.GenerateExpensesCopy = true;
+
+      // faz a chamada no backend
+      this.expenseSystemService.AddSystemExpense(item)
+        // se tudo ocorreu certo
+        .subscribe((response: ExpenseSystemModel) => {
+          this.systemForm.reset();
+
+          this.expenseSystemService.RegisterUserOnSystemExpense(response.Id, this.authService.getUserEmail())
+            .subscribe((response: any) => {
+              debugger
+              this.systemExpenseUserList();
+            }, (error) => console.error(error), () => { })
+        }, (error) => console.error(error), () => { })
+    }
+  }
+  editionItem: ExpenseSystemModel;
+  edition(id: number) {
+    this.expenseSystemService.GetExpenseSystem(id)
+      .subscribe((response: ExpenseSystemModel) => {
+        if (response) {
+          this.editionItem = response;
+          this.screenType = 3;
+
+          var data = this.dataForm();
+          data["name"].setValue(this.editionItem.Name);
+        }
       }, (error) => console.error(error), () => { })
   }
-  // redireciona para a pagiá home do site
-  goToHomePage(){
+
+  // redireciona para a página home do site
+  goToHomePage() {
     this.router.navigate(['/dashboard']);
   }
   //métodos usados para carregar e configurar as tableas
@@ -128,6 +159,7 @@ export class SystemExpenseComponent {
     this.config.currentPage = this.page;
   }
   systemExpenseUserList() {
+    this.editionItem = null;
     this.screenType = 1;
 
     this.expenseSystemService.SystemExpenseUserList(this.authService.getUserEmail())

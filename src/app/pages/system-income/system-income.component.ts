@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { SelectModel } from '../../models/select.model';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { ExpenseSystemModel } from '../../models/expense.system.model';
-import { IncomeSystemService } from '../../services/ncome.system.service';
+import { IncomeSystemService } from '../../services/income.system.service';
 import { IncomeSystemModel } from '../../models/income.system.model';
+
 
 @Component({
   selector: 'system',
@@ -40,7 +40,7 @@ export class SystemIncomeComponent {
   ) { }
 
   ngOnInit(): void {
-    this.menuService.menuSelected = 2;
+    this.menuService.menuSelected = 2.1;
     this.configPage();
     this.systemUserIncomeList();
     this.systemForm = this.formBuilder.group
@@ -62,6 +62,20 @@ export class SystemIncomeComponent {
   sendData() {
     debugger
     var data = this.dataForm();
+     if (this.editionItem) {
+      this.editionItem.PropertyName = '';
+      this.editionItem.Messages = '';
+      this.editionItem.Notification = [];
+      this.editionItem.Name = data["name"].value;
+
+      // faz a chamada no backend
+      this.incomeSystemService.UpdateSystemIncome(this.editionItem)
+        // se tudo ocorreu certo
+        .subscribe((response: IncomeSystemModel) => {
+          this.systemForm.reset();
+          this.systemUserIncomeList();
+        }, (error) => console.error(error), () => { })
+    }else{
 
     alert(data["name"].value);
     let item = new IncomeSystemModel();
@@ -79,12 +93,28 @@ export class SystemIncomeComponent {
         this.systemForm.reset();
 
         this.incomeSystemService.RegisterUserOnSystemIncome(response.Id, this.authService.getUserEmail())
-        .subscribe((response: any) => {
-          debugger
-          this.systemUserIncomeList();
+          .subscribe((response: any) => {
+            debugger
+            this.systemUserIncomeList();
           }, (error) => console.error(error), () => { })
       }, (error) => console.error(error), () => { })
+    }
   }
+  editionItem: IncomeSystemModel;
+  edition(id: number) {
+    this.incomeSystemService.GetIncomeSystem(id)
+      .subscribe((response: IncomeSystemModel) => {
+        if (response) {
+          this.editionItem = response;
+          this.screenType = 3;
+
+          var data = this.dataForm();
+          data["name"].setValue(this.editionItem.Name);
+        }
+      },(error)=>console.error(error), ()=>{})
+  }
+
+
   // redireciona para a pagiá home do site
   goToHomePage() {
     this.router.navigate(['/dashboard']);

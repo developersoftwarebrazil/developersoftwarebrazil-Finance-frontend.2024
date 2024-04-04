@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { ThemeService } from '../../services/theme.service';
 import { CategoryIncomeModel } from '../../models/category-income.model';
 
-import { IncomeSystemService } from '../../services/ncome.system.service';
+import { IncomeSystemService } from '../../services/income.system.service';
 import { IncomeSystemModel } from '../../models/income.system.model';
 import { CategoryIncomeService } from '../../services/category-Income.service';
 import { Router } from '@angular/router';
