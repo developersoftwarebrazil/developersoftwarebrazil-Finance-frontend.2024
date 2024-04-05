@@ -65,31 +65,82 @@ export class IncomeComponent implements OnInit {
   dataForm() {
     return this.incomeForm.controls;
   }
-  sendData() {
-    debugger
+  sendIncomeData() {
+
     var data = this.dataForm();
 
-    let itemIncome = new IncomeModel();
+    if (this.editionItem) {
+      this.editionItem.PropertyName = '';
+      this.editionItem.Messages = '';
+      this.editionItem.Notification = [];
 
-    itemIncome.Id = 0;
-    itemIncome.Name = data["name"].value;
-    itemIncome.Month = 0;
-    itemIncome.Year = 0;
-    itemIncome.Value = data["value"].value;
-    itemIncome.RegistrationDate = data["date"].value;
-    itemIncome.RegistrationChangeDate = data["date"].value;
-    itemIncome.IncomeDate = data["date"].value;
-    itemIncome.TransactionTypes = 2;
-    itemIncome.CategoryIncomeId = parseInt(this.categoryIncomeSelected.id);
+      this.editionItem.Name = data["name"].value;
+      this.editionItem.Value = data["value"].value;
+      this.editionItem.IncomeDate = data["date"].value;
+      this.editionItem.RegistrationChangeDate = data["date"].value;
 
-    this.incomeService.AddIncome(itemIncome)
-      .subscribe((reponse: IncomeModel) => {
-        this.incomeForm.reset();
-        this.incomeUserList();
+      this.editionItem.CategoryIncomeId = parseInt(this.categoryIncomeSelected.id);
+
+      this.incomeService.UpdateIncome(this.editionItem)
+        .subscribe((reponse: IncomeModel) => {
+          this.incomeForm.reset();
+          this.incomeUserList();
+        }, (error) => console.error(error), () => { })
+        
+    } else {
+      let itemIncome = new IncomeModel();
+
+      itemIncome.Id = 0;
+      itemIncome.Name = data["name"].value;
+      itemIncome.Month = 0;
+      itemIncome.Year = 0;
+      itemIncome.Value = data["value"].value;
+      itemIncome.RegistrationDate = data["date"].value;
+      itemIncome.RegistrationChangeDate = data["date"].value;
+      itemIncome.IncomeDate = data["date"].value;
+      itemIncome.TransactionTypes = 2;
+      itemIncome.CategoryIncomeId = parseInt(this.categoryIncomeSelected.id);
+
+      this.incomeService.AddIncome(itemIncome)
+        .subscribe((reponse: IncomeModel) => {
+          this.incomeForm.reset();
+          this.incomeUserList();
+        }, (error) => console.error(error), () => { })
+    }
+  }
+
+  editionItem: IncomeModel;
+
+  edition(id: number) {
+    this.incomeService.GetIncome(id)
+      .subscribe((response: IncomeModel) => {
+
+        if (response) {
+
+          this.editionItem = response;
+          this.screenType = 3;
+
+          this.categoryUserIncomeList(response.CategoryIncomeId);
+
+          var data = this.dataForm();
+
+          data["name"].setValue(this.editionItem.Name);
+
+          var dateToString = response.IncomeDate.toString();
+          var dateFull = dateToString.split('-');
+          var dayFull = dateFull[2].split('T');
+          var day = dayFull[0];
+          var month = dateFull[1];
+          var year = dateFull[0];
+
+          var dateInput = year + '-' + month + '-' + day;
+          data['date'].setValue(dateInput);
+
+        }
       }, (error) => console.error(error), () => { })
   }
 
-  categoryUserIncomeList() {
+  categoryUserIncomeList(id: number = null) {
     this.categoryIncomeService.CategoryUserIncomeList(this.authSevice.getUserEmail())
       .subscribe((response: Array<CategoryIncomeModel>) => {
         var categoryIncomeList = [];
@@ -98,7 +149,11 @@ export class IncomeComponent implements OnInit {
           item.id = r.Id.toString();
           item.name = r.Name;
 
-          categoryIncomeList.push(item)
+          categoryIncomeList.push(item);
+
+          if (id && id == r.Id) {
+            this.categoryIncomeSelected = item;
+          }
         });
         this.categoryIncomeList = categoryIncomeList;
       })
@@ -155,5 +210,4 @@ export class IncomeComponent implements OnInit {
       }
         , (error) => console.error(error), () => { })
   }
-
 }

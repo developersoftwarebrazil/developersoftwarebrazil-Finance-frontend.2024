@@ -35,7 +35,7 @@
           <tr class="select-item" *ngFor="let item of categoryIncomeTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
             <td>{{item.Id}}</td>
             <td>{{item.Name}}</td>
-            <td class="action"><a (click)="register()">Adicionar</a> | <a>Editar</a> | <a>Remover</a> </td>
+            <td class="action"><a (click)="register()">Adicionar</a> | <a (click)="edition(this.item.Id)">Editar</a> | <a>Remover</a> </td>
           </tr>
         </tbody>
       </table>
@@ -95,6 +95,50 @@
           <div class="row">
             <div class="group-row">
               <button class="btn-form">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+   <!-- Tela de edição de categorias  -->
+   <div class="content" *ngIf="screenType === 3">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Editar Categoria para investimentos</h2>
+          <p>Edite a sua categoria.</p>
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <div class="bread-crumbs">
+        <div class="svg-home-ico" (click)="goToHomePage()">
+        </div>
+        <h5 (click)="categoryIncomeUserList()">Ir para a listagemde categoria</h5>
+      </div>
+    </div>
+    <div class="form-container">
+      <form class="form-page" [formGroup]="categoryIncomeForm" (submit)="sendIncomeData()">
+        <div class="form-content">
+          <div class="row">
+            <div class="group-row">
+              <label for="name" id="name">Editsr Categoria</label>
+              <input name="name" id="name" placeholder="Nome" formControlName="name" required />
+              <label class="error-input" *ngIf="categoryIncomeForm.get('name')?.errors?.['required'] && categoryIncomeForm.get('name')?.touched">Campo Obrigatório!</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label for="" id="" name="">Escolha um sistema </label>
+              <ng-select class="row-select-patter" [(ngModel)]="systemIncomeSelected" [items]="systemList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="systemIncomeSelected"></ng-select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="group-row">
+              <button class="btn-form">Salvar Alterações</button>
             </div>
           </div>
         </div>

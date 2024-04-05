@@ -3,63 +3,64 @@
   <navbar></navbar>
 </div>
 <div class="container">
-<!-- Tela de listagem de despesas  -->
-<div class="content" *ngIf="screenType === 1">
-  <div class="header">
-    <div class="title-content">
-      <div class="title">
-        <h2>Listagem de investimentos</h2>
-        <h5>Gerenciamento das investimentos, adicione edite e remova.</h5>
+  <!-- Tela de listagem de investimentos  -->
+  <div class="content" *ngIf="screenType === 1">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Listagem para investimentos</h2>
+          <h5>Gerenciamento dos investimentos, adicione edite e remova.</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="bread-crumbs">
+        <div class="svg-home-ico" (click)="goToHomePage()">
+        </div>
+        <h5 (click)="register()">Adicionar Categoria</h5>
+      </div>
+    </div>
+    <div class="page-content">
+      <!-- Tabela  -->
+      <table cellSpacing="0" cellPadding="0">
+        <thead>
+          <tr>
+            <td>Código</td>
+            <td>Nome</td>
+            <td>Ação</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="select-item" *ngFor="let item of incomeTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
+            <td>{{item.Id}}</td>
+            <td>{{item.Name}}</td>
+            <td class="action"><a (click)="register()">Adicionar</a> | <a (click)="edition(this.item.Id)">Editar</a> | <a>Remover</a> </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Paginação  -->
+      <div class="table-footer" *ngIf="pagination && incomeTableList">
+        <label for="" class="show-Items">Mostrar</label>
+        <ng-select class="show-drop-table" [(ngModel)]="itemPerPages" [clearable]="false" [searchable]="false">
+          <ng-option [value]="5">5</ng-option>
+          <ng-option [value]="10">10</ng-option>
+          <ng-option [value]="50">50</ng-option>
+          <ng-option value="100">100</ng-option>
+        </ng-select>
+
+        <div class="paginstion-container">
+          <pagination-controls id="{{this.id}}" previousLabel="Anterior" nextLabel="Próximo" [responsive]="true" (pageChange)="pageChange($event)">
+          </pagination-controls>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="menu">
-    <div class="bread-crumbs">
-      <div class="svg-home-ico" (click)="goToHomePage()">
-      </div>
-      <h5 (click)="register()">Adicionar Despesas</h5>
-    </div>
-  </div>
-  <div class="page-content">
-    <!-- Tabela  -->
-    <table cellSpacing="0" cellPadding="0">
-      <thead>
-        <tr>
-          <td>Código</td>
-          <td>Nome</td>
-          <td>Ação</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="select-item" *ngFor="let item of incomeTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
-          <td>{{item.Id}}</td>
-          <td>{{item.Name}}</td>
-          <td class="action"><a (click)="register()">Adicionar</a> | <a>Editar</a> | <a>Remover</a> </td>
-        </tr>
-      </tbody>
-    </table>
 
-    <!-- Paginação  -->
-    <div class="table-footer" *ngIf="pagination && incomeTableList">
-      <label for="" class="show-Items">Mostrar</label>
-      <ng-select class="show-drop-table" [(ngModel)]="itemPerPages" [clearable]="false" [searchable]="false">
-        <ng-option [value]="5">5</ng-option>
-        <ng-option [value]="10">10</ng-option>
-        <ng-option [value]="50">50</ng-option>
-        <ng-option value="100">100</ng-option>
-      </ng-select>
-
-      <div class="paginstion-container">
-        <pagination-controls id="{{this.id}}" previousLabel="Anterior" nextLabel="Próximo" [responsive]="true" (pageChange)="pageChange($event)">
-        </pagination-controls>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Tela de cadasdtro de despesas  -->
-  <div class="content" *ngIf="screenType ===2">
+  <!-- Tela de cadasdtro de investimentos  -->
+  <div class="content" *ngIf="screenType === 2">
     <div class="header">
       <div class="title-content">
         <div class="title">
@@ -69,7 +70,7 @@
       </div>
     </div>
     <div class="form-container">
-      <form class="form-page" [formGroup]="incomeForm" (submit)="sendData()">
+      <form class="form-page" [formGroup]="incomeForm" (submit)="sendIncomeData()">
         <div class="form-content">
           <div class="row">
             <div class="group-row">
@@ -108,6 +109,63 @@
           <div class="row">
             <div class="group-row">
               <button class="btn-form">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tela de edição de investimentos  -->
+  <div class="content" *ngIf="screenType === 3">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Editar Investimentos</h2>
+          <p> edite seus investiemntos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <form class="form-page" [formGroup]="incomeForm" (submit)="sendIncomeData()">
+        <div class="form-content">
+          <div class="row">
+            <div class="group-row">
+              <label>Editar Renda</label>
+              <input name="name" id="name" placeholder="Digite um nome para a sua renda" formControlName="name" required />
+              <label class="error-input" *ngIf="incomeForm.get('name')?.errors?.['required'] && incomeForm.get('name')?.touched">Campo Obrigatório!</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Escolha a categoria da renda</label>
+              <ng-select class="row-select-patter" [(ngModel)]="categoryIncomeSelected" [items]="categoryIncomeList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="categoryUserIncomeList"></ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Valor</label>
+              <input type="number" name="value" id="value" placeholder="Digite um valor" formControlName="value" required />
+              <label class="error-input" *ngIf="incomeForm.get('value')?.errors?.['required'] &&
+                incomeForm.get('value')?.touched">
+                Campo Obrigatório!
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Data de vencimento</label>
+              <input type="date" name="date" id="date" formControlName="date" required />
+              <label class="error-input" *ngIf="incomeForm.get('date')?.errors?.['required'] &&
+                incomeForm.get('date')?.touched">
+                Campo Obrigatório!
+              </label>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <button class="btn-form">Salvar Alterações</button>
             </div>
           </div>
         </div>

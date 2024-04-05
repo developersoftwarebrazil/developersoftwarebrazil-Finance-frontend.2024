@@ -35,7 +35,7 @@
           <tr class="select-item" *ngFor="let item of expenseTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
             <td>{{item.Id}}</td>
             <td>{{item.Name}}</td>
-            <td class="action"><a (click)="register()">Adicionar</a> | <a>Editar</a> | <a>Remover</a> </td>
+            <td class="action"><a (click)="register()">Adicionar</a> | <a (click)="edition(item.Id)">Editar</a> | <a>Remover</a> </td>
           </tr>
         </tbody>
       </table>
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="form-container">
-      <form class="form-page" [formGroup]="expenseForm" (submit)="sendData()">
+      <form class="form-page" [formGroup]="expenseForm" (submit)="sendExpenseData()">
         <div class="form-content">
           <div class="row">
             <div class="group-row">
@@ -122,6 +122,78 @@
           <div class="row">
             <div class="group-row">
               <button class="btn-form">Salvar</button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tela de edição de despesas  -->
+  <div class="content" *ngIf="screenType === 3">
+    <div class="header">
+      <div class="title-content">
+        <div class="title">
+          <h2>Despesas</h2>
+          <p>Edite seus inventimentos.</p>
+        </div>
+      </div>
+      <div class="menu">
+        <div class="bread-crumbs">
+          <div class="svg-home-ico" (click)="goToHomePage()">
+          </div>
+          <h5 (click)="expenseUserList()">Ir para a listagem de Despesas</h5>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <form class="form-page" [formGroup]="expenseForm" (submit)="sendExpenseData()">
+        <div class="form-content">
+          <div class="row">
+            <div class="group-row">
+              <label>Editar Despesas</label>
+              <input name="name" id="name" placeholder="Inclua um nome pa a despesa" formControlName="name" required />
+              <label class="error-input" *ngIf="expenseForm.get('name')?.errors?.['required'] && expenseForm.get('name')?.touched">Campo Obrigatório!</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="group-row">
+              <label>Escolha a categoria </label>
+              <ng-select class="row-select-patter" [(ngModel)]="categoryExpenseSelected" [items]="categoryExpenseList" bindLabel="name" [multiple]="false" [clearable]="false" [searchable]="false" formControlName="categoryExpenseSelect"></ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Valor</label>
+              <input type="number" name="value" id="value" placeholder="Digite um valor" formControlName="value" required />
+              <label class="error-input" *ngIf="expenseForm.get('value')?.errors?.['required'] &&
+                expenseForm.get('value')?.touched">
+                Campo Obrigatório!
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <label>Data de vencimento</label>
+              <input type="date" name="date" id="date" formControlName="date" required />
+              <label class="error-input" *ngIf="expenseForm.get('date')?.errors?.['required'] &&
+                expenseForm.get('date')?.touched">
+                Campo Obrigatório!
+              </label>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+
+              <app-slide-toggle title="Esta pago" (change)="payedHandleChange($event)"></app-slide-toggle>
+            </div>
+          </div>
+          <div class="row">
+            <div class="group-row">
+              <button class="btn-form">Salvar Alterações</button>
             </div>
           </div>
 

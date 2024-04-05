@@ -20,12 +20,12 @@ export class CategoryIncomeService {
     return this.httpClient.get(`${this.baseUrl}/CategoryUserIncomeList?userEmail=${userEmail}`);
   }
 
-  GetCategory(id: number) {
-    return this.httpClient.get(`${this.baseUrl}/GetCategory?id=${id}`);
+  GetCategoryIncome(id: number) {
+    return this.httpClient.get(`${this.baseUrl}/GetCategoryIncome?id=${id}`);
   }
 
-  UpdateCategory(category: CategoryIncomeModel) {
-    return this.httpClient.put<CategoryIncomeModel>(`${this.baseUrl}/UpdateCategory`, category)
+  UpdateCategoryIncome(categoryIncome: CategoryIncomeModel) {
+    return this.httpClient.put<CategoryIncomeModel>(`${this.baseUrl}/UpdateCategoryIncome`, categoryIncome)
   }
 
 }

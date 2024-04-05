@@ -19,12 +19,12 @@ export class CategoryExpenseService {
     return this.httpClient.get(`${this.baseUrl}/CategoryUserExpenseList?userEmail=${userEmail}`);
   }
 
-  GetCategory(id: number) {
-    return this.httpClient.get(`${this.baseUrl}/GetCategory?id=${id}`);
+  GetCategoryExpense(id: number) {
+    return this.httpClient.get(`${this.baseUrl}/GetCategoryExpense?id=${id}`);
   }
 
-  UpdateCategory(category: CategoryExpenseModel) {
-    return this.httpClient.put<CategoryExpenseModel>(`${this.baseUrl}/UpdateCategory`, category)
+  UpdateCategoryExpense(categoryExpense: CategoryExpenseModel) {
+    return this.httpClient.put<CategoryExpenseModel>(`${this.baseUrl}/UpdateCategoryExpense`, categoryExpense)
   }
 
 }

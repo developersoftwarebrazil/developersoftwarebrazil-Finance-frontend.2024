@@ -65,26 +65,58 @@ export class CategoryExpenseComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
   sendExpenseData() {
-    debugger
+
     var data = this.dataForm();
 
-    let itemExpense = new CategoryExpenseModel();
+    if (this.editionItem) {
 
-    itemExpense.Id = 0;
-    itemExpense.Name = data["name"].value;
-    itemExpense.SystemExpenseId = parseInt(this.systemExpenseSelected.id);
+      this.editionItem.PropertyName ='';
+      this.editionItem.Messages = '';
+      this.editionItem.Notification =[];
+
+      this.editionItem.Name = data["name"].value;
+      this.editionItem.SystemExpenseId = parseInt(this.systemExpenseSelected.id);
+
+      this.categoryExpenseService.UpdateCategoryExpense(this.editionItem)
+        .subscribe((response: CategoryExpenseModel) => {
+          this.categoryExpenseForm.reset();
+          this.categoryExpenseUserList();
+
+        }, (error) => console.error(error), () => { })
+    } else {
+      let itemExpense = new CategoryExpenseModel();
+
+      itemExpense.Id = 0;
+      itemExpense.Name = data["name"].value;
+      itemExpense.SystemExpenseId = parseInt(this.systemExpenseSelected.id);
 
 
-    this.categoryExpenseService.AddCategoryExpense(itemExpense)
+      this.categoryExpenseService.AddCategoryExpense(itemExpense)
+        .subscribe((response: CategoryExpenseModel) => {
+          this.categoryExpenseForm.reset();
+          this.categoryExpenseUserList();
+
+        }, (error) => console.error(error), () => { })
+    }
+  }
+  editionItem: CategoryExpenseModel;
+  edition(id: number) {
+    this.categoryExpenseService.GetCategoryExpense(id)
       .subscribe((response: CategoryExpenseModel) => {
-        this.categoryExpenseForm.reset();
-        this.categoryExpenseUserList();
+        if (response) {
+          this.editionItem = response;
+          this.screenType = 3;
 
+          var incomeSystem = response;
+          var data = this.dataForm();
+          data["name"].setValue(this.editionItem.Name);
+
+          this.systemExpenseUserList(response.SystemExpenseId)
+        }
       }, (error) => console.error(error), () => { })
-
   }
 
-  systemExpenseUserList() {
+  systemExpenseUserList(id: number = null) {
     this.expenseSystemService.SystemExpenseUserList(this.authSevice.getUserEmail())
       .subscribe((response: Array<ExpenseSystemModel>) => {
         var systemExpenseList = [];
@@ -94,7 +126,10 @@ export class CategoryExpenseComponent implements OnInit {
           item.id = r.Id.toString();
           item.name = r.Name
 
-          systemExpenseList.push(item)
+          systemExpenseList.push(item);
+          if (id && id == r.Id) {
+            this.systemExpenseSelected = item
+          }
         });
         this.systemList = systemExpenseList;
       })

@@ -17,5 +17,11 @@ export class IncomeService {
   IncomeUserList(userEmail: string){
     return  this.httpClient.get(`${this.baseUrl}/IncomeUserList?userEmail=${userEmail}`);
   }
+  GetIncome(id: number) {
+    return this.httpClient.get(`${this.baseUrl}/GetIncome?id=${id}`);
+  }
+  UpdateIncome(income: IncomeModel) {
+    return this.httpClient.put<IncomeModel>(`${this.baseUrl}/UpdateIncome`, income)
+  }
 
 }

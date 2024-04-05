@@ -71,25 +71,57 @@ export class CategoryIncomeComponent implements OnInit {
   }
 
   sendIncomeData() {
-    debugger
     var data = this.dataForm();
 
-    let itemIncome = new CategoryIncomeModel();
+    if (this.editionItem) {
 
-    itemIncome.Name = data["name"].value;
-    itemIncome.Id = 0;
-    itemIncome.SystemIncomeId = parseInt(this.systemIncomeSelected.id);
+      this.editionItem.PropertyName ='';
+      this.editionItem.Messages = '';
+      this.editionItem.Notification =[];
+      this.editionItem.Name = data["name"].value;
+      this.editionItem.SystemIncomeId = parseInt(this.systemIncomeSelected.id);
+
+      this.categoryIncomeService.UpdateCategoryIncome(this.editionItem)
+        .subscribe((response: CategoryIncomeModel) => {
+          this.categoryIncomeForm.reset();
+          this.categoryIncomeUserList();
+
+        }, (error) => console.error(error), () => { })
+
+    } else {
+      let itemIncome = new CategoryIncomeModel();
+
+      itemIncome.Name = data["name"].value;
+      itemIncome.Id = 0;
+      itemIncome.SystemIncomeId = parseInt(this.systemIncomeSelected.id);
 
 
-    this.categoryIncomeService.AddCategoryIncome(itemIncome)
+      this.categoryIncomeService.AddCategoryIncome(itemIncome)
+        .subscribe((response: CategoryIncomeModel) => {
+          this.categoryIncomeForm.reset();
+          this.categoryIncomeUserList();
+
+        }, (error) => console.error(error), () => { })
+    }
+  }
+  editionItem: CategoryIncomeModel;
+  edition(id: number) {
+    this.categoryIncomeService.GetCategoryIncome(id)
       .subscribe((response: CategoryIncomeModel) => {
-        this.categoryIncomeForm.reset();
-        this.categoryIncomeUserList();
+        if (response) {
+          this.editionItem = response;
+          this.screenType = 3;
 
+          var incomeSystem = response;
+          var data = this.dataForm();
+          data["name"].setValue(this.editionItem.Name);
+
+          this.systemIncomeUserList(response.SystemIncomeId)
+        }
       }, (error) => console.error(error), () => { })
   }
 
-  systemIncomeUserList() {
+  systemIncomeUserList(id: number = null) {
 
     this.incomeSystemService.SystemUserIncomeList(this.authSevice.getUserEmail())
       .subscribe((response: Array<IncomeSystemModel>) => {
@@ -100,7 +132,11 @@ export class CategoryIncomeComponent implements OnInit {
           item.id = r.Id.toString();
           item.name = r.Name
 
-          systemIncomeList.push(item)
+          systemIncomeList.push(item);
+
+          if (id && id == r.Id) {
+            this.systemIncomeSelected = item;
+          }
         });
         this.systemList = systemIncomeList;
       })

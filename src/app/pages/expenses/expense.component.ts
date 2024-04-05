@@ -65,8 +65,6 @@ export class ExpenseComponent implements OnInit {
 
 
       });
-
-
   }
 
   // apllicção
@@ -74,28 +72,79 @@ export class ExpenseComponent implements OnInit {
     return this.expenseForm.controls;
   }
 
-  sendData() {
-    debugger
+  sendExpenseData() {
+
     var data = this.dataForm();
+    if(this.editionItem){
+      this.editionItem.PropertyName='';
+      this.editionItem.Messages='';
+      this.editionItem.Notification=[];
 
-    let itemExpense = new ExpenseModel();
+      this.editionItem.Name = data["name"].value;
+      this.editionItem.Value = data["value"].value;
+      this.editionItem.DueDate = data["date"].value;
+      this.editionItem.PayedOut = this.isChecked;
 
-    itemExpense.Id = 0;
-    itemExpense.Value = data["value"].value;
-    itemExpense.DueDate = data["date"].value;
-    itemExpense.PayedOut = this.isChecked;
-    itemExpense.TransactionTypes = 1;
-    itemExpense.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
-    itemExpense.Name = data["name"].value;
+      this.editionItem.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
 
-    this.expenseService.AddExpense(itemExpense)
+      this.expenseService.UpdateExpense(this.editionItem)
+        .subscribe((response: ExpenseModel) => {
+          this.expenseForm.reset();
+          this.expenseUserList();
+
+        }, (error) => console.error(error), () => { })
+    }else{
+      let itemExpense = new ExpenseModel();
+
+      itemExpense.Id = 0;
+      itemExpense.Value = data["value"].value;
+      itemExpense.DueDate = data["date"].value;
+      itemExpense.PayedOut = this.isChecked;
+      itemExpense.TransactionTypes = 1;
+      itemExpense.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
+      itemExpense.Name = data["name"].value;
+
+      this.expenseService.AddExpense(itemExpense)
+        .subscribe((response: ExpenseModel) => {
+          this.expenseForm.reset();
+          this.expenseUserList();
+
+        }, (error) => console.error(error), () => { })
+    }
+
+  }
+  editionItem: ExpenseModel;
+
+  edition(id: number) {
+    this.expenseService.GetExpense(id)
       .subscribe((response: ExpenseModel) => {
-        this.expenseForm.reset();
-        this.expenseUserList();
 
+        if (response) {
+
+          this.editionItem = response;
+          this.screenType = 3;
+
+          this.categoryUserExpenseList(response.CategoryExpenseId);
+
+          var data = this.dataForm();
+
+          data["name"].setValue(this.editionItem.Name);
+
+          var dateToString = response.DueDate.toString();
+          var dateFull = dateToString.split('-');
+          var dayFull = dateFull[2].split('T');
+          var day = dayFull[0];
+          var month = dateFull[1];
+          var year = dateFull[0];
+
+          var dateInput = year + '-' + month + '-' + day;
+
+          data['date'].setValue(dateInput);
+          this.isChecked = response.PayedOut;
+        }
       }, (error) => console.error(error), () => { })
   }
-  categoryUserExpenseList() {
+  categoryUserExpenseList(id: number=null) {
     this.categoryExpenseService.CategoryUserExpenseList(this.authSevice.getUserEmail())
       .subscribe((response: Array<CategoryExpenseModel>) => {
         var categoryExpenseList = [];
@@ -104,7 +153,11 @@ export class ExpenseComponent implements OnInit {
           item.id = r.Id.toString();
           item.name = r.Name;
 
-          categoryExpenseList.push(item)
+          categoryExpenseList.push(item);
+
+          if(id && id == r.Id){
+            this.categoryExpenseSelected = item;
+          }
         });
         this.categoryExpenseList = categoryExpenseList;
       })
