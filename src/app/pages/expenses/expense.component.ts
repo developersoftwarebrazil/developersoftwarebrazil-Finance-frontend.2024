@@ -18,9 +18,9 @@ import { Router } from '@angular/router';
 export class ExpenseComponent implements OnInit {
   //variáveis
   expenseForm: FormGroup;
-  // color = 'accent';
-  isChecked = false;
-  // disabled = false;
+  color = 'accent';
+  checked = false;
+  disabled = false;
 
   generateExpenseCopy = 'accent';
 
@@ -83,7 +83,7 @@ export class ExpenseComponent implements OnInit {
       this.editionItem.Name = data["name"].value;
       this.editionItem.Value = data["value"].value;
       this.editionItem.DueDate = data["date"].value;
-      this.editionItem.PayedOut = this.isChecked;
+      this.editionItem.PayedOut = this.checked;
 
       this.editionItem.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
 
@@ -99,7 +99,7 @@ export class ExpenseComponent implements OnInit {
       itemExpense.Id = 0;
       itemExpense.Value = data["value"].value;
       itemExpense.DueDate = data["date"].value;
-      itemExpense.PayedOut = this.isChecked;
+      itemExpense.PayedOut = this.checked;
       itemExpense.TransactionTypes = 1;
       itemExpense.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
       itemExpense.Name = data["name"].value;
@@ -140,7 +140,7 @@ export class ExpenseComponent implements OnInit {
           var dateInput = year + '-' + month + '-' + day;
 
           data['date'].setValue(dateInput);
-          this.isChecked = response.PayedOut;
+          this.checked = response.PayedOut;
         }
       }, (error) => console.error(error), () => { })
   }
@@ -163,7 +163,7 @@ export class ExpenseComponent implements OnInit {
       })
   }
   payedHandleChange(itemExpense: any) {
-    this.isChecked = itemExpense.isChecked as boolean;
+    this.checked = itemExpense.checked as boolean;
   }
 
   // redireciona para a pagiá home do site

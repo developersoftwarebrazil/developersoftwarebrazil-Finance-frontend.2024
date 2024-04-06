@@ -1,4 +1,8 @@
 import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule
+} from '@angular/common/http';
+import {
   CUSTOM_ELEMENTS_SCHEMA,
   NgModule
 } from '@angular/core';
@@ -7,24 +11,18 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import {
-  HTTP_INTERCEPTORS,
-  HttpClientModule
-} from '@angular/common/http';
-import {
   HTTPStatus,
   LoaderInterceptor
 } from './interceptors/loader.interceptor';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/account/login/login.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthGuard } from './pages/guards/auth-guard.service';
-import { SlideToggleComponent } from './components/slide-toggle/slide-toggle.component';
-import { SlideToggleModule } from './components/slide-toggle/slide-toggle.module';
 
 const RxJS = [LoaderInterceptor, HTTPStatus]
 
@@ -43,7 +41,7 @@ const RxJS = [LoaderInterceptor, HTTPStatus]
 
     FormsModule,
     ReactiveFormsModule,
-    SlideToggleModule,
+
 
     NgxSpinnerModule
   ],

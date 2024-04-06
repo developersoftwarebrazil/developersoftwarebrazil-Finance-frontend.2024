@@ -1,32 +1,34 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarModule } from '../../components/sidebar/sidebar.module';
-import { NavbarModule } from '../../components/navbar/navbar.module';
-import { ExpenseComponent } from './expense.component';
-import { ExpenseRoutingModule } from './expense-routing.module';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { SlideToggleComponent } from '../../components/slide-toggle/slide-toggle.component';
-import { SlideToggleModule } from '../../components/slide-toggle/slide-toggle.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NavbarModule } from '../../components/navbar/navbar.module';
+import { SidebarModule } from '../../components/sidebar/sidebar.module';
+import { ExpenseRoutingModule } from './expense-routing.module';
+import { ExpenseComponent } from './expense.component';
 
 
 @NgModule({
   declarations: [
     ExpenseComponent,
-    SlideToggleComponent
+
   ],
   imports: [
     CommonModule,
     ExpenseRoutingModule,
     SidebarModule,
     NavbarModule,
-    SlideToggleModule,
 
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatSlideToggleModule,
+
+    MatIconModule
 
   ]
 })

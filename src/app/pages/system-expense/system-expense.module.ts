@@ -1,14 +1,13 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatIconModule } from "@angular/material/icon";
+import { NgSelectModule } from "@ng-select/ng-select";
+import { NgxPaginationModule } from "ngx-pagination";
 import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
-import { SystemExpenseComponent } from "./system-expense.component";
 import { SystemExpenseRoutingModule } from "./system-expense-routing.module";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgSelectComponent, NgSelectModule } from "@ng-select/ng-select";
-import { SlideToggleModule } from "../../components/slide-toggle/slide-toggle.module";
-import { NgxPaginationModule } from "ngx-pagination";
-import {MatIconModule} from "@angular/material/icon"
+import { SystemExpenseComponent } from "./system-expense.component";
 
 @NgModule({
   providers: [],
@@ -21,13 +20,13 @@ import {MatIconModule} from "@angular/material/icon"
 
     FormsModule,
     ReactiveFormsModule,
-    SlideToggleModule,
+
 
     NgxPaginationModule,
     NgSelectModule,
     MatIconModule,
     NgxPaginationModule,
-  
+
   ]
 })
 export class SystemExpenseModule {
