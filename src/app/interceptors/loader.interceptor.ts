@@ -1,14 +1,13 @@
-import { Injectable } from "@angular/core";
-import { NgxSpinnerService } from "ngx-spinner";
-import { Router } from "@angular/router";
-import { AuthService } from "../services/auth.service";
 import {
   HttpEvent,
   HttpHandler,
+  HttpHeaders,
   HttpInterceptor,
   HttpRequest,
-  HttpHeaders,
 } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { NgxSpinnerService } from "ngx-spinner";
 import {
   BehaviorSubject,
   Observable,
@@ -19,6 +18,7 @@ import {
   finalize,
   map,
 } from "rxjs/operators";
+import { AuthService } from "../services/auth.service";
 
 @Injectable()
 export class HTTPStatus {
