@@ -8,6 +8,7 @@ import { NavbarModule } from "../../components/navbar/navbar.module";
 import { SidebarModule } from "../../components/sidebar/sidebar.module";
 import { SystemExpenseRoutingModule } from "./system-expense-routing.module";
 import { SystemExpenseComponent } from "./system-expense.component";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 @NgModule({
   providers: [],
@@ -25,6 +26,7 @@ import { SystemExpenseComponent } from "./system-expense.component";
     NgxPaginationModule,
     NgSelectModule,
     MatIconModule,
+    MatSlideToggleModule,
     NgxPaginationModule,
 
   ]

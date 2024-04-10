@@ -28,6 +28,15 @@ export class SystemIncomeComponent {
   pagination: boolean = true;
   itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
 
+  // Configurações para os usuários do sistema
+  systemUseIncomeTableList: Array<IncomeSystemModel>;
+  userId: string;
+  pageUser: number = 1;
+  configUser: any;
+  paginationUser: boolean = true;
+  itemPerPagesUser: number = 5;// indica a quantidade de itens exibidos por págin
+
+
   systemIncomeList = new Array<SelectModel>();
   systemIncomeSelected = new SelectModel();
 
@@ -66,7 +75,11 @@ export class SystemIncomeComponent {
       this.editionItem.PropertyName = '';
       this.editionItem.Messages = '';
       this.editionItem.Notification = [];
+
       this.editionItem.Name = data["name"].value;
+      this.editionItem.Month = data["month"].value;
+      this.editionItem.DayMonthlyBookClose = data["dayMonthlyBookClose"].value;
+      this.editionItem.Year = data["year"].value;
 
       // faz a chamada no backend
       this.incomeSystemService.UpdateSystemIncome(this.editionItem)
@@ -82,9 +95,9 @@ export class SystemIncomeComponent {
     item.Name = data["name"].value;
 
     item.Id = 0;
-    item.Month = 0;
-    item.DayMonthlyBookClose = 0;
-    item.Year = 0;
+    item.Month = data["month"].value;
+    item.DayMonthlyBookClose = data["dayMonthlyBookClose"].value;;
+    item.Year = data["year"].value;
 
     // faz a chamada no backend
     this.incomeSystemService.AddSystemIncome(item)
@@ -110,6 +123,9 @@ export class SystemIncomeComponent {
 
           var data = this.dataForm();
           data["name"].setValue(this.editionItem.Name);
+          data["month"].setValue(this.editionItem.Month);
+          data["dayMonthlyBookClose"].setValue(this.editionItem.DayMonthlyBookClose);
+          data["year"].setValue(this.editionItem.Year);
         }
       },(error)=>console.error(error), ()=>{})
   }
@@ -163,4 +179,5 @@ export class SystemIncomeComponent {
       }
         , (error) => console.error(error), () => { })
   }
+  
 }

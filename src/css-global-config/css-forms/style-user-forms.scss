@@ -1,0 +1,12 @@
+.container-user-list
+{
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0rem;
+  .user-questions{
+    color: red;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+}

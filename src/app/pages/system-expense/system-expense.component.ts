@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ExpenseSystemModel } from "../../models/expense.system.model";
 import { SelectModel } from "../../models/select.model";
 import { AuthService } from "../../services/auth.service";
 import { ExpenseSystemService } from "../../services/expense.system.service";
 import { MenuService } from "../../services/menuservice";
-import { endWith } from "rxjs";
+import { UserSystemExpenseService } from "../../services/user.system.expense.service ";
+
 
 @Component({
   selector: 'system',
@@ -17,19 +18,34 @@ export class SystemExpenseComponent {
   //variáveis
   systemForm: FormGroup;
 
-  isChecked = false;
+  disabled = false;
+  checked = false;
+
   generateExpenseCopy = 'accent';
+  userEmailSystemExpense: string = '';
+  userEmailSystemExpenseValid: boolean = true;
+  validText: string = 'Campo obrigatório!';
 
   // Define qual tela será visualizada no sistema
   screenType = 1; // 1-listagem, 2-cadastro, 3-edição, 4-deletar
 
-  //Cofigurações para a tabela de listagens
+  //Cofigurações para a tabela de listagens do sistema de despesa
   systemExpenseTableList: Array<ExpenseSystemModel>;
   id: string;
   page: number = 1;
   config: any;
   pagination: boolean = true;
-  itemPerPages: number = 5;// indica a quantidade de itens exibidos por págin
+  itemPerPages: number = 5;// indica a quantidade de itens exibidos por página
+
+  //Cofigurações para a tabela de listagens de usuário do sistema de despesa
+  systemUserExpenseTableList: Array<any>;
+  userId: string;
+  pageUser: number = 1;
+  configUser: any;
+  paginationUser: boolean = true;
+  itemPerPagesUser: number = 5;// indica a quantidade de itens exibidos por página
+
+
 
   systemEspenseList = new Array<SelectModel>();
   systemExpenseSelected = new SelectModel();
@@ -37,6 +53,7 @@ export class SystemExpenseComponent {
   constructor(
     private router: Router,
     public expenseSystemService: ExpenseSystemService,
+    public userExpenseSystemService: UserSystemExpenseService,
     public menuService: MenuService,
     public formBuilder: FormBuilder,
     public authService: AuthService,
@@ -46,7 +63,9 @@ export class SystemExpenseComponent {
     this.menuService.menuSelected = 2;
 
     this.configPage();
+
     this.systemExpenseUserList();
+
     this.systemForm = this.formBuilder.group
       ({
         name: ['', [Validators.required]],
@@ -56,6 +75,7 @@ export class SystemExpenseComponent {
         year: ['', [Validators.required]],
         yearCopy: ['', [Validators.required]],
       });
+
   }
 
   //métodos default da aplicção
@@ -65,20 +85,27 @@ export class SystemExpenseComponent {
   sendData() {
     debugger
     var data = this.dataForm();
-
-    alert(data["name"].value);
     if (this.editionItem) {
       this.editionItem.PropertyName = '';
       this.editionItem.Messages = '';
       this.editionItem.Notification = [];
+
       this.editionItem.Name = data["name"].value;
+      this.editionItem.Month = data["month"].value;
+      this.editionItem.MonthCopy = data["monthCopy"].value;
+      this.editionItem.DayMonthlyBookClose = data["dayMonthlyBookClose"].value;
+      this.editionItem.Year = data["year"].value;
+      this.editionItem.YearCopy = data["yearCopy"].value;
+      this.editionItem.GenerateExpensesCopy = this.checked;
+
 
       // faz a chamada no backend
       this.expenseSystemService.UpdateSystemExpense(this.editionItem)
         // se tudo ocorreu certo
         .subscribe((response: ExpenseSystemModel) => {
           this.systemForm.reset();
-          this.systemExpenseUserList();
+          this.userSystemExpenseList();
+
         }, (error) => console.error(error), () => { })
     }
     else {
@@ -86,12 +113,12 @@ export class SystemExpenseComponent {
 
       item.Id = 0;
       item.Name = data["name"].value;
-      item.Month = 0;
-      item.MonthCopy = 0;
-      item.DayMonthlyBookClose = 0;
-      item.Year = 0;
-      item.YearCopy = 0;
-      item.GenerateExpensesCopy = true;
+      item.Month = data["month"].value;
+      item.MonthCopy = data["monthCopy"].value;
+      item.DayMonthlyBookClose = data["dayMonthlyBookClose"].value;;
+      item.Year = data["year"].value;
+      item.YearCopy = data["yearCopy"].value;
+      item.GenerateExpensesCopy = this.checked;
 
       // faz a chamada no backend
       this.expenseSystemService.AddSystemExpense(item)
@@ -101,12 +128,13 @@ export class SystemExpenseComponent {
 
           this.expenseSystemService.RegisterUserOnSystemExpense(response.Id, this.authService.getUserEmail())
             .subscribe((response: any) => {
-              debugger
-              this.systemExpenseUserList();
+
+              this.userSystemExpenseList();
             }, (error) => console.error(error), () => { })
         }, (error) => console.error(error), () => { })
     }
   }
+
   editionItem: ExpenseSystemModel;
   edition(id: number) {
     this.expenseSystemService.GetExpenseSystem(id)
@@ -117,22 +145,44 @@ export class SystemExpenseComponent {
 
           var data = this.dataForm();
           data["name"].setValue(this.editionItem.Name);
+          data["month"].setValue(this.editionItem.Month);
+          data["monthCopy"].setValue(this.editionItem.MonthCopy);
+          data["dayMonthlyBookClose"].setValue(this.editionItem.DayMonthlyBookClose);
+          data["year"].setValue(this.editionItem.Year);
+          data["yearCopy"].setValue(this.editionItem.YearCopy);
+          this.checked = this.editionItem.GenerateExpensesCopy;
+
+          this.userSystemExpenseList();
+
         }
       }, (error) => console.error(error), () => { })
   }
 
+  expenseCopyHandleChange(item: any) {
+    this.checked = item.checked as boolean;
+  }
   // redireciona para a página home do site
   goToHomePage() {
     this.router.navigate(['/dashboard']);
   }
+
+
   //métodos usados para carregar e configurar as tableas
   configPage() {
+    // configuração para sistema
     this.id = this.configPageToGenerateId();
     this.config = {
       id: this.id,
       currentPage: this.page,
       itemsPerPage: this.itemPerPages,
     };
+    // configurações para o usuário do sistema
+    this.userId = this.configPageToGenerateId();
+    this.configUser = {
+      id: this.userId,
+      currentPage: this.pageUser,
+      itemsPerPage: this.itemPerPagesUser,
+    }
   }
 
   configPageToGenerateId() {
@@ -144,11 +194,24 @@ export class SystemExpenseComponent {
     }
     return result;
   }
-  //mostra a pagina de cadastro
+  //navegação
   register() {
     this.screenType = 2;
     this.systemForm.reset();
   }
+
+  registerUser() {
+    debugger
+    this.screenType = 6;
+    this.systemForm.reset();
+  }
+  listUsers() {
+    debugger
+    this.screenType = 5;
+    this.systemForm.reset();
+  }
+
+  // Listagem para sistema de despesas
   itemPerPagesChange() {
     this.page = 1;
     this.config.currentPage = this.page;
@@ -170,5 +233,52 @@ export class SystemExpenseComponent {
         , (error) => console.error(error), () => { })
 
 
+  }
+
+  // Listagem para usuários do sistema de despesas
+
+  itemPerPagesChangeUser() {
+    this.pageUser = 1;
+    this.config.currentPage = this.pageUser;
+    this.config.itemsPerPage = this.pageUser;
+  }
+  pageChangeUse(event: any) {
+    this.pageUser = event;
+    this.config.currentPage = this.pageUser;
+  }
+  // CRUD para o usuáio do sistema
+  registerUserOnSystemExpense() {
+
+    this.userEmailSystemExpenseValid = true;
+
+    if (!this.userEmailSystemExpense) {
+      this.userEmailSystemExpenseValid = false;
+    } else {
+      this.expenseSystemService.RegisterUserOnSystemExpense(this.editionItem.Id, this.userEmailSystemExpense)
+        .subscribe((response: any) => {
+          if (response) {
+            this.edition(this.editionItem.Id);
+            this.userEmailSystemExpense = '';
+          }
+        }, (error) => console.error(error), () => { });
+    }
+    this.listUsers();
+  }
+  userSystemExpenseList() {
+
+    this.userExpenseSystemService.UserSystemExpenseList(this.editionItem.Id)
+      .subscribe((response: Array<any>) => {
+        this.systemUserExpenseTableList = response;
+      })
+  }
+
+  exclude(id: number) {
+    this.userExpenseSystemService.DeleteUserOnSystemExpense(id)
+      .subscribe((response: ExpenseSystemModel) => {
+        if (response) {
+          this.edition(this.editionItem.Id);
+          this.userEmailSystemExpense = '';
+        }
+      }, (error) => console.error(error), () => { })
   }
 }

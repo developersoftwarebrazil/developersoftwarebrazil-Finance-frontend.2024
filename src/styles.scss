@@ -5,9 +5,11 @@
 // ====imports
 @import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
 
-@import "./css-global-config/css-colors/style-colors.scss";
 @import "./css-global-config/css-colors/slide-toggle-colors.scss";
+@import "./css-global-config/css-colors/style-colors.scss";
 @import "./css-global-config/icss-icons/styles-icons.scss";
+@import "./css-global-config/css-forms/style-form.scss";
+@import "./css-global-config/css-forms/style-user-forms.scss";
 @import "./css-global-config/css-tables/style-table.scss";
 
 // ====resets
@@ -93,70 +95,7 @@ body {
   flex: 1;
   flex-direction: column;
 }
-.form-container {
-  background-color: var(--body-selected-color-bg);
 
-  border-radius: 0.9rem;
-
-  .form-page {
-    display: flex;
-    justify-content: center;
-    padding: 2rem 0 1rem 0;
-
-    .row {
-      display: flex;
-
-      .group-row {
-        display: inline-block;
-        margin: 1rem;
-        min-height: 4rem;
-
-        .row-select-patter {
-          width: 30rem;
-          margin: 1rem 0 3rem 0;
-          padding: 0.2rem 0;
-          border: none;
-          background: var(--body-principal-color-bg);
-          border-radius: 0.3rem; //4px
-
-          border-bottom: 0.19rem solid var(--border-buttom-color);
-
-          font-size: 0.9rem; //14px
-
-          box-sizing: border-box;
-        }
-        .ng-select > .ng-select-container {
-          background: var(--body-principal-color-bg);
-          color: var(--text-color-principal);
-          border-radius: 0.3rem; //4px
-          border: none;
-          border-bottom: 0.13rem solid var(--bg-border-buttom-color);
-        }
-        .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-          background: var(--body-selected-color-bg);
-          background: var(--body-principal-color-bg);
-          border: none;
-        }
-      }
-      .group-row input {
-        margin: 0.5rem 0 1rem 0;
-        border-bottom: 3px solid var(--border-buttom-color);
-      }
-      .btn-form {
-        margin-left: 30vh;
-        padding: 0.5rem 1rem;
-        background: var(--body-theme-color-bg);
-        border-radius: 0.2rem;
-      }
-      .error-input {
-        display: block;
-        margin-top: -0.9rem;
-        font-size: 1rem;
-        color: var(--error-color-font);
-      }
-    }
-  }
-}
 
 .title {
   font-family: "Ubuntu";

@@ -60,7 +60,7 @@
   </div>
 
   <!-- conteúdo para o cadastro de sistema -->
-  <div class="content" *ngIf="screenType == 2">
+  <div class="content page" *ngIf="screenType == 2">
     <div class="header">
       <div class="title-content">
         <div class="title">
@@ -77,18 +77,49 @@
       </div>
     </div>
     <div class="form-container">
-      <div class="form-page" >
+      <div class="form-page">
         <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
           <div class="form-content">
+            <!-- Campo do nome  -->
             <div class="row">
               <div class="group-row">
                 <label for="name" id="name">Sistema</label>
-                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                <input type="text" name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
                 <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
-                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+                systemForm.get('name')?.touched">Campo Obrigatório!</label>
               </div>
-
             </div>
+
+            <!-- Campo do mês  -->
+            <div class="row">
+              <div class="group-row">
+                <label for="month" id="month">Mês</label>
+                <input type="number" name="month" id="month" formControlName="month" required />
+                <label class="error-input" *ngIf="systemForm.get('month')?.errors?.['required'] &&
+                systemForm.get('month')?.touched">Campo Obrigatório!</label>
+              </div>
+            </div>
+
+            <!-- Campo do dia de fechamento  -->
+            <div class="row">
+              <div class="group-row">
+                <label for="dayMonthlyBookClose" id="dayMonthlyBookClose">Dia de fechamento</label>
+                <input type="number" name="dayMonthlyBookClose" id="dayMonthlyBookClose" placeholder="Digite um mês para o sistema" formControlName="dayMonthlyBookClose" required />
+                <label class="error-input" *ngIf="systemForm.get('dayMonthlyBookClose')?.errors?.['required'] &&
+                  systemForm.get('dayMonthlyBookClose')?.touched">Campo Obrigatório!</label>
+              </div>
+            </div>
+
+            <!-- Campo do ano  -->
+            <div class="row">
+              <div class="group-row">
+                <label for="year" id="year">Ano</label>
+                <input type="number" name="year" id="year" formControlName="year" required />
+                <label class="error-input" *ngIf="systemForm.get('year')?.errors?.['required'] &&
+                systemForm.get('year')?.touched">Campo Obrigatório!</label>
+              </div>
+            </div>
+
             <div class="row">
               <div class="group-row">
                 <button class="btn-form">Salvar</button>
@@ -100,20 +131,22 @@
     </div>
   </div>
 
-  <!-- Conteúdo para a edição de sistemas  -->
-  <div class="content" *ngIf="screenType == 3">
+
+  <!-- conteúdo para o edição de sistema -->
+
+  <div class="content page" *ngIf="screenType == 3">
     <div class="header">
       <div class="title-content">
         <div class="title">
-          <h2>Edição de Sistema para investimentos</h2>
-          <h5>Edite o sistemas para investiemntos, edite e remova.</h5>
+          <h2> Edição de Sistema para invetimentos </h2>
+          <h5>Edite seu sistema.</h5>
         </div>
-        <div class="menu">
-          <div class="bread-crumbs">
-            <div class="svg-home-ico" (click)="goToHomePage()">
-            </div>
-            <h5 (click)="systemUserIncomeList()"> ir para a Lista de sistemas</h5>
+      </div>
+      <div class="menu">
+        <div class="bread-crumbs">
+          <div class="svg-home-ico" (click)="goToHomePage()">
           </div>
+          <h5 (click)="systemUserIncomeList()"> ir para a Lista de sistemas</h5>
         </div>
       </div>
     </div>
@@ -121,18 +154,49 @@
       <div class="form-page">
         <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
           <div class="form-content">
+            <!-- Campo do nome  -->
             <div class="row">
               <div class="group-row">
                 <label for="name" id="name">Editar Sistema</label>
-                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                <input type="text" name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
                 <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
-                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
+                systemForm.get('name')?.touched">Campo Obrigatório!</label>
               </div>
-
             </div>
+
+            <!-- Campo do mês  -->
             <div class="row">
               <div class="group-row">
-                <button class="btn-form">Salvar Alterações </button>
+                <label for="month" id="month">Mês</label>
+                <input type="number" name="month" id="month" formControlName="month" required />
+                <label class="error-input" *ngIf="systemForm.get('month')?.errors?.['required'] &&
+                systemForm.get('month')?.touched">Campo Obrigatório!</label>
+              </div>
+            </div>
+
+            <!-- Campo do dia de fechamento  -->
+            <div class="row">
+              <div class="group-row">
+                <label for="dayMonthlyBookClose" id="dayMonthlyBookClose">Dia de fechamento</label>
+                <input type="number" name="dayMonthlyBookClose" id="dayMonthlyBookClose" placeholder="Digite um mês para o sistema" formControlName="dayMonthlyBookClose" required />
+                <label class="error-input" *ngIf="systemForm.get('dayMonthlyBookClose')?.errors?.['required'] &&
+                  systemForm.get('dayMonthlyBookClose')?.touched">Campo Obrigatório!</label>
+              </div>
+            </div>
+
+            <!-- Campo do ano  -->
+            <div class="row">
+              <div class="group-row">
+                <label for="year" id="year">Ano</label>
+                <input type="number" name="year" id="year" formControlName="year" required />
+                <label class="error-input" *ngIf="systemForm.get('year')?.errors?.['required'] &&
+                systemForm.get('year')?.touched">Campo Obrigatório!</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="group-row">
+                <button class="btn-form">Salvar</button>
               </div>
             </div>
           </div>
@@ -142,6 +206,6 @@
   </div>
 
   <!-- Conteúdo para a remover de sistemas  -->
-  <div class="content" *ngIf="screenType == 3"></div>
+  <div class="content page" *ngIf="screenType == 4"></div>
 
 </div>

@@ -81,7 +81,8 @@ export class LoaderInterceptor implements HttpInterceptor {
       catchError((error: Response) => {
         if (error.status === 401) {
           localStorage.clear();
-          alert('hocorreu um erro na rota');
+          alert('Houve um erro ao tentar acessar esta rota');
+          alert('Você será redirecionando para a página de Logi');
           this.router.navigate(["/login"]);
         }
         return throwError(error);

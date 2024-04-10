@@ -59,11 +59,15 @@ export class ExpenseComponent implements OnInit {
       {
         name: ['', [Validators.required]],
         value: ['', [Validators.required]],
-        date: ['', [Validators.required]],
-        categoryUserExpenseList: ['', [Validators.required]],
-        categoryExpenseSelect: ['', [Validators.required]]
+        day: ['', [Validators.required]],
+        month:['',[Validators.required]],
+        monthCopy:['',[Validators.required]],
+        year:['',[Validators.required]],
+        yearCopy:['',[Validators.required]],
 
 
+        // categoryUserExpenseList: ['', [Validators.required]],
+        // categoryExpenseSelect: ['', [Validators.required]]
       });
   }
 
@@ -111,7 +115,6 @@ export class ExpenseComponent implements OnInit {
 
         }, (error) => console.error(error), () => { })
     }
-
   }
   editionItem: ExpenseModel;
 

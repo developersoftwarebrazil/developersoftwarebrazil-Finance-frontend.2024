@@ -1,120 +1,142 @@
-
 <sidebar></sidebar>
 <div class="nav">
   <navbar></navbar>
 </div>
 <div class="container">
+  <!-- Tabelas  -->
+  <section id="tablsa" class="content page">
+    <!-- ------------------DESPESAS---------------------------- -->
+    <!-- Conteúdo para a tabela de listagem de sistemas  -->
 
-  
-  <!-- Conteúdo para a tabela de listagem de sistemas  -->
-  <div
-  
-  class="content page" *ngIf="screenType == 1">
-    <div class="header">
-      <div class="title-content">
-        <div class="title">
-          <h2>Listagem Sistema para despesas</h2>
-          <h5>Gerenciamento de sistemas para despesas, adicione edite e remova.</h5>
-        </div>
-      </div>
-    </div>
-
-    <div class="menu">
-      <div class="bread-crumbs">
-        <div class="svg-home-ico" (click)="goToHomePage()">
-        </div>
-        <h5 (click)="register()">Adicionar sistema</h5>
-      </div>
-    </div>
-    <div class="page-content">
-      <!-- Tabela  -->
-      <table cellSpacing="0" cellPadding="0">
-        <thead>
-          <tr>
-            <td>Código</td>
-            <td>Nome</td>
-            <td>Ação</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="select-item" *ngFor="let item of systemExpenseTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey=line': i % 2 === 0, 'white-line': i % 2 !== 0}">
-            <td>{{item.Id}}</td>
-            <td>{{item.Name}}</td>
-            <td class="action">
-              <a (click)="register()">Adicionar</a> |
-              <a (click)="edition(item.Id)">Editar</a> |
-              <a>Remover</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Paginação  -->
-      <div class="table-footer" *ngIf="pagination && systemExpenseTableList">
-        <label for="" class="show-Items">Mostrar</label>
-        <ng-select class="show-drop-table" [(ngModel)]="itemPerPages" [clearable]="false" [searchable]="false">
-          <ng-option [value]="5">5</ng-option>
-          <ng-option [value]="10">10</ng-option>
-          <ng-option [value]="50">50</ng-option>
-          <ng-option value="100">100</ng-option>
-        </ng-select>
-
-        <div class="paginstion-container">
-          <pagination-controls id="{{this.id}}" previousLabel="Anterior" nextLabel="Próximo" [responsive]="true" (pageChange)="pageChange($event)">
-          </pagination-controls>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- conteúdo para o cadastro de sistema -->
-  <div class="content page" *ngIf="screenType == 2">
-    <div class="header">
-      <div class="title-content">
-        <div class="title">
-          <h2> Cadastro de Sistema para despesas</h2>
-          <h5>Geneciamnto de sistemas para despesas, adicione edite e remova.</h5>
-        </div>
-      </div>
-      <div class="menu">
-        <div class="bread-crumbs">
-          <div class="svg-home-ico" (click)="goToHomePage()">
+    <div *ngIf="screenType == 1">
+      <div class="header">
+        <div class="title-content">
+          <div class="title">
+            <h2>Listagem Sistema para despesas</h2>
+            <h5>Gerenciamento de sistemas para despesas, adicione edite e remova.</h5>
           </div>
-          <h5 (click)="systemExpenseUserList()"> ir para a Lista de sistemas</h5>
+        </div>
+        <div class="menu">
+          <div class="bread-crumbs">
+            <div class="svg-home-ico" (click)="goToHomePage()">
+            </div>
+            <h5 (click)="register()">Adicionar sistema</h5>
+            <!-- <h5 (click)="registerUser()">Adicionar usuários</h5> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="page-content">
+        <!-- Tabela  -->
+        <table cellSpacing="0" cellPadding="0">
+          <thead>
+            <tr>
+              <td>Código</td>
+              <td>Nome</td>
+              <td>Ação</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="select-item" *ngFor="let item of systemExpenseTableList | paginate: config; let i = index" class="table-line" [ngClass]="{'grey-line': i % 2 === 0, 'white-line': i % 2 !== 0}">
+              <td>{{item.Id}}</td>
+              <td>{{item.Name}}</td>
+              <td class="action">
+                <a (click)="register()">Adicionar</a> |
+                <a (click)="edition(item.Id)">Editar</a> |
+                <a>Remover</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Paginação  -->
+        <div class="table-footer" *ngIf="pagination && systemExpenseTableList">
+          <label for="" class="show-Items">Mostrar</label>
+          <ng-select class="show-drop-table" [(ngModel)]="itemPerPages" [clearable]="false" [searchable]="false">
+            <ng-option [value]="5">5</ng-option>
+            <ng-option [value]="10">10</ng-option>
+            <ng-option [value]="50">50</ng-option>
+            <ng-option value="100">100</ng-option>
+          </ng-select>
+
+          <div class="pagination-container">
+            <pagination-controls id="{{this.id}}" previousLabel="Anterior" nextLabel="Próximo" [responsive]="true" (pageChange)="pageChange($event)">
+            </pagination-controls>
+          </div>
         </div>
       </div>
     </div>
-    <div class="form-container">
-      <div class="form-page">
-        <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
-          <div class="form-content">
-            <div class="row">
-              <div class="group-row">
-                <label for="name" id="name">Sistema</label>
-                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
-                <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
-                  systemForm.get('name')?.touched">Campo Obrigatório!</label>
-              </div>
+    <!-- ------------------USÁRIOS---------------------------- -->
+    <!-- Conteúdo para a tabela de listagem de usuários do sistema  -->
 
-            </div>
-            <div class="row">
-              <div class="group-row">
-                <button class="btn-form">Salvar</button>
-              </div>
-            </div>
+    <div *ngIf="screenType == 5">
+      <div class="header">
+        <div class="title-content">
+          <div class="title">
+            <h2>Listagem de usuários para o Sistema para despesas</h2>
+            <h5>Gerenciamento de usuários sistemas para despesas, adicione e remova.</h5>
           </div>
-        </form>
+        </div>
+        <div class="menu">
+          <div class="bread-crumbs">
+            <div class="svg-home-ico" (click)="goToHomePage()">
+            </div>
+            <h5 (click)="registerUser()">Adicionar usuários para este sistema</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-content">
+        <!-- Tabela  -->
+        <table cellSpacing="0" cellPadding="0">
+          <thead>
+            <tr>
+              <td>Código</td>
+              <td>Nome</td>
+              <td>Ação</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="select-item" *ngFor="let item of systemUserExpenseTableList | paginate: configUser; let i = index" class="table-line" [ngClass]="{'grey-line': i % 2 === 0, 'white-line': i % 2 !== 0}">
+              <td>{{item.Id}}</td>
+              <td>{{item.UserEmail}}</td>
+              <td class="action">
+                <a (click)="registerUser()">Adicionar usuario</a> |
+                <a (click)="exclude(item.Id)">Remover</a> |
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Paginação  -->
+        <div class="table-footer" *ngIf="pagination && systemUserExpenseTableList">
+          <label for="" class="show-Items">Mostrar</label>
+          <ng-select class="show-drop-table" [(ngModel)]="itemPerPagesUser" [clearable]="false" [searchable]="false">
+            <ng-option [value]="5">5</ng-option>
+            <ng-option [value]="10">10</ng-option>
+          </ng-select>
+
+          <div class="pagination-container">
+            <pagination-controls id="{{this.id}}" previousLabel="Anterior" nextLabel="Próximo" [responsive]="true" (pageChange)="pageChange($event)">
+            </pagination-controls>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Conteúdo para a edição de sistemas  -->
-  <div class="content page" *ngIf="screenType == 3">
-    <div class="header">
-      <div class="title-content">
-        <div class="title">
-          <h2>Edição de Sistema para despesas</h2>
-          <h5>Edite o sistemas para despesas, edite e remova.</h5>
+  </section>
+
+  <!-- Formulários  -->
+  <section id="forms">
+    <!-- ------------------DESPESAS---------------------------- -->
+    <!-- Cadastro de sistemas  -->
+    <div class="content page" *ngIf="screenType == 2">
+      <div class="header">
+        <div class="title-content">
+          <div class="title">
+            <h2> Cadastro de Sistema para despesas</h2>
+            <h5>Geneciamnto de sistemas para despesas, adicione edite e remova.</h5>
+          </div>
         </div>
         <div class="menu">
           <div class="bread-crumbs">
@@ -124,40 +146,252 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="form-container">
-      <div class="form-page">
-        <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
-          <div class="form-content">
-            <div class="row">
-              <div class="group-row">
-                <label for="name" id="name">Editar Sistema</label>
-                <input name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
-                <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+      <div class="form-container">
+        <div class="form-page">
+          <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
+            <div class="form-content">
+              <!-- Campo do nome  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="name" id="name">Sistema</label>
+                  <input type="text" name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                  <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
                   systemForm.get('name')?.touched">Campo Obrigatório!</label>
+                </div>
               </div>
 
-            </div>
-            <div class="row">
-              <div class="group-row">
-                <button class="btn-form">Salvar Alterações </button>
+              <!-- Campo do mês  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="month" id="month">Mês</label>
+                  <input type="number" name="month" id="month" placeholder="Digite um mês para o sistema" formControlName="month" required />
+                  <label class="error-input" *ngIf="systemForm.get('month')?.errors?.['required'] &&
+                  systemForm.get('month')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <!-- Campo do mês para a cópia -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="monthCopy" id="monthCopy">Mês da cópia </label>
+                  <input type="number" name="monthCopy" id="monthCopy" placeholder="Digite um mês  para a cópia do sistema" formControlName="monthCopy" required />
+                  <label class="error-input" *ngIf="systemForm.get('monthCopy')?.errors?.['required'] &&
+                  systemForm.get('monthCopy')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+
+              <!-- Campo do dia de fechamento  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="dayMonthlyBookClose" id="dayMonthlyBookClose">Dia de fechamento</label>
+                  <input type="number" name="dayMonthlyBookClose" id="dayMonthlyBookClose" placeholder="Digite um mês para o sistema" formControlName="dayMonthlyBookClose" required />
+                  <label class="error-input" *ngIf="systemForm.get('dayMonthlyBookClose')?.errors?.['required'] &&
+                  systemForm.get('dayMonthlyBookClose')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+              <!-- Campo do ano  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="year" id="year">Ano</label>
+                  <input type="number" name="year" id="year" placeholder="Digite  o ano para o sistema" formControlName="year" required />
+                  <label class="error-input" *ngIf="systemForm.get('year')?.errors?.['required'] &&
+                  systemForm.get('year')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <!-- Campo do ano para a cópia -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="yearCopy" id="yearCopy">Ano da cópia </label>
+                  <input type="number" name="yearCopy" id="yearCopy" placeholder="Digite o ano para a cópia do sistema" formControlName="yearCopy" required />
+                  <label class="error-input" *ngIf="systemForm.get('yearCopy')?.errors?.['required'] &&
+                  systemForm.get('yearCopy')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="group-row">
+                  <mat-slide-toggle class="group-slide" [color]="generateExpenseCopy" [checked]="checked" [disabled]="disabled" (change)="expenseCopyHandleChange($event)">
+                    Gerar Cópia?
+                  </mat-slide-toggle>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="group-row">
+                  <button class="btn-form">Salvar</button>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Conteúdo para a remover de sistemas  -->
-  <div class="content page" *ngIf="screenType == 4">
-    <div class="header">
-      <div class="title-content">
-        <div class="title">
-          <h2>Geletar Sistema para despesas</h2>
-          <h5>Geneciamnto de sistemas para despesas, adicione edite e remova.</h5>
+          </form>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- Edição de sistema -->
+    <div class="content page" *ngIf="screenType == 3">
+      <div class="header">
+        <div class="title-content">
+          <div class="title">
+            <h2> Edição de Sistema para despesas</h2>
+            <h5>Edite seu sistema.</h5>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="bread-crumbs">
+            <div class="svg-home-ico" (click)="goToHomePage()">
+            </div>
+            <h5 (click)="systemExpenseUserList()"> ir para a Lista de sistemas</h5>
+          </div>
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="form-page">
+
+          <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
+            <div class="container-user-list" *ngIf=" screenType === 3 && this.editionItem && this.editionItem.Id >0 && systemUserExpenseTableList">
+
+              <h5 class="user-questions" (click)="listUsers()">Adicione usuário para visualizar este sistema?</h5>
+
+            </div>
+            <div class="form-content">
+              <!-- Campo do nome  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="name" id="name">Editar Sistema</label>
+                  <input type="text" name="name" id="name" placeholder="Digite um nome para o sistema" formControlName="name" required />
+                  <label class="error-input" *ngIf="systemForm.get('name')?.errors?.['required'] &&
+                systemForm.get('name')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <!-- Campo do mês  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="month" id="month">Mês</label>
+                  <input type="number" name="month" id="month" formControlName="month" required />
+                  <label class="error-input" *ngIf="systemForm.get('month')?.errors?.['required'] &&
+                systemForm.get('month')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <!-- Campo do dia de fechamento  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="dayMonthlyBookClose" id="dayMonthlyBookClose">Dia de fechamento</label>
+                  <input type="number" name="dayMonthlyBookClose" id="dayMonthlyBookClose" placeholder="Digite um mês para o sistema" formControlName="dayMonthlyBookClose" required />
+                  <label class="error-input" *ngIf="systemForm.get('dayMonthlyBookClose')?.errors?.['required'] &&
+                  systemForm.get('dayMonthlyBookClose')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <!-- Campo do mês para a cópia -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="monthCopy" id="monthCopy">Mês da cópia </label>
+                  <input type="number" name="monthCopy" id="monthCopy" formControlName="monthCopy" required />
+                  <label class="error-input" *ngIf="systemForm.get('monthCopy')?.errors?.['required'] &&
+                systemForm.get('monthCopy')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <!-- Campo do ano  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="year" id="year">Ano</label>
+                  <input type="number" name="year" id="year" formControlName="year" required />
+                  <label class="error-input" *ngIf="systemForm.get('year')?.errors?.['required'] &&
+                systemForm.get('year')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+
+              <!-- Campo do ano para a cópia -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="yearCopy" id="yearCopy">Ano da cópia </label>
+                  <input type="number" name="yearCopy" id="yearCopy" formControlName="yearCopy" required />
+                  <label class="error-input" *ngIf="systemForm.get('yearCopy')?.errors?.['required'] &&
+                systemForm.get('yearCopy')?.touched">Campo Obrigatório!</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="group-row">
+                  <mat-slide-toggle class="group-slide" [color]="generateExpenseCopy" [checked]="checked" [disabled]="disabled" (change)="expenseCopyHandleChange($event)">
+                    Gerar Cópia?
+                  </mat-slide-toggle>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="group-row">
+                  <button class="btn-form">Salvar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- Conteúdo para a remover de sistemas  -->
+    <div class="content page" *ngIf="screenType == 4">
+      <div class="header">
+        <div class="title-content">
+          <div class="title">
+            <h2>Geletar Sistema para despesas</h2>
+            <h5>Geneciamnto de sistemas para despesas, adicione edite e remova.</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ------------------USUÁRIOS---------------------------- -->
+    <!--cadastro de usuarios para sistema -->
+    <div class="content page" *ngIf="screenType == 6">
+      <div class="header">
+        <div class="title-content">
+          <div class="title">
+            <h2> Cadastro de Usuários para o SIstema</h2>
+            <h5>Geneciamnto de sistemas para despesas, adicione edite e remova.</h5>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="bread-crumbs">
+            <div class="svg-home-ico" (click)="goToHomePage()">
+            </div>
+            <h5 (click)=" listUsers()"> ir para a Lista de sistemas usuarios</h5>
+          </div>
+        </div>
+      </div>
+      <div class="form-container">
+        <div class="form-page">
+          <form class="form-container">
+            <div class="form-content">
+              <!-- Campo do nome  -->
+              <div class="row">
+                <div class="group-row">
+                  <label for="name" id="name">Email usuário</label>
+                  <input type="email" name="email" id="email" placeholder="Digite um nome para o sistema" [(ngModel)]="userEmailSystemExpense" />
+                  <label class="error-input" *ngIf="!userEmailSystemExpenseValid">{{validText}}</label>
+                </div>
+              </div>
+
+              <!-- Botão  -->
+              <div class="row">
+                <div class="group-row">
+                  <button (click)="registerUserOnSystemExpense()" class="btn">Adicionar usuário</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
