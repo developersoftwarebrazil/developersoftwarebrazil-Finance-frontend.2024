@@ -125,6 +125,18 @@
           <p> edite seus investiemntos.</p>
         </div>
       </div>
+      <div class="menu">
+        <div class="bread-crumbs">
+          <div class="svg-home-ico" (click)="goToHomePage()">
+          </div>
+          <div class="menu">
+            <div class="bread-crumbs">
+              <h5 (click)="incomeUserList()">voltar para Listagem de investimentos </h5>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
     <div class="form-container">
       <form class="form-page" [formGroup]="incomeForm" (submit)="sendIncomeData()">

@@ -8,7 +8,7 @@ export class ExpenseModel {
   Month: number;
   Year: number;
   Value: number;
-  RegistrationDat!: Date;
+  RegistrationDate: Date;
   RegistrationChangeDate: Date;
   PaymentDate: Date;
   DueDate: Date;

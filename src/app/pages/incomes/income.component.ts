@@ -86,7 +86,7 @@ export class IncomeComponent implements OnInit {
           this.incomeForm.reset();
           this.incomeUserList();
         }, (error) => console.error(error), () => { })
-        
+
     } else {
       let itemIncome = new IncomeModel();
 
@@ -135,6 +135,7 @@ export class IncomeComponent implements OnInit {
 
           var dateInput = year + '-' + month + '-' + day;
           data['date'].setValue(dateInput);
+          data['value'].setValue(this.editionItem.Value)
 
         }
       }, (error) => console.error(error), () => { })

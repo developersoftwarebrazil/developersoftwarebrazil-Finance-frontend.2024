@@ -65,9 +65,9 @@ export class ExpenseComponent implements OnInit {
         year:['',[Validators.required]],
         yearCopy:['',[Validators.required]],
 
-
+        date:['',[Validators.required]],
         // categoryUserExpenseList: ['', [Validators.required]],
-        // categoryExpenseSelect: ['', [Validators.required]]
+         categoryExpenseSelect: ['', [Validators.required]]
       });
   }
 
@@ -101,12 +101,12 @@ export class ExpenseComponent implements OnInit {
       let itemExpense = new ExpenseModel();
 
       itemExpense.Id = 0;
+      itemExpense.Name = data["name"].value;
       itemExpense.Value = data["value"].value;
       itemExpense.DueDate = data["date"].value;
       itemExpense.PayedOut = this.checked;
       itemExpense.TransactionTypes = 1;
       itemExpense.CategoryExpenseId = parseInt(this.categoryExpenseSelected.id)
-      itemExpense.Name = data["name"].value;
 
       this.expenseService.AddExpense(itemExpense)
         .subscribe((response: ExpenseModel) => {
@@ -143,6 +143,7 @@ export class ExpenseComponent implements OnInit {
           var dateInput = year + '-' + month + '-' + day;
 
           data['date'].setValue(dateInput);
+          data["value"].setValue(this.editionItem.Value)
           this.checked = response.PayedOut;
         }
       }, (error) => console.error(error), () => { })
