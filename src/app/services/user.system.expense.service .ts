@@ -13,12 +13,12 @@ export class UserSystemExpenseService {
 
 
   //Usuário para o sistema de despesa
-  RegisterUserOnSystemExpense(userExpenseId: number, userEmail: string) {
-    return this.httpClient.post<ExpenseSystemModel>(`${this.baseUrl}/RegisterUserExpenseOnSystem?userSystemExpenseId=${userExpenseId}&userEmail=${userEmail}`, null);
+  RegisterUserOnSystemExpense(userSystemExpenseId: number, userEmail: string) {
+    return this.httpClient.post<ExpenseSystemModel>(`${this.baseUrl}/RegisterUserExpenseOnSystem?userSystemExpenseId=${userSystemExpenseId}&userEmail=${userEmail}`, null);
   }
 
-  UserSystemExpenseList(userExpenseId: number) {
-    return this.httpClient.get(`${this.baseUrl}/UserSystemExpenseList?userExpenseId=${userExpenseId}`);
+  UserSystemExpenseList(userSystemExpenseId: number) {
+    return this.httpClient.get(`${this.baseUrl}/UserSystemExpenseList?userSystemExpenseId=${userSystemExpenseId}`);
   }
 
   DeleteUserOnSystemExpense(id: number) {

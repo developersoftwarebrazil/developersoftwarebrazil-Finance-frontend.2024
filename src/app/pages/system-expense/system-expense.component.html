@@ -129,6 +129,7 @@
   <!-- Formulários  -->
   <section id="forms">
     <!-- ------------------DESPESAS---------------------------- -->
+
     <!-- Cadastro de sistemas  -->
     <div class="content page" *ngIf="screenType == 2">
       <div class="header">
@@ -251,9 +252,7 @@
 
           <form class="form-container" [formGroup]="systemForm" (submit)="sendData()">
             <div class="container-user-list" *ngIf=" screenType === 3 && this.editionItem && this.editionItem.Id >0 && systemUserExpenseTableList">
-
               <h5 class="user-questions" (click)="listUsers()">Adicione usuário para visualizar este sistema?</h5>
-
             </div>
             <div class="form-content">
               <!-- Campo do nome  -->
@@ -330,10 +329,7 @@
               </div>
             </div>
           </form>
-
         </div>
-
-
       </div>
     </div>
 

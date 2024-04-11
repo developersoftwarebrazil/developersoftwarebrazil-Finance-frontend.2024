@@ -16,15 +16,25 @@ import { UserSystemExpenseService } from "../../services/user.system.expense.ser
 })
 export class SystemExpenseComponent {
   //variáveis
+
+  //Usuários
+
+  userEmailSystemExpense: string = '';
+  userEmailSystemExpenseValid: boolean = true;
+  validText: string = 'Campo obrigatório!';
+
+
+  //Sistemas
   systemForm: FormGroup;
+
+  systemEspenseList = new Array<SelectModel>();
+  systemExpenseSelected = new SelectModel();
 
   disabled = false;
   checked = false;
 
   generateExpenseCopy = 'accent';
-  userEmailSystemExpense: string = '';
-  userEmailSystemExpenseValid: boolean = true;
-  validText: string = 'Campo obrigatório!';
+
 
   // Define qual tela será visualizada no sistema
   screenType = 1; // 1-listagem, 2-cadastro, 3-edição, 4-deletar
@@ -45,10 +55,6 @@ export class SystemExpenseComponent {
   paginationUser: boolean = true;
   itemPerPagesUser: number = 5;// indica a quantidade de itens exibidos por página
 
-
-
-  systemEspenseList = new Array<SelectModel>();
-  systemExpenseSelected = new SelectModel();
 
   constructor(
     private router: Router,
@@ -82,6 +88,7 @@ export class SystemExpenseComponent {
   dataForm() {
     return this.systemForm.controls;
   }
+
   sendData() {
     debugger
     var data = this.dataForm();
@@ -128,7 +135,6 @@ export class SystemExpenseComponent {
 
           this.expenseSystemService.RegisterUserOnSystemExpense(response.Id, this.authService.getUserEmail())
             .subscribe((response: any) => {
-
               this.userSystemExpenseList();
             }, (error) => console.error(error), () => { })
         }, (error) => console.error(error), () => { })
@@ -166,6 +172,16 @@ export class SystemExpenseComponent {
     this.router.navigate(['/dashboard']);
   }
 
+  systemExpenseUserList() {
+    this.editionItem = null;
+    this.screenType = 1;
+
+    this.expenseSystemService.SystemExpenseUserList(this.authService.getUserEmail())
+      .subscribe((response: Array<ExpenseSystemModel>) => {
+        this.systemExpenseTableList = response;
+      }
+        , (error) => console.error(error), () => { })
+  }
 
   //métodos usados para carregar e configurar as tableas
   configPage() {
@@ -205,6 +221,7 @@ export class SystemExpenseComponent {
     this.screenType = 6;
     this.systemForm.reset();
   }
+
   listUsers() {
     debugger
     this.screenType = 5;
@@ -221,19 +238,6 @@ export class SystemExpenseComponent {
     this.page = event;
     this.config.currentPage = this.page;
   }
-  systemExpenseUserList() {
-    this.editionItem = null;
-    this.screenType = 1;
-
-    this.expenseSystemService.SystemExpenseUserList(this.authService.getUserEmail())
-      .subscribe((response: Array<ExpenseSystemModel>) => {
-        this.systemExpenseTableList = response;
-
-      }
-        , (error) => console.error(error), () => { })
-
-
-  }
 
   // Listagem para usuários do sistema de despesas
 
@@ -248,7 +252,6 @@ export class SystemExpenseComponent {
   }
   // CRUD para o usuáio do sistema
   registerUserOnSystemExpense() {
-
     this.userEmailSystemExpenseValid = true;
 
     if (!this.userEmailSystemExpense) {
@@ -262,10 +265,8 @@ export class SystemExpenseComponent {
           }
         }, (error) => console.error(error), () => { });
     }
-    this.listUsers();
   }
   userSystemExpenseList() {
-
     this.userExpenseSystemService.UserSystemExpenseList(this.editionItem.Id)
       .subscribe((response: Array<any>) => {
         this.systemUserExpenseTableList = response;

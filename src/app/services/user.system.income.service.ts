@@ -1,8 +1,9 @@
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 import { environment } from "../../environment";
 import { IncomeSystemModel } from "../models/income.system.model";
 
-
+@Injectable({ providedIn: 'root' })
 export class UserSystemIncomeService {
 
   private readonly baseUrl = environment["endPoint"];
