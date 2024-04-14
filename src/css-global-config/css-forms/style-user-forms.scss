@@ -4,9 +4,13 @@
   justify-content: center;
   padding: 2rem 0rem;
   .user-questions{
-    color: red;
+    color: var(--error-color-font);
     font-size: 1.5rem;
     text-transform: uppercase;
+    cursor: pointer;
+  }
+  .user-questions:hover{
+    color: var(--against-color-font);
   }
 
 }

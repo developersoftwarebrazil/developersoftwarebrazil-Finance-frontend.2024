@@ -23,5 +23,8 @@ export class IncomeService {
   UpdateIncome(income: IncomeModel) {
     return this.httpClient.put<IncomeModel>(`${this.baseUrl}/UpdateIncome`, income)
   }
+  LoadGraph(userEmail: string){
+    return this.httpClient.get(`${this.baseUrl}/LoadGraph?userEmail=${userEmail}`);
+  }
 
 }

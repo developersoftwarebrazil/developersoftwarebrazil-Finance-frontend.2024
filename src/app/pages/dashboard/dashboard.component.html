@@ -3,13 +3,92 @@
   <navbar></navbar>
 </div>
 <div class="container">
-  <div class="header">
-    <div class="title-content">
-      <div class="title">
-        <h2>Dashboard</h2>
-        <h5>Bem vindo ao controle de contas</h5>
+  <div class="content-page">
+    <div class="tltle">Entradas</div>
+    <div class="card-container">
+      <!-- Investimentos  -->
+      <div class="card">
+        <div class="card-titlw">
+          <div class="card-icon green">
+            <svg class="svg-dollars-ico-black" />
+          </div>
+          <div class="card-category-name">
+            Investimentos
+          </div>
+          <div class="card-category-description">
+            <h3 class="card-title-value">R$ <span id="expense">0</span></h3>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="arrow"></div>
+          <div class="info-text">Acessar mês</div>
+        </div>
       </div>
+
     </div>
+
+    <div class="title">Saídas</div>
+    <div class="card-container">
+      <!-- Despesas á pagar  -->
+      <div class="card">
+        <div class="card-titlw">
+          <div class="card-icon orange">
+            <svg class="svg-dollars-ico-black" />
+          </div>
+          <div class="card-category-name">
+            Despesas à pagar
+          </div>
+          <div class="card-category-description">
+            <h3 class="card-title-value">R$ <span id="expense">{{objectToExpenseGraph.pendingExpense}}</span></h3>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="arrow"></div>
+          <div class="info-text">Acessar mês</div>
+        </div>
+      </div>
+      <!-- Despesas pagas  -->
+      <div class="card">
+        <div class="card-titlw">
+          <div class="card-icon blue">
+            <svg class="svg-dollars-ico-black" />
+          </div>
+          <div class="card-category-name ">
+            Despesas pagas
+          </div>
+          <div class="card-category-description">
+            <h3 class="card-title-value">R$ <span id="expense">{{objectToExpenseGraph.payiedExpense}}</span></h3>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="arrow"></div>
+          <div class="info-text">Acessar mês</div>
+        </div>
+      </div>
+      <!-- Despesas atrasadas -->
+      <div class="card">
+        <div class="card-titlw">
+          <div class="card-icon red">
+            <svg class="svg-dollars-ico-black" />
+          </div>
+          <div class="card-category-name">
+            Despesas atrasadas
+          </div>
+          <div class="card-category-description">
+            <h3 class="card-title-value">R$ <span id="expense">0</span></h3>
+          </div>
+
+
+        </div>
+        <div class="card-footer">
+          <div class="arrow"></div>
+          <div class="info-text">Verificar despesas</div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
+
 
 </div>

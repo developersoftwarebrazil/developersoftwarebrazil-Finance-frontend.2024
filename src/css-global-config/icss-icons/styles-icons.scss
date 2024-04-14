@@ -119,6 +119,8 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+
 }
 :root .darkMode {
   //Icons
@@ -232,4 +234,35 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+}
+ // both colors
+ //dasboard-icons
+ .svg-dollars-ico-black {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../assets/icons/dollar/dollar-sign-solid-black.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.svg-dollars-ico-green {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../assets/icons/dollar/dollar-sign-solid--light-green.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.svg-dollars-ico-purple {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../assets/icons/dollar/dollar-sign-solid-purple.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.svg-dollars-ico-yelow {
+  width: 2rem;
+  height: 2rem;
+  background-image: url("../../assets/icons/dollar/dollar-sign-solid-yelow.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }

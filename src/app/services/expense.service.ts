@@ -23,7 +23,9 @@ export class ExpenseService {
     return this.httpClient.get(`${this.baseUrl}/GetExpense?id=${id}`);
   }
   UpdateExpense(expense: ExpenseModel) {
-    return this.httpClient.put<ExpenseModel>(`${this.baseUrl}/UpdateExpense`, expense)
+    return this.httpClient.put<ExpenseModel>(`${this.baseUrl}/UpdateExpense`, expense);
   }
-
+  LoadExpenseGraph(userEmail: string){
+    return this.httpClient.get(`${this.baseUrl}/LoadExpenseGraph?userEmail=${userEmail}`);
+  }
 }

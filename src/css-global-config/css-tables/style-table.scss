@@ -17,10 +17,10 @@ table {
       padding: 1rem;
     }
     td:first-child {
-      border-radius: 8px 0 0 0;
+      border-radius: 0.5rem 0 0 0;
     }
     td:last-child {
-      border-radius: 0 8px 0 0;
+      border-radius: 0 0.5rem 0 0;
     }
   }
   tbody {
@@ -55,7 +55,7 @@ table {
   align-items: center;
   padding: 0.9rem 0;
   background: var(--body-theme-color-bg);
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 // Controla o mostrar quantidade de pitems para a paginação
@@ -67,7 +67,7 @@ table {
 }
 
 .show-drop-table .ng-select-container.ng-has-value {
-  padding: 2px;
+  padding: 0.125rem;
   background: var(--body-selected-color-bg);
 
   color: var(--text-color-especial);
@@ -84,15 +84,15 @@ table {
 }
 
 .ngx-pagination {
-  margin-top: 10px;
-  padding: 2px 2px !important;
+  margin-top: .625rem;
+  padding: .125rem .125rem !important;
   cursor: default !important;
 }
 li.current {
   background-color: black;
 }
 .ngx-pagination .current {
-  border-radius: 4px;
+  border-radius: .25rem;
 }
 .ngx-pagination .current span {
   color: var(--against-color-font);

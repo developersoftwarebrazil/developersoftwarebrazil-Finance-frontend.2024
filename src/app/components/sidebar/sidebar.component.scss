@@ -6,11 +6,15 @@
   justify-content: space-between;
   background-color: var(--body-secundary-color-bg);
   height: 150vh;
-  // border-radius: 0px 18px 18px 0px;
+  border-radius: 0px 18px 18px 0px;
+  box-shadow: 0 0.13rem 0.13rem 0 rgba(0, 0, 0, 0.14),
+  0 0.19rem 0.06rem -0.13rem rgba(0, 0, 0, 0.2),
+  0 0.06rem 0.3rem 0 rgba(0, 0, 0, 0.12);
+
   position: absolute;
   transition: all 0.5s;
   min-width: 4rem; //80px
-  z-index: 1;
+  z-index: 100;
 
   #sidebar_content {
     padding: 0.8rem;
